@@ -53,27 +53,26 @@
                       </tr>             
                   </tbody>
               </table>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                      <label>No meja</label>
+                      <input type="number" class="form-control" name="nomeja">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                      <label>Keterangan</label>
+                      <textarea class="form-control" rows="3" name="keterangan"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-11 offset-md-1">
+                  <a href="" class="btn btn-danger px-5 mt-3 float-right">Pesan</a>
+                </div>
+              </div>  
           </div>
+
       </div>
-    </div>
-    <div class="col-md-2 offset-md-1">
-      <div class="input-group mb-3 mt-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">No meja</span>
-        </div>
-        <input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-      </div>
-    </div>
-    <div class="col-md-10 offset-md-1">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Keterangan</span>
-        </div>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-      </div>
-    </div>
-    <div class="col-md-10 offset-md-1">
-      <a href="" class="btn btn-danger px-5 mt-3 float-right">Pesan</a>
     </div>
   </div>    
 </div>

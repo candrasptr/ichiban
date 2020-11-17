@@ -22,9 +22,9 @@
 	    <div class="col-md-10 offset-md-1">
 	      <div class="card-deck">
 	        <div class="card shadow-sm">
-	          <img src="{{asset('assets/img/news/img01.jpg')}}" class="card-img-top" alt="...">
+	          <img src="{{asset('assets/img/produk/ramen.png')}}" class="card-img-top">
 	          <div class="card-body">
-	            <h5 class="card-title">INI NAMA MAKANAN</h5>
+	            <h5 class="card-title">Sashimi</h5>
 	            <span class="text-danger">Rp. 10000</span>
 	          </div>
 	          <div class="row  text-right">
@@ -34,7 +34,7 @@
 	          </div>
 	        </div>
 	        <div class="card shadow-sm">
-	          <img src="{{asset('assets/img/news/img01.jpg')}}" class="card-img-top" alt="...">
+	          <img src="{{asset('assets/img/produk/matcha.png')}}" class="card-img-top" alt="...">
 	          <div class="card-body">
 	            <h5 class="card-title">INI NAMA MAKANAN</h5>
 	            <span class="text-danger">Rp. 10000</span>

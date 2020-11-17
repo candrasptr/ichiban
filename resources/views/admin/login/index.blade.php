@@ -32,13 +32,13 @@
               <div class="card-header"><h4 class="text-danger">Login</h4></div>
 
               <div class="card-body">
-                <form method="#" action="/dashboard" class="needs-validation" novalidate="">
+                <form method="POST" action="/proseslogin" class="needs-validation" novalidate="">
                   @csrf
                   <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                    <label for="username">username</label>
+                    <input id="username" type="username" class="form-control" name="username" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
-                      Please fill in your email
+                      Please fill in your username
                     </div>
                   </div>
 

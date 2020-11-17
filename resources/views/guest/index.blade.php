@@ -25,44 +25,33 @@
           <div class="p-4 m-3">
             <img src="{{ asset('assets/img/logo.jpg')}}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold text-danger">Ichibanresto</span></h4>
-            <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p>
+            <p class="text-muted">Sebelum memesan, masukan nama dan no meja</p>
             <form method="#" action="/home" class="needs-validation" novalidate="">
               <div class="form-group">
-                <label for="username">Username</label>
-                <input id="username" type="username" class="form-control" name="username" tabindex="1" required autofocus>
+                <label for="Nama">Nama</label>
+                <input id="Nama" type="Nama" class="form-control" name="Nama" tabindex="1" required autofocus>
                 <div class="invalid-feedback">
-                  Please fill in your username
+                  Isi nama kalian terlebih dahulu
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="d-block">
-                  <label for="password" class="control-label">Password</label>
+                  <label for="nomeja" class="control-label">No meja</label>
                 </div>
-                <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                <input id="nomeja" type="text" class="form-control" name="nomeja" tabindex="2" required>
                 <div class="invalid-feedback">
-                  please fill in your password
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                  <label class="custom-control-label" for="remember-me">Remember Me</label>
+                  Isi no meja terlebih dahulu
                 </div>
               </div>
 
               <div class="form-group text-right">
-                <a href="auth-forgot-password.html" class="float-left mt-3">
-                  Forgot Password?
+                <a href="#" class="float-left mt-3">
+                  Selamat memesan
                 </a>
                 <button type="submit" class="btn btn-danger btn-lg btn-icon icon-right" tabindex="4">
                   Login
                 </button>
-              </div>
-
-              <div class="mt-5 text-center">
-                Don't have an account? <a href="auth-register.html">Create new one</a>
               </div>
             </form>
 

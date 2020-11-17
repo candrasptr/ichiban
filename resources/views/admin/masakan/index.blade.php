@@ -34,15 +34,16 @@
                   </thead>
                   <tbody class="mt-2">
                       <tr>
-                          <th scope="row">1</th>
+                        @foreach ($data_masakan as $no => $data)
+                          <th scope="row">{{ $data_masakan->firstItem()+$no }}</th>
                           <td>
                             <img src="{{asset('assets/img/stisla-fill.svg')}}" width="100" class="img-thumbnail mr-3 mt-2" align="left">
                             <br>
                             <a href="#" class="font-weight-normal">
-                                <b>Ramen</b>
+                                <b>{{ $data->nama_masakan }}</b>
                             </a><br>
-                            <span>  <b>Harga  :</b> Rp 10.000</span><br>
-                            <span>  <b>Kategori  :</b> Makanan</span><br>
+                            <span>  <b>Harga  :</b> {{ $data->harga}}</span><br>
+                            <span>  <b>Kategori  :</b> {{ $data->nama_kategori }}</span><br>
                             <span>  <b>Status :</b> Tersedia</span><br>
                           </td>
                           <td></td>
@@ -55,6 +56,7 @@
                               <i class="fas fa-trash"></i></a>
                             <a href="#" class="btn btn-warning">Habis</a>
                           </td>
+                          @endforeach
                       </tr>
                       
                   </tbody>
