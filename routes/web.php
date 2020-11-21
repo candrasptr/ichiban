@@ -45,6 +45,9 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::view('/home','guest/home');
 Route::view('/menu','guest/menu');
+Route::view('/makanan','guest/makanan');
+Route::view('/minuman','guest/minuman');
+Route::view('/dessert','guest/dessert');
 Route::view('/keranjang','guest/keranjang');
 
 

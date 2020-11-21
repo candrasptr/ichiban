@@ -2,85 +2,198 @@
 
 @section('konten')
 <div class="container-fluid mb-5">
-	<div class="row">
+	<div class="row mt-2">
 	  <div class="col-md-12 text-center">
-	    <h1 class="text-light mb-3" id="sb"> MENU </h1>
+	    <h1 class="text-light mb-5" id="bo"> MENU </h1>
 	  </div>
-	    <div class="col-md-10 offset-md-1 mb-3">
-	      <div class="card-deck">
-	        <div class="card shadow-sm">
-	          <img src="{{asset('assets/img/news/img01.jpg')}}" class="card-img-top" alt="...">
+	  <div class="col-md-7 offset-md-1">
+	    <div class="input-group mb-3">
+	      <input type="text" class="form-control" placeholder="Cari menu" aria-label="Recipient's username" aria-describedby="basic-addon2" id="input-cari">
+	      <div class="input-group-append">
+	        <a class="btn btn-danger btn-cari px-5" href="#" id="basic-addon2"><i class="fas fa-search"></i></a>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-md-4">
+	    <a href="/makanan" class="btn btn-danger ml-3" id="btn-menu">Makanan</a>
+	    <a href="/minuman" class="btn btn-danger ml-2" id="btn-menu">Minuman</a>
+	    <a href="/dessert" class="btn btn-danger ml-2" id="btn-menu">Dessert</a>
+	  </div>
+	    <div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
+	      <div class="card-deck" >
+	        <div class="card shadow-sm" id="card">
+	        	<img src="{{asset('assets/img/produk/donut.png')}}" class="card-img-top" alt="...">
 	          <div class="card-body">
-	            <h5 class="card-title">INI NAMA MAKANAN</h5>
-	            <span class="text-danger">Rp. 10000</span>
+	            <h5 class="card-title text-center">Ichiban donut</h5>
 	          </div>
-	          <div class="row  text-right">
-	          	<div class="col-md-6">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3"><i class="fas fa-plus"></i> Keranjang</a>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
-	        <div class="card shadow-sm">
-	          <img src="{{asset('assets/img/news/img01.jpg')}}" class="card-img-top" alt="...">
+	        <div class="card shadow-sm" id="card">
+	          <img src="{{asset('assets/img/produk/dorayaki.png')}}" class="card-img-top" alt="...">
 	          <div class="card-body">
-	            <h5 class="card-title">INI NAMA MAKANAN</h5>
-	            <span class="text-danger">Rp. 10000</span>
+	            <h5 class="card-title text-center">Dorayaki juice</h5>
 	          </div>
-	          <div class="row  text-right">
-	          	<div class="col-md-6">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3"><i class="fas fa-plus"></i> Keranjang</a>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
-	        <div class="card shadow-sm">
-	          <img src="{{asset('assets/img/news/img01.jpg')}}" class="card-img-top" alt="...">
+	        <div class="card shadow-sm" id="card">
+	          <img src="{{asset('assets/img/produk/esteh.png')}}" class="card-img-top" alt="...">
 	          <div class="card-body">
-	            <h5 class="card-title">INI NAMA MAKANAN</h5>
-	            <span class="text-danger">Rp. 10000</span>
+	            <h5 class="card-title text-center">Lemon tea</h5>
 	          </div>
-	          <div class="row  text-right">
-	          	<div class="col-md-6">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3"><i class="fas fa-plus"></i> Keranjang</a>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          	</div>
+	          </div>
+	        </div>
+	        <div class="card shadow-sm" id="card">
+	          <img src="{{asset('assets/img/produk/matcha.png')}}" class="card-img-top" alt="...">
+	          <div class="card-body">
+	            <h5 class="card-title text-center">Matcha</h5>
+	          </div>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
 	      </div>
 	    </div>
-	    <div class="col-md-10 offset-md-1">
-	      <div class="card-deck">
-	        <div class="card shadow-sm">
-	          <img src="{{asset('assets/img/news/img01.jpg')}}" class="card-img-top" alt="...">
+	    <div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
+	      <div class="card-deck" >
+	        <div class="card shadow-sm" id="card">
+	        	<img src="{{asset('assets/img/produk/milkshake.png')}}" class="card-img-top" alt="...">
 	          <div class="card-body">
-	            <h5 class="card-title">INI NAMA MAKANAN</h5>
-	            <span class="text-danger">Rp. 10000</span>
+	            <h5 class="card-title text-center">Chocolate milkshake</h5>
 	          </div>
-	          <div class="row  text-right">
-	          	<div class="col-md-6">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3"><i class="fas fa-plus"></i> Keranjang</a>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
-	        <div class="card shadow-sm">
-	          <img src="{{asset('assets/img/news/img01.jpg')}}" class="card-img-top" alt="...">
+	        <div class="card shadow-sm" id="card">
+	          <img src="{{asset('assets/img/produk/mochi.png')}}" class="card-img-top" alt="...">
 	          <div class="card-body">
-	            <h5 class="card-title">INI NAMA MAKANAN</h5>
-	            <span class="text-danger">Rp. 10000</span>
+	            <h5 class="card-title text-center">Mochi</h5>
 	          </div>
-	          <div class="row  text-right">
-	          	<div class="col-md-6">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3"><i class="fas fa-plus"></i> Keranjang</a>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
-	        <div class="card shadow-sm">
-	          <img src="{{asset('assets/img/news/img01.jpg')}}" class="card-img-top" alt="...">
+	        <div class="card shadow-sm" id="card">
+	          <img src="{{asset('assets/img/produk/orange.png')}}" class="card-img-top" alt="...">
 	          <div class="card-body">
-	            <h5 class="card-title">INI NAMA MAKANAN</h5>
-	            <span class="text-danger">Rp. 10000</span>
+	            <h5 class="card-title text-center">Orange juice</h5>
 	          </div>
-	          <div class="row  text-right">
-	          	<div class="col-md-6">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3"><i class="fas fa-plus"></i> Keranjang</a>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          	</div>
+	          </div>
+	        </div>
+	        <div class="card shadow-sm" id="card">
+	          <img src="{{asset('assets/img/produk/ramen.png')}}" class="card-img-top" alt="...">
+	          <div class="card-body">
+	            <h5 class="card-title text-center">Ramen</h5>
+	          </div>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          	</div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
+	      <div class="card-deck" >
+	        <div class="card shadow-sm" id="card">
+	        	<img src="{{asset('assets/img/produk/sushi.png')}}" class="card-img-top" alt="...">
+	          <div class="card-body">
+	            <h5 class="card-title text-center">Sushi</h5>
+	          </div>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          	</div>
+	          </div>
+	        </div>
+	        <div class="card shadow-sm" id="card">
+	          <img src="{{asset('assets/img/produk/sashimi.png')}}" class="card-img-top" alt="...">
+	          <div class="card-body">
+	            <h5 class="card-title text-center">Shasimi</h5>
+	          </div>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          	</div>
+	          </div>
+	        </div>
+	        <div class="card shadow-sm" id="card">
+	          <img src="{{asset('assets/img/produk/yakiniku.png')}}" class="card-img-top" alt="...">
+	          <div class="card-body">
+	            <h5 class="card-title text-center">Yakiniku</h5>
+	          </div>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          	</div>
+	          </div>
+	        </div>
+	        <div class="card shadow-sm" id="card">
+	          <img src="{{asset('assets/img/produk/takiyaki.png')}}" class="card-img-top" alt="...">
+	          <div class="card-body">
+	            <h5 class="card-title text-center">Takiyaki</h5>
+	          </div>
+	          <div class="row">
+	          	<div class="col-md-8">
+	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          	</div>
+	          	<div class="col-md-4 text-right">
+	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
@@ -93,24 +206,3 @@
 
 @endsection
 
-@push('after-scripts')
-<script type="text/javascript">
-	$('.owl-carousel').owlCarousel({
-	    loop:true,
-	    margin:10,
-	    nav:true,
-	    autoplay:1000,
-	    responsive:{
-	        0:{
-	            items:1
-	        },
-	        600:{
-	            items:1
-	        },
-	        1000:{
-	            items:1
-	        }
-	    }
-	})
-</script>
-@endpush

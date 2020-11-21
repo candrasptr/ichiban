@@ -1,0 +1,52 @@
+#img{
+	background-size: 350px 200px;
+	background-repeat: no-repeat;
+	padding: 15px;
+}
+
+#card{
+	border-radius: 25px;
+	transition: transform 1s ease;
+}
+
+#card:hover{
+	transform: scale(1.1);
+}
+
+#input-cari{
+	border-radius: 15px 0px 0px 15px;
+	border-color: #FFFFFF;
+}
+
+.btn-cari{
+	border-radius: 0px 15px 15px 0px;
+	color: #FFFFFF;
+	border-color: #d9534f;
+}
+
+.btn-cari:hover {
+	background-color: #FFFFFF;
+	border-color: #FFFFFF;
+	color: #d9534f;
+}
+
+#btn-menu{
+	border-radius: 15px;
+	transition: transform 1s ease;
+}
+
+#btn-menu:hover {
+	background-color: #ffffff;
+	color: #d9534f;
+	transform: scale(1.2);
+}
+
+#btn-shop{
+	transition: transform 1s ease;
+}
+
+#btn-shop:hover{
+	background-color: #ffffff;
+	color: #d9534f;
+	transform: scale(1.1);
+}

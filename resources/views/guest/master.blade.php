@@ -11,6 +11,7 @@
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style2.css')}}">
   <link rel="stylesheet" href="{{ asset('owlcarousel/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{ asset('owlcarousel/owl.theme.default.min.css')}}">
 
