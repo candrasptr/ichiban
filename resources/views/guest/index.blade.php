@@ -26,24 +26,17 @@
             <img src="{{ asset('assets/img/logo.jpg')}}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold text-danger">Ichibanresto</span></h4>
             <p class="text-muted">Sebelum memesan, masukan nama dan no meja</p>
-            <form method="#" action="/home" class="needs-validation" novalidate="">
+            <form method="POST" action="/prosesloginpelanggan" class="needs-validation" novalidate="">
+              @csrf
               <div class="form-group">
                 <label for="Nama">Nama</label>
-                <input id="Nama" type="Nama" class="form-control" name="Nama" tabindex="1" required autofocus>
+                <input id="Nama" type="Nama" class="form-control" name="nama_pelanggan" tabindex="1" required autofocus>
                 <div class="invalid-feedback">
                   Isi nama kalian terlebih dahulu
                 </div>
               </div>
 
-              <div class="form-group">
-                <div class="d-block">
-                  <label for="nomeja" class="control-label">No meja</label>
-                </div>
-                <input id="nomeja" type="text" class="form-control" name="nomeja" tabindex="2" required>
-                <div class="invalid-feedback">
-                  Isi no meja terlebih dahulu
-                </div>
-              </div>
+              <input id="Nama" type="hidden" class="form-control" name="password" value="candra" tabindex="1" required autofocus>
 
               <div class="form-group text-right">
                 <a href="#" class="float-left mt-3">
@@ -54,6 +47,17 @@
                 </button>
               </div>
             </form>
+
+            @if(session('message'))
+            <div class="alert alert-danger alert-dismissible show fade">
+              <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+                  <span>×</span>
+                </button>
+                {{ session('message') }}
+              </div>
+            </div>
+            @endif
 
             <div class="text-center mt-5 text-small">
               Copyright &copy; Candra saputra. Made with 💙 by Stisla

@@ -46,6 +46,36 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'admin' => [
+          'driver' => 'session',
+          'provider' => 'admin',
+        ],
+
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admin',
+        ],
+
+        'pelanggan' => [
+          'driver' => 'session',
+          'provider' => 'pelanggan',
+        ],
+
+        'pelanggan-api' => [
+            'driver' => 'token',
+            'provider' => 'pelanggan',
+        ],
+
+        'user' => [
+          'driver' => 'session',
+          'provider' => 'user',
+        ],
+
+        'user-api' => [
+            'driver' => 'token',
+            'provider' => 'user',
+        ],
     ],
 
     /*
@@ -71,10 +101,15 @@ return [
             'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admin' => [
+          'driver' => 'eloquent',
+          'model' => App\admin::class,
+        ],
+
+        'pelanggan' => [
+          'driver' => 'eloquent',
+          'model' => App\pelanggan::class,
+        ],
     ],
 
     /*

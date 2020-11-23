@@ -22,7 +22,7 @@
                   <thead>
                       <tr>
                           <th scope="col">No</th>
-                          <th scope="col">Masakan</th>
+                          <th scope="col">Pesanan</th>
                           <th></th>
                           <th>Aksi</th>
                       </tr>
@@ -42,28 +42,27 @@
                           </td>
                           <td></td>
                           <td>
-                            <div class="input-group mb-3 row">
-                              <input type="number" class="form-control col-md-2 mb-2" aria-label="Username" value="1" aria-describedby="basic-addon1">
-                              <a href="#" data-id="" class="btn btn-danger confirm_script col-md-1 ml-2">
-                                <form action="" id="delete" method="POST">  
-                                </form>
-                                <i class="fas fa-trash"></i></a>
+                            <div class="input-group row">
+                              <input type="number" class="form-control col-md-2" aria-label="Username" value="1" aria-describedby="basic-addon1">
+                              <a href="#" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></a>
+                              <!-- <a href="#" data-id="" class="btn btn-danger confirm_script col-md-1 ml-2">
+                                </a> -->
                             </div>
                           </td>
                       </tr>             
                   </tbody>
               </table>
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <div class="form-group">
                       <label>No meja</label>
                       <input type="number" class="form-control" name="nomeja">
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-10">
                   <div class="form-group">
                       <label>Keterangan</label>
-                      <textarea class="form-control" rows="3" name="keterangan"></textarea>
+                      <textarea class="form-control" rows="1" name="keterangan"></textarea>
                     </div>
                 </div>
                 <div class="col-md-11 offset-md-1">

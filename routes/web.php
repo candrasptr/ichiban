@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Route::get('/login', 'LoginController@index');
 Route::post('/proseslogin', 'LoginController@login');
-Route::group(['middleware' => 'auth'], function(){
+Route::post('/prosesloginpelanggan', 'PelangganController@login');
+Route::group(['middleware' => 'auth:admin'], function(){
 
 	Route::view('/dashboard','admin/dashboard.index');
 
@@ -43,12 +44,23 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::view('/transaksi','admin/transaksi.index');
 });
 
+Route::group(['middleware' => 'auth:pelanggan'], function(){
 Route::view('/home','guest/home');
 Route::view('/menu','guest/menu');
 Route::view('/makanan','guest/makanan');
 Route::view('/minuman','guest/minuman');
 Route::view('/dessert','guest/dessert');
 Route::view('/keranjang','guest/keranjang');
+});
+
+// kasir
+Route::view('/loginkasir','kasir/login.index');
+
+// waiter
+Route::view('/loginwaiter','waiter/login.index');
+Route::view('/waiter','waiter/orderan.index');
+Route::view('/waiter/detail','waiter/orderan.detail');
+Route::view('/laporanwaiter','waiter/laporan.index');
 
 
 

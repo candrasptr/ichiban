@@ -1,56 +1,89 @@
 @extends('admin/layout.master')
 
-@section('title','user')
-@section('title2','edit')
+@section('title','User')
+@section('title2','index')
 
 @section('konten')
 
-<div class="card">
-  <div class="card-header">
-    <h4>Tambah user</h4>
-  </div>
-  <div class="card-body">
-    <form action="#" method="POST">
-    <!-- @csrf -->
-    <div class="row">
+<div class="section-body">
+  <div class="row">
+    <div class="col-md-12">
+      
+      <div class="card mt-3">
 
-      <div class="col-md-6">
-          <div class="form-group">
-            <label>Nama user</label>
-            <input type="text" name="namauser" value="" class="form-control">  
+          <div class="card-body">
+            <a href="{{ route('user.tambah') }}" class="btn btn-icon icon-left btn-primary mb-3 px-3"><i class="fas fa-plus"></i> Tambah</a>
+            @if(session('message'))
+            <div class="alert alert-success alert-dismissible show fade">
+              <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+                  <span>×</span>
+                </button>
+                {{ session('message') }}
+              </div>
+            </div>
+            @endif
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th scope="col">No</th>
+                          <th scope="col">Nama user</th>
+                          <th>username</th>
+                          <th>Level</th>
+                          <th>Aksi</th>
+                      </tr>
+                  </thead>
+                  <tbody class="mt-2">
+                      <tr>
+                          <th scope="row">1</th>
+                          <td></td>
+                          <td></td>
+                          <td>
+                            <a href="{{ route('user.edit') }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                            <a href="#" data-id="" class="btn btn-danger confirm_script">
+                              <form action="" id="delete" method="POST">
+                                
+                              </form>
+                              <i class="fas fa-trash"></i></a>
+                          </td>
+                      </tr>
+                      
+                  </tbody>
+              </table>
+              
           </div>
-        </div>
-
-      <div class="col-md-6">
-          <div class="form-group">
-            <label>username</label>
-            <input type="text" name="username" value="" class="form-control">  
-          </div>
-        </div>
-
-      <div class="col-md-6">
-          <div class="form-group">
-            <label>password</label>
-            <input type="password" name="password" value="" class="form-control">  
-          </div>
-        </div>
-
-      <div class="col-md-6">
-          <div class="form-group">
-            <label>level</label>
-            <input type="text" name="level" value="" class="form-control">  
-          </div>
-        </div>
-
-
-    </div>    
-      <div class="card-footer text-right">
-        <button class="btn btn-primary mr-1" type="submit">Submit</button>
-        <a href="{{ url()->previous() }}" class="btn btn-secondary" type="reset">Cancel</a>
       </div>
-    </form>
-  </div>
+    </div>
+  </div>    
 </div>
 
 @endsection
 
+@push('page-scripts')
+
+<script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
+
+@endpush
+
+@push('after-scripts')
+
+<script>
+$(".confirm_script").click(function(e) {
+  // id = e.target.dataset.id;
+  swal({
+      title: 'Yakin hapus data?',
+      text: 'Data yang dihapus tidak bisa dibalikin',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+      // $('#delete').submit();
+      } else {
+      swal('Your imaginary file is safe!');
+      }
+    });
+});
+</script>
+@endpush
