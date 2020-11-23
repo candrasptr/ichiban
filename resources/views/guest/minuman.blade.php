@@ -1,4 +1,5 @@
 @extends('guest.master')
+@section('title','minuman')
 
 @section('konten')
 <div class="container-fluid mb-5">

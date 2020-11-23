@@ -67,6 +67,26 @@ return [
             'provider' => 'pelanggan',
         ],
 
+        'kasir' => [
+          'driver' => 'session',
+          'provider' => 'kasir',
+        ],
+
+        'kasir-api' => [
+            'driver' => 'token',
+            'provider' => 'kasir',
+        ],
+
+        'waiter' => [
+          'driver' => 'session',
+          'provider' => 'waiter',
+        ],
+
+        'waiter-api' => [
+            'driver' => 'token',
+            'provider' => 'waiter',
+        ],
+
         'user' => [
           'driver' => 'session',
           'provider' => 'user',
@@ -109,6 +129,16 @@ return [
         'pelanggan' => [
           'driver' => 'eloquent',
           'model' => App\pelanggan::class,
+        ],
+
+        'kasir' => [
+          'driver' => 'eloquent',
+          'model' => App\kasir::class,
+        ],
+
+        'waiter' => [
+          'driver' => 'eloquent',
+          'model' => App\waiter::class,
         ],
     ],
 

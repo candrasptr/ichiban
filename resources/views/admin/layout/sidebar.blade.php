@@ -8,14 +8,14 @@
           </div>
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
-              <li class="active"><a class="nav-link" href="/"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+              <li class="@yield('dashboard')"><a class="nav-link" href="/"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
               <li class="menu-header">Menu</li>
-              <li class=""><a class="nav-link" href="/transaksi"><i class="fas fa-fw fa-folder"></i> <span>Transaksi</span></a></li>
-              <li class=""><a class="nav-link" href="/user"><i class="fas fa-fw fa-folder"></i> <span>user</span></a></li>
-              <li class=""><a class="nav-link" href="/orderan"><i class="fas fa-fw fa-folder"></i> <span>Orderan</span></a></li>
-              <li class=""><a class="nav-link" href="/masakan"><i class="fas fa-fw fa-folder"></i> <span>Masakan</span></a></li>
-              <li class=""><a class="nav-link" href="/kategori"><i class="fas fa-fw fa-folder"></i> <span>Kategori</span></a></li>
-              <li class=""><a class="nav-link" href="/laporan"><i class="fas fa-fw fa-folder"></i> <span>Laporan</span></a></li>
+              <li class="@yield('transaksi')"><a class="nav-link" href="/transaksi"><i class="fas fa-fw fa-folder"></i> <span>Transaksi</span></a></li>
+              <li class="@yield('user')"><a class="nav-link" href="/user"><i class="fas fa-fw fa-folder"></i> <span>user</span></a></li>
+              <li class="@yield('orderan')"><a class="nav-link" href="/orderan"><i class="fas fa-fw fa-folder"></i> <span>Orderan</span></a></li>
+              <li class="@yield('masakan')"><a class="nav-link" href="/masakan"><i class="fas fa-fw fa-folder"></i> <span>Masakan</span></a></li>
+              <li class="@yield('kategori')"><a class="nav-link" href="/kategori"><i class="fas fa-fw fa-folder"></i> <span>Kategori</span></a></li>
+              <li class="@yield('laporan')"><a class="nav-link" href="/laporan"><i class="fas fa-fw fa-folder"></i> <span>Laporan</span></a></li>
               <!-- <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
                 <ul class="dropdown-menu">

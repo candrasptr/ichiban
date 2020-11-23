@@ -1,7 +1,8 @@
-@extends('admin/layout.master')
+@extends('waiter/layout.master')
 
 @section('title','laporan')
 @section('title2','index')
+@section('laporanwaiter','active')
 
 @section('konten')
 
@@ -45,7 +46,7 @@
                           </td>
                           <td></td>
                           <td>
-                            <a href="#" class="btn btn-success">CETAK</a>
+                            <a href="#" class="btn btn-success confirm_script">CETAK</a>
                           </td>
                       </tr>
                       
@@ -59,4 +60,33 @@
 </div>
 
 @endsection
+@push('page-scripts')
 
+<script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
+
+@endpush
+
+@push('after-scripts')
+
+<script>
+$(".confirm_script").click(function(e) {
+  // id = e.target.dataset.id;
+  swal({
+      title: 'Yakin ingin mencetak laporan ini?',
+      text: 'Data yang dicetak akan terdownload otomatis',
+      icon: 'info',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+      swal('Data berhasil dicetak', {
+        icon: 'success',
+      });
+      } else {
+      swal('Your imaginary file is safe!');
+      }
+    });
+});
+</script>
+@endpush

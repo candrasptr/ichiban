@@ -2,7 +2,7 @@
 
 @section('title','User')
 @section('title2','index')
-
+@section('user','active')
 @section('konten')
 
 <div class="section-body">
@@ -36,8 +36,9 @@
                   <tbody class="mt-2">
                       <tr>
                           <th scope="row">1</th>
-                          <td></td>
-                          <td></td>
+                          <td>Candra</td>
+                          <td>Candra</td>
+                          <td>Admin</td>
                           <td>
                             <a href="{{ route('user.edit') }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                             <a href="#" data-id="" class="btn btn-danger confirm_script">
@@ -79,7 +80,9 @@ $(".confirm_script").click(function(e) {
     })
     .then((willDelete) => {
       if (willDelete) {
-      // $('#delete').submit();
+      swal('Data berhasil dihapus', {
+        icon: 'success',
+      });
       } else {
       swal('Your imaginary file is safe!');
       }

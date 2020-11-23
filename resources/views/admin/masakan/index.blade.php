@@ -2,7 +2,7 @@
 
 @section('title','Masakan')
 @section('title2','index')
-
+@section('masakan','active')
 @section('konten')
 
 <div class="section-body">
@@ -54,7 +54,7 @@
                                 
                               </form>
                               <i class="fas fa-trash"></i></a>
-                            <a href="#" class="btn btn-warning">Habis</a>
+                            <a href="#" class="btn btn-warning habis">Habis</a>
                           </td>
                           @endforeach
                       </tr>
@@ -90,11 +90,17 @@ $(".confirm_script").click(function(e) {
     })
     .then((willDelete) => {
       if (willDelete) {
-      // $('#delete').submit();
+      swal('Data berhasil dihapus', {
+        icon: 'success',
+      });
       } else {
       swal('Your imaginary file is safe!');
       }
     });
+});
+
+$(".habis").click(function() {
+  swal('Good Job', 'Data berhasil diubah', 'success');
 });
 </script>
 @endpush

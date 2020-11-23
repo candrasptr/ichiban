@@ -1,4 +1,5 @@
 @extends('guest.master')
+@section('title','keranjang')
 
 @section('konten')
 
@@ -31,9 +32,9 @@
                       <tr>
                           <th scope="row">1</th>
                           <td>
-                            <img src="{{asset('assets/img/news/img01.jpg')}}" width="100" class="img-thumbnail mr-3 mt-2" align="left">
+                            <img src="{{asset('assets/img/produk/ramen.png')}}" width="100" class="img-thumbnail mr-3 mt-2" align="left">
                             
-                            <a href="#" class="font-weight-normal">
+                            <a href="#" class="font-weight-normal text-danger" id="sb">
                                 <b>Ramen</b>
                             </a><br>
                             <span>  <b>Harga  :</b> Rp 10.000</span><br>
@@ -44,7 +45,7 @@
                           <td>
                             <div class="input-group row">
                               <input type="number" class="form-control col-md-2" aria-label="Username" value="1" aria-describedby="basic-addon1">
-                              <a href="#" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></a>
+                              <a href="#" class="btn btn-danger ml-2 confirm_script"><i class="fas fa-trash"></i></a>
                               <!-- <a href="#" data-id="" class="btn btn-danger confirm_script col-md-1 ml-2">
                                 </a> -->
                             </div>
@@ -56,7 +57,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                       <label>No meja</label>
-                      <input type="number" class="form-control" name="nomeja">
+                      <input type="number" class="form-control" name="nomeja" autocomplete="off">
                     </div>
                 </div>
                 <div class="col-md-10">
@@ -66,7 +67,7 @@
                     </div>
                 </div>
                 <div class="col-md-11 offset-md-1">
-                  <a href="" class="btn btn-danger px-5 mt-3 float-right">Pesan</a>
+                  <a href="#" class="btn btn-danger px-5 mt-3 float-right pesan">Pesan</a>
                 </div>
               </div>  
           </div>
@@ -98,9 +99,32 @@ $(".confirm_script").click(function(e) {
     })
     .then((willDelete) => {
       if (willDelete) {
-      // $('#delete').submit();
+      swal('Data berhasil di hapus', {
+        icon: 'success',
+      });
       } else {
       swal('Your imaginary file is safe!');
+      }
+    });
+});
+
+$(".pesan").click(function(e) {
+  // id = e.target.dataset.id;
+  swal({
+      title: 'Yakin ingin order makanan ini?',
+      text: 'Kode pembayaran akan muncul setelah ini',
+      icon: 'warning',
+      buttons: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+      swal({
+      title: 'KODE BAYAR : BYR123',
+      text: 'Foto atau catat kode ini',
+      icon: 'warning',      
+    })
+      } else {
+      swal('Order dibatalkan');
       }
     });
 });

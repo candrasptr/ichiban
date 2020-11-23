@@ -2,6 +2,7 @@
 
 @section('title','kategori')
 @section('title2','index')
+@section('kategori','active')
 
 @section('konten')
 
@@ -78,7 +79,9 @@ $(".confirm_script").click(function(e) {
     })
     .then((willDelete) => {
       if (willDelete) {
-      // $('#delete').submit();
+      swal('Data berhasil dihapus', {
+        icon: 'success',
+      });
       } else {
       swal('Your imaginary file is safe!');
       }

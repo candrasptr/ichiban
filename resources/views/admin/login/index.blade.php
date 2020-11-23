@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Login &mdash; Stisla</title>
+  <title>Login &mdash; Ichiban</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -36,7 +36,7 @@
                   @csrf
                   <div class="form-group">
                     <label for="username">username</label>
-                    <input id="username" type="username" class="form-control" name="username" tabindex="1" required autofocus>
+                    <input id="username" type="username" class="form-control" name="username" tabindex="1" required autofocus autocomplete="off">
                     <div class="invalid-feedback">
                       Please fill in your username
                     </div>
@@ -46,7 +46,7 @@
                     <div class="d-block">
                     	<label for="password" class="control-label">Password</label>
                     </div>
-                    <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                    <input id="password" type="password" class="form-control" name="password" tabindex="2" required autocomplete="off">
                     <div class="invalid-feedback">
                       please fill in your password
                     </div>

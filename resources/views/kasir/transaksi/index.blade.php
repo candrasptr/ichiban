@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>KASIR</title>
+	<title>KASIR - ichiban</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font.css')}}">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
 	<div class="container-fluid mt-3">
 		<div class="row">
 			<div class="col-md-6">
-				<h1 id="sbita" class="text-danger">RESTO</h1>
+				<img src="{{asset('assets/img/logo.png')}}" style="width: 50px;">
 			</div>
 			<div class="col-md-6 text-right">
-				<span id="me">Kasir</span><br>
-				<span class="text-danger"><i class="fas fa-user"></i> Candra saputra</span>
+				<span id="me">Kasir </span> <a href="/logout" class="text-danger"><i class="fas fa-sign-out-alt"></i></a><br>
+				<span class="text-danger" id="me">{{ Auth::guard('kasir')->user()->nama_kasir }}</span>
 			</div>
 			<div class="col-md-6 mt-5">
 				<div class="input-group input-group-sm mb-3">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="inputGroup-sizing-sm">Id/nama</span>
+				    <span class="input-group-text" id="inputGroup-sizing-sm">Kode bayar</span>
 				  </div>
-				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off">
 				</div>
 				<div class="input-group input-group-sm mb-3">
 				  <div class="input-group-prepend">
 				    <span class="input-group-text" id="inputGroup-sizing-sm">Barang</span>
 				  </div>
-				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off">
 				  <div class="input-group-append">
 				      <button class="btn btn-danger" type="button" id="button-addon2">Tambahkan</button>
 				    </div>
@@ -63,7 +64,7 @@
 				  <div class="input-group-prepend">
 				    <span class="input-group-text" id="inputGroup-sizing-sm">Bayar</span>
 				  </div>
-				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off">
 				</div>
 				<div class="input-group input-group-sm mb-3">
 				  <div class="input-group-prepend">
@@ -73,12 +74,40 @@
 				</div>
 			</div>
 			<div class="col-md-2">
-				<a href="#" class="btn btn-danger btn-block">Bayar</a>
+				<a href="#" class="btn btn-danger btn-block confirm_script">Bayar</a>
 			</div>
 		</div>		
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
 </body>
-</html>	
+</html>
+
+
+
+
+
+
+<script>
+$(".confirm_script").click(function(e) {
+  // id = e.target.dataset.id;
+  swal({
+      title: 'Yakin membayar oderan ini',
+      text: 'status orderan akan berubah',
+      icon: 'info',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+      swal('Orderan berhasil dibayar', {
+        icon: 'success',
+      });
+      } else {
+      swal('Your imaginary file is safe!');
+      }
+    });
+});
+</script>	

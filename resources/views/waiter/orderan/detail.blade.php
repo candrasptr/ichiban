@@ -1,8 +1,8 @@
-@extends('admin/layout.master')
+@extends('waiter/layout.master')
 
 @section('title','Orderan')
 @section('title2','detail')
-
+@section('waiter','active')
 @section('konten')
 
 <div class="container-fluid">

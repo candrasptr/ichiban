@@ -2,7 +2,7 @@
 
 @section('title','Masakan')
 @section('title2','edit')
-
+@section('masakan','active')
 @section('konten')
 
 <div class="card">
@@ -27,14 +27,14 @@
 
           <div class="form-group">
             <label>Nama Masakan</label>
-            <input type="text" name="namamasakan" value="" class="form-control">  
+            <input type="text" name="namamasakan" value="" class="form-control" autocomplete="off">  
           </div>
         </div>
 
         <div class="col-md-5">
           <div class="form-group">
             <label>Harga Masakan</label>
-            <input type="number" name="hargamasakan" class="form-control">
+            <input type="number" name="hargamasakan" class="form-control" autocomplete="off">
           </div>
         </div>
 

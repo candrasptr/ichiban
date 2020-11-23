@@ -1,7 +1,8 @@
-@extends('admin/layout.master')
+@extends('waiter/layout.master')
 
 @section('title','Orderan')
 @section('title2','index')
+@section('waiter','active')
 
 @section('konten')
 
@@ -12,7 +13,7 @@
       <div class="card mt-3">
 
           <div class="card-body">
-            <a href="{{ route('masakan.tambah') }}" class="btn btn-icon icon-left btn-primary mb-3 px-3"><i class="fas fa-plus"></i> Tambah</a>
+
             @if(session('message'))
             <div class="alert alert-success alert-dismissible show fade">
               <div class="alert-body">

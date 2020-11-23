@@ -30,7 +30,7 @@
               @csrf
               <div class="form-group">
                 <label for="Nama">Nama</label>
-                <input id="Nama" type="Nama" class="form-control" name="nama_pelanggan" tabindex="1" required autofocus>
+                <input id="Nama" type="Nama" class="form-control" name="nama_pelanggan" tabindex="1" required autofocus autocomplete="off">
                 <div class="invalid-feedback">
                   Isi nama kalian terlebih dahulu
                 </div>

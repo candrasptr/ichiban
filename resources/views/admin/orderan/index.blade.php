@@ -2,7 +2,7 @@
 
 @section('title','Orderan')
 @section('title2','index')
-
+@section('orderan','active')
 @section('konten')
 
 <div class="section-body">
@@ -12,7 +12,6 @@
       <div class="card mt-3">
 
           <div class="card-body">
-            <a href="{{ route('masakan.tambah') }}" class="btn btn-icon icon-left btn-primary mb-3 px-3"><i class="fas fa-plus"></i> Tambah</a>
             @if(session('message'))
             <div class="alert alert-success alert-dismissible show fade">
               <div class="alert-body">
@@ -46,7 +45,7 @@
                           </td>
                           <td></td>
                           <td>
-                            <a href="#" class="btn btn-success">Selesai</a>
+                            <a href="#" class="btn btn-success confirm_script">Selesai</a>
                           </td>
                       </tr>
                       
@@ -60,4 +59,33 @@
 </div>
 
 @endsection
+@push('page-scripts')
 
+<script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
+
+@endpush
+
+@push('after-scripts')
+
+<script>
+$(".confirm_script").click(function(e) {
+  // id = e.target.dataset.id;
+  swal({
+      title: 'Yakin menyelesaikan orderan?',
+      text: 'Data yang diubah tidak bisa dibalikin',
+      icon: 'info',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+      swal('Data berhasil diubah', {
+        icon: 'success',
+      });
+      } else {
+      swal('Your imaginary file is safe!');
+      }
+    });
+});
+</script>
+@endpush

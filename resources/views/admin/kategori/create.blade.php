@@ -2,7 +2,7 @@
 
 @section('title','kategori')
 @section('title2','tambah')
-
+@section('kategori','active')
 @section('konten')
 
 <div class="card">
@@ -17,7 +17,7 @@
       <div class="col-md-12">
           <div class="form-group">
             <label>Nama kategori</label>
-            <input type="text" name="namakategori" value="" class="form-control">  
+            <input type="text" name="namakategori" value="" class="form-control" autocomplete="off">  
           </div>
         </div>
 

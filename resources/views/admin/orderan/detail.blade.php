@@ -2,7 +2,7 @@
 
 @section('title','Orderan')
 @section('title2','detail')
-
+@section('orderan','active')
 @section('konten')
 
 <div class="container-fluid">

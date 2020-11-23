@@ -1,8 +1,8 @@
 @extends('admin/layout.master')
 
-@section('title','kategori')
+@section('title','user')
 @section('title2','edit')
-
+@section('user','active')
 @section('konten')
 
 <div class="card">
@@ -17,28 +17,28 @@
       <div class="col-md-6">
           <div class="form-group">
             <label>Nama user</label>
-            <input type="text" name="namauser" value="" class="form-control">  
+            <input type="text" name="namauser" value="" class="form-control" autocomplete="off">  
           </div>
         </div>
 
       <div class="col-md-6">
           <div class="form-group">
             <label>username</label>
-            <input type="text" name="username" value="" class="form-control">  
+            <input type="text" name="username" value="" class="form-control" autocomplete="off">  
           </div>
         </div>
 
       <div class="col-md-6">
           <div class="form-group">
             <label>password</label>
-            <input type="password" name="password" value="" class="form-control">  
+            <input type="password" name="password" value="" class="form-control" autocomplete="off">  
           </div>
         </div>
 
       <div class="col-md-6">
           <div class="form-group">
             <label>level</label>
-            <input type="text" name="level" value="" class="form-control">  
+            <input type="text" name="level" value="" class="form-control" autocomplete="off">  
           </div>
         </div>
 

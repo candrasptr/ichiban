@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('guest.index');
 });
 
-Route::get('/login', 'LoginController@index');
+Route::get('/login', 'LoginController@index')->name('login');
+Route::get('/logout', 'LoginController@logout');
 Route::post('/proseslogin', 'LoginController@login');
 Route::post('/prosesloginpelanggan', 'PelangganController@login');
 Route::group(['middleware' => 'auth:admin'], function(){
@@ -54,13 +55,19 @@ Route::view('/keranjang','guest/keranjang');
 });
 
 // kasir
-Route::view('/loginkasir','kasir/login.index');
+Route::group(['middleware' => 'auth:kasir'], function(){
+	Route::view('/kasir','kasir/transaksi.index');
+});
+
 
 // waiter
-Route::view('/loginwaiter','waiter/login.index');
-Route::view('/waiter','waiter/orderan.index');
-Route::view('/waiter/detail','waiter/orderan.detail');
-Route::view('/laporanwaiter','waiter/laporan.index');
+Route::group(['middleware' => 'auth:waiter'], function(){
+	Route::view('/loginwaiter','waiter/login.index');
+	Route::view('/waiter','waiter/orderan.index');
+	Route::view('/waiter/detail','waiter/orderan.detail');
+	Route::view('/laporanwaiter','waiter/laporan.index');
+});
+
 
 
 

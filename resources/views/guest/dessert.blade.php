@@ -1,5 +1,5 @@
 @extends('guest.master')
-
+@section('title','dessert')
 @section('konten')
 <div class="container-fluid mb-5">
 	<div class="row mt-2">

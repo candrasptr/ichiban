@@ -1,4 +1,5 @@
 @extends('guest.master')
+@section('title','menu')
 
 @section('konten')
 <div class="container-fluid mb-5">
@@ -133,7 +134,7 @@
 	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
 	          	</div>
 	          	<div class="col-md-4 text-right">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          		<a href="/keranjang" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
