@@ -1,6 +1,6 @@
 @extends('admin/layout.master')
 
-@section('title','User')
+@section('title','pelanggan')
 @section('title2','index')
 @section('user','active')
 @section('konten')
@@ -12,7 +12,7 @@
       <div class="card mt-3">
 
           <div class="card-body">
-            <a href="{{ route('user.tambah') }}" class="btn btn-icon icon-left btn-primary mb-3 px-3"><i class="fas fa-plus"></i> Tambah</a>
+
             @if(session('message'))
             <div class="alert alert-success alert-dismissible show fade">
               <div class="alert-body">
@@ -27,26 +27,13 @@
                   <thead>
                       <tr>
                           <th scope="col">No</th>
-                          <th scope="col">Nama user</th>
-                          <th>username</th>
-                          <th>Level</th>
-                          <th>Aksi</th>
+                          <th scope="col">Nama pelanggan</th>
                       </tr>
                   </thead>
                   <tbody class="mt-2">
                       <tr>
                           <th scope="row">1</th>
                           <td>Candra</td>
-                          <td>Candra</td>
-                          <td>Admin</td>
-                          <td>
-                            <a href="{{ route('user.edit') }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                            <a href="#" data-id="" class="btn btn-danger confirm_script">
-                              <form action="" id="delete" method="POST">
-                                
-                              </form>
-                              <i class="fas fa-trash"></i></a>
-                          </td>
                       </tr>
                       
                   </tbody>

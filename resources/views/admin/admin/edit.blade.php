@@ -1,13 +1,13 @@
 @extends('admin/layout.master')
 
-@section('title','user')
+@section('title','Admin')
 @section('title2','edit')
 @section('user','active')
 @section('konten')
 
 <div class="card">
   <div class="card-header">
-    <h4>Tambah user</h4>
+    <h4>Edit admin</h4>
   </div>
   <div class="card-body">
     <form action="#" method="POST">
@@ -16,7 +16,7 @@
 
       <div class="col-md-6">
           <div class="form-group">
-            <label>Nama user</label>
+            <label>Nama admin</label>
             <input type="text" name="namauser" value="" class="form-control" autocomplete="off">  
           </div>
         </div>
@@ -34,14 +34,6 @@
             <input type="password" name="password" value="" class="form-control" autocomplete="off">  
           </div>
         </div>
-
-      <div class="col-md-6">
-          <div class="form-group">
-            <label>level</label>
-            <input type="text" name="level" value="" class="form-control" autocomplete="off">  
-          </div>
-        </div>
-
 
     </div>    
       <div class="card-footer text-right">

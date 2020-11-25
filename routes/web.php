@@ -33,9 +33,22 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::view('/kategori/tambah','admin/kategori.create')->name('kategori.tambah');
 	Route::view('/kategori/edit','admin/kategori.edit')->name('kategori.edit');
 
-	Route::view('/user','admin/user.index');
-	Route::view('/user/tambah','admin/user.create')->name('user.tambah');
-	Route::view('/user/edit','admin/user.edit')->name('user.edit');
+	Route::get('/admin','AdminController@index')->name('admin');
+	Route::get('/admin/tambah','AdminController@create')->name('admin.tambah');
+	Route::get('/admin/edit','AdminController@edit')->name('admin.edit');
+	Route::post('/prosescreateadmin','AdminController@prosescreate');
+	Route::get('/admin/delete/{id}','AdminController@delete')->name('admin.delete');
+	Route::delete('/admin/delete/{id}','AdminController@delete')->name('admin.delete');
+
+	Route::get('/waiterindex','WaiterController@index');
+	Route::get('/waiter/tambah','WaiterController@create')->name('waiter.tambah');
+	Route::get('/waiter/edit','WaiterController@edit')->name('waiter.edit');
+
+	Route::get('/kasirindex','KasirController@index');
+	Route::get('/kasir/tambah','KasirController@create')->name('kasir.tambah');
+	Route::get('/kasir/edit','KasirController@edit')->name('kasir.edit');
+
+	Route::get('/pelanggan','PelangganController@index');
 
 	Route::view('/orderan','admin/orderan.index');
 	Route::view('/orderan/detail','admin/orderan.detail')->name('orderan.detail');

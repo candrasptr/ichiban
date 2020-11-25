@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Hash;
 
 class PelangganController extends Controller
 {
+    public function index(){
+        return view('admin/pelanggan.index');
+    }
+
     public function login(Request $request)
     {
     	pelanggan::create([

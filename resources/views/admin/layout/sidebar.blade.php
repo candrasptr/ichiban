@@ -7,41 +7,33 @@
             <a href="index.html">Ichi</a>
           </div>
           <ul class="sidebar-menu">
+
               <li class="menu-header">Dashboard</li>
+
               <li class="@yield('dashboard')"><a class="nav-link" href="/"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+
               <li class="menu-header">Menu</li>
-              <li class="@yield('transaksi')"><a class="nav-link" href="/transaksi"><i class="fas fa-fw fa-folder"></i> <span>Transaksi</span></a></li>
-              <li class="@yield('user')"><a class="nav-link" href="/user"><i class="fas fa-fw fa-folder"></i> <span>user</span></a></li>
-              <li class="@yield('orderan')"><a class="nav-link" href="/orderan"><i class="fas fa-fw fa-folder"></i> <span>Orderan</span></a></li>
-              <li class="@yield('masakan')"><a class="nav-link" href="/masakan"><i class="fas fa-fw fa-folder"></i> <span>Masakan</span></a></li>
-              <li class="@yield('kategori')"><a class="nav-link" href="/kategori"><i class="fas fa-fw fa-folder"></i> <span>Kategori</span></a></li>
-              <li class="@yield('laporan')"><a class="nav-link" href="/laporan"><i class="fas fa-fw fa-folder"></i> <span>Laporan</span></a></li>
-              <!-- <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
+
+              <li class="@yield('transaksi')"><a class="nav-link" href="/transaksi"><i class="ion ion-ios-pricetag"></i> <span>Transaksi</span></a></li>
+
+              <li class="@yield('orderan')"><a class="nav-link" href="/orderan"><i class="ion ion-ios-pricetags"></i> <span>Orderan</span></a></li>
+
+              <li class="@yield('masakan')"><a class="nav-link" href="/masakan"><i class="ion ion-ios-box"></i> <span>Masakan</span></a></li>
+
+              <li class="@yield('kategori')"><a class="nav-link" href="/kategori"><i class="fas fa-th"></i> <span>Kategori</span></a></li>
+
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown "><i class="fas fa-users"></i> <span>User</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
-                  <li><a class="nav-link" href="bootstrap-badge.html">Badge</a></li>
-                  <li><a class="nav-link" href="bootstrap-breadcrumb.html">Breadcrumb</a></li>
-                  <li><a class="nav-link" href="bootstrap-buttons.html">Buttons</a></li>
-                  <li><a class="nav-link" href="bootstrap-card.html">Card</a></li>
-                  <li><a class="nav-link" href="bootstrap-carousel.html">Carousel</a></li>
-                  <li><a class="nav-link" href="bootstrap-collapse.html">Collapse</a></li>
-                  <li><a class="nav-link" href="bootstrap-dropdown.html">Dropdown</a></li>
-                  <li><a class="nav-link" href="bootstrap-form.html">Form</a></li>
-                  <li><a class="nav-link" href="bootstrap-list-group.html">List Group</a></li>
-                  <li><a class="nav-link" href="bootstrap-media-object.html">Media Object</a></li>
-                  <li><a class="nav-link" href="bootstrap-modal.html">Modal</a></li>
-                  <li><a class="nav-link" href="bootstrap-nav.html">Nav</a></li>
-                  <li><a class="nav-link" href="bootstrap-navbar.html">Navbar</a></li>
-                  <li><a class="nav-link" href="bootstrap-pagination.html">Pagination</a></li>
-                  <li><a class="nav-link" href="bootstrap-popover.html">Popover</a></li>
-                  <li><a class="nav-link" href="bootstrap-progress.html">Progress</a></li>
-                  <li><a class="nav-link" href="bootstrap-table.html">Table</a></li>
-                  <li><a class="nav-link" href="bootstrap-tooltip.html">Tooltip</a></li>
-                  <li><a class="nav-link" href="bootstrap-typography.html">Typography</a></li>
+                  <li class="@yield('user')"><a class="nav-link" href="/admin"><i class=""></i> <span>Admin</span></a></li>
+                  <li class="@yield('user')"><a class="nav-link" href="/waiterindex"><i class=""></i> <span>Waiter</span></a></li>
+                  <li class="@yield('user')"><a class="nav-link" href="/kasirindex"><i class=""></i> <span>Kasir</span></a></li>
+                  <li class="@yield('user')"><a class="nav-link" href="/pelanggan"><i class=""></i> <span>Pelanggan</span></a></li>
                 </ul>
               </li>
-              <li class="menu-header">Stisla</li>
+
+              <li class="@yield('laporan')"><a class="nav-link" href="/laporan"><i class="ion ion-ios-copy"></i> <span>Laporan</span></a></li>
+              <!-- <li class="menu-header">Stisla</li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Components</span></a>
                 <ul class="dropdown-menu">
