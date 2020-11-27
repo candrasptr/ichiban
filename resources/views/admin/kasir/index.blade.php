@@ -12,14 +12,24 @@
       <div class="card mt-3">
 
           <div class="card-body">
-            <a href="{{ route('kasir.tambah') }}" class="btn btn-icon icon-left btn-primary mb-3 px-3"><i class="fas fa-plus"></i> Tambah</a>
-            @if(session('message'))
+            <a href="{{ route('kasir.tambah') }}" class="btn btn-icon icon-left btn-danger mb-3 px-3"><i class="fas fa-plus"></i></a>
+            <div class="float-right">
+              <form action="?" method="GET">
+                <div class="input-group mb-3">
+                  <input name="keyword" id="caribuku" type="text" class="form-control" placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2" value="{{ Request()->keyword }}">
+                  <div class="input-group-append">
+                    <button id="btncaribuku" class="btn btn-outline-danger bg-danger" type="submit" id="button-addon2"><i class="fas fa-search text-light"></i></button>
+                  </div>
+                </div>
+              </form>
+              </div>
+            @if(session('store'))
             <div class="alert alert-success alert-dismissible show fade">
               <div class="alert-body">
                 <button class="close" data-dismiss="alert">
                   <span>×</span>
                 </button>
-                {{ session('message') }}
+                {{ session('store') }}
               </div>
             </div>
             @endif
@@ -37,27 +47,30 @@
                       </tr>
                   </thead>
                   <tbody class="mt-2">
+                    @foreach($data as $no => $dt)
                       <tr>
-                          <th scope="row">1</th>
-                          <td>Candra</td>
-                          <td>laki laki</td>
-                          <td>kdw</td>
-                          <td>088</td>
-                          <td>email</td>
-                          <td>candra</td>
+                          <th scope="row">{{$data->firstItem()+$no}}</th>
+                          <td>{{$dt->nama_kasir}}</td>
+                          <td>{{$dt->jenis_kelamin}}</td>
+                          <td>{{$dt->alamat}}</td>
+                          <td>{{$dt->no_hp}}</td>
+                          <td>{{$dt->email}}</td>
+                          <td>{{$dt->username}}</td>
                           <td>
-                            <a href="{{ route('kasir.edit') }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                            <a href="#" data-id="" class="btn btn-danger confirm_script">
-                              <form action="" id="delete" method="POST">
-                                
+                            <a href="{{ route('kasir.edit',$dt->id_kasir) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                            <a href="#" data-id="{{ $dt->id_kasir }}" class="btn btn-danger confirm_script">
+                              <form action="{{ route('kasir.delete',$dt->id_kasir) }}" id="delete{{ $dt->id_kasir }}" method="POST">
+                                @csrf
+                                @method('delete')
                               </form>
                               <i class="fas fa-trash"></i></a>
                           </td>
                       </tr>
+                      @endforeach
                       
                   </tbody>
               </table>
-              
+              {{$data->links()}}
           </div>
       </div>
     </div>
@@ -75,24 +88,22 @@
 @push('after-scripts')
 
 <script>
-$(".confirm_script").click(function(e) {
-  // id = e.target.dataset.id;
-  swal({
-      title: 'Yakin hapus data?',
-      text: 'Data yang dihapus tidak bisa dibalikin',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-      swal('Data berhasil dihapus', {
-        icon: 'success',
+  $(".confirm_script").click(function(e) {
+    id = e.target.dataset.id;
+    swal({
+        title: 'Yakin hapus data?',
+        text: 'Data yang dihapus tidak bisa dibalikin',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+        $(`#delete${id}`,).submit();
+        } else {
+        swal('Your imaginary file is safe!');
+        }
       });
-      } else {
-      swal('Your imaginary file is safe!');
-      }
-    });
-});
+  });
 </script>
 @endpush

@@ -21,7 +21,7 @@ class waiter extends Authenticatable
     protected $primaryKey = 'id_waiter';
 
     protected $fillable = [
-        'nama_waiter','password','remember_token',
+        'nama_waiter','jenis_kelamin','alamat','no_hp','email','username','password',
         ];
 
     /**

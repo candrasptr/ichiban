@@ -12,7 +12,17 @@
       <div class="card mt-3">
 
           <div class="card-body">
-            <a href="{{ route('waiter.tambah') }}" class="btn btn-icon icon-left btn-primary mb-3 px-3"><i class="fas fa-plus"></i> Tambah</a>
+            <a href="{{ route('waiter.tambah') }}" class="btn btn-icon icon-left btn-danger mb-3 px-3"><i class="fas fa-plus"></i></a>
+            <div class="float-right">
+              <form action="?" method="GET">
+                <div class="input-group mb-3">
+                  <input name="keyword" id="caribuku" type="text" class="form-control" placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2" value="{{ Request()->keyword }}">
+                  <div class="input-group-append">
+                    <button id="btncaribuku" class="btn btn-outline-danger bg-danger" type="submit" id="button-addon2"><i class="fas fa-search text-light"></i></button>
+                  </div>
+                </div>
+              </form>
+              </div>
             @if(session('message'))
             <div class="alert alert-success alert-dismissible show fade">
               <div class="alert-body">
@@ -37,27 +47,30 @@
                       </tr>
                   </thead>
                   <tbody class="mt-2">
+                  @foreach($data as $no => $dt)
                       <tr>
-                          <th scope="row">1</th>
-                          <td>Candra</td>
-                          <td>laki laki</td>
-                          <td>kdw</td>
-                          <td>088</td>
-                          <td>email</td>
-                          <td>candra</td>
+                          <th scope="row">{{$data->firstItem()+$no}}</th>
+                          <td>{{$dt->nama_waiter}}</td>
+                          <td>{{$dt->jenis_kelamin}}</td>
+                          <td>{{$dt->alamat}}</td>
+                          <td>{{$dt->no_hp}}</td>
+                          <td>{{$dt->email}}</td>
+                          <td>{{$dt->username}}</td>
                           <td>
-                            <a href="{{ route('waiter.edit') }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                            <a href="#" data-id="" class="btn btn-danger confirm_script">
-                              <form action="" id="delete" method="POST">
-                                
+                            <a href="{{ route('waiter.edit',$dt->id_waiter) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                            <a href="#" data-id="{{ $dt->id_waiter }}" class="btn btn-danger confirm_script">
+                              <form action="{{ route('waiter.delete',$dt->id_waiter) }}" id="delete{{ $dt->id_waiter }}" method="POST">
+                                @csrf
+                                @method('delete')
                               </form>
                               <i class="fas fa-trash"></i></a>
                           </td>
                       </tr>
+                  @endforeach
                       
                   </tbody>
               </table>
-              
+              {{$data->links()}}
           </div>
       </div>
     </div>
@@ -76,7 +89,7 @@
 
 <script>
 $(".confirm_script").click(function(e) {
-  // id = e.target.dataset.id;
+  id = e.target.dataset.id;
   swal({
       title: 'Yakin hapus data?',
       text: 'Data yang dihapus tidak bisa dibalikin',
@@ -86,9 +99,7 @@ $(".confirm_script").click(function(e) {
     })
     .then((willDelete) => {
       if (willDelete) {
-      swal('Data berhasil dihapus', {
-        icon: 'success',
-      });
+      $(`#delete${id}`).submit();
       } else {
       swal('Your imaginary file is safe!');
       }

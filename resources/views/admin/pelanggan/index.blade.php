@@ -12,7 +12,16 @@
       <div class="card mt-3">
 
           <div class="card-body">
-
+          <div class="float-right">
+              <form action="?" method="GET">
+                <div class="input-group mb-3">
+                  <input name="keyword" id="caribuku" type="text" class="form-control" placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2" value="{{ Request()->keyword }}">
+                  <div class="input-group-append">
+                    <button id="btncaribuku" class="btn btn-outline-secondary bg-danger" type="submit" id="button-addon2"><i class="fas fa-search text-light"></i></button>
+                  </div>
+                </div>
+              </form>
+              </div>
             @if(session('message'))
             <div class="alert alert-success alert-dismissible show fade">
               <div class="alert-body">
@@ -31,14 +40,15 @@
                       </tr>
                   </thead>
                   <tbody class="mt-2">
+                  @foreach($data as $no => $dt)
                       <tr>
-                          <th scope="row">1</th>
-                          <td>Candra</td>
+                          <th scope="row">{{$data->firstItem()+$no}}</th>
+                          <td>{{$dt->nama_pelanggan}}</td>
                       </tr>
-                      
+                  @endforeach
                   </tbody>
               </table>
-              
+              {{$data->links()}}
           </div>
       </div>
     </div>

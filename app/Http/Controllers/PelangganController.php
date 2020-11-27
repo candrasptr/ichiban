@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Hash;
 
 class PelangganController extends Controller
 {
-    public function index(){
-        return view('admin/pelanggan.index');
+    public function index(Request $request){
+        $data = pelanggan::where('tbl_pelanggan.nama_pelanggan','like',"%{$request->keyword}%")->paginate(5)->onEachSide(0);;
+        return view('admin/pelanggan.index',(['data' => $data]));
     }
 
     public function login(Request $request)

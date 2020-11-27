@@ -10,7 +10,7 @@
 
               <li class="menu-header">Dashboard</li>
 
-              <li class="@yield('dashboard')"><a class="nav-link" href="/"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+              <li class="@yield('dashboard')"><a class="nav-link" href="/dashboard"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
 
               <li class="menu-header">Menu</li>
 

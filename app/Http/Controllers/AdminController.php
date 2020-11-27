@@ -11,19 +11,21 @@ class AdminController extends Controller
 	private function _validation(Request $request){
 	    $validation = $request->validate([
 	        'namauser' => 'required|max:100',
-	        'username' => 'required|max:50'
+			'username' => 'required|max:50',
+			'password' => 'required'
 	    ],
 	    [
 	        'namauser.required' => 'Harus diisi',
 	        'namauser.max' => 'Jangan lebih dari 100 huruf',
 	        'username.required' => 'Harus diisi',
-	        'username.max' => 'Jangan lebih dari 50 huruf'
+			'username.max' => 'Jangan lebih dari 50 huruf',
+			'password.required' => 'Harus diisi'
 	    ]
 	);
 	}
 
-    public function index(){
-    	$data_admin = DB::table('tbl_admin')->paginate(10);
+    public function index(Request $request){
+    	$data_admin = admin::where('tbl_admin.nama_admin','like',"%{$request->keyword}%")->paginate(5)->onEachSide(0);;
     	return view('admin/admin.index', ['data_admin' => $data_admin]);
     }
 
@@ -32,6 +34,7 @@ class AdminController extends Controller
     }
 
     public function prosescreate(Request $request){
+        $this->_validation($request);
     	Admin::create([
     	    'nama_admin'=>$request->namauser,
     	    'username'=>$request->username,
@@ -42,8 +45,19 @@ class AdminController extends Controller
     	return redirect()->route('admin')->with('store','Berhasil disimpan!');
     }
 
-    public function edit(){
-    	return view('admin/admin.edit');
+    public function edit($id){
+        $admin = admin::where('id_admin',$id)->first();
+    	return view('admin/admin.edit', ['admin' => $admin]);
+    }
+
+    public function prosesedit(Request $request,$id){
+		$this->_validation($request);
+                DB::table('tbl_admin')->where('id_admin', $id)->update([
+                    'nama_admin' => $request->namauser,
+                    'username' => $request->username,
+                    'password' => bcrypt($request->password)
+                ]);
+        return redirect()->route('admin')->with('store','Berhasil diupdate');
     }
 
     public function delete($id)

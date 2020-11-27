@@ -37,16 +37,24 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('/admin/tambah','AdminController@create')->name('admin.tambah');
 	Route::get('/admin/edit','AdminController@edit')->name('admin.edit');
 	Route::post('/prosescreateadmin','AdminController@prosescreate');
-	Route::get('/admin/delete/{id}','AdminController@delete')->name('admin.delete');
+	Route::get('/admin/{id}/edit','AdminController@edit')->name('admin.edit');
+	Route::patch('/prosesedit/{id}','AdminController@prosesedit')->name('prosesedit');
 	Route::delete('/admin/delete/{id}','AdminController@delete')->name('admin.delete');
 
-	Route::get('/waiterindex','WaiterController@index');
+	Route::get('/waiterindex','WaiterController@index')->name('waiter');
 	Route::get('/waiter/tambah','WaiterController@create')->name('waiter.tambah');
-	Route::get('/waiter/edit','WaiterController@edit')->name('waiter.edit');
+	Route::get('/waiter/edit/{id}','WaiterController@edit')->name('waiter.edit');
+	Route::post('/prosescreatewaiter','WaiterController@prosescreate');
+	Route::patch('/proseseditwaiter/{id}','WaiterController@prosesedit')->name('waiter.prosesedit');
+	Route::delete('/waiter/delete/{id}','WaiterController@delete')->name('waiter.delete');
 
-	Route::get('/kasirindex','KasirController@index');
+	Route::get('/kasirindex','KasirController@index')->name('kasir');
 	Route::get('/kasir/tambah','KasirController@create')->name('kasir.tambah');
 	Route::get('/kasir/edit','KasirController@edit')->name('kasir.edit');
+	Route::post('/prosescreatekasir','KasirController@prosescreate');
+	Route::get('/kasir/{id}/edit','KasirController@edit')->name('kasir.edit');
+	Route::patch('/proseseditkasir/{id}','KasirController@prosesedit')->name('kasir.prosesedit');
+	Route::delete('/kasir/delete/{id}','KasirController@delete')->name('kasir.delete');
 
 	Route::get('/pelanggan','PelangganController@index');
 
