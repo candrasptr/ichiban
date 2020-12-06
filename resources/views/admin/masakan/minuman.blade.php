@@ -1,7 +1,7 @@
 @extends('admin/layout.master')
 
 @section('title','Menu')
-@section('title2','Makanan')
+@section('title2','Minuman')
 @section('masakan','active')
 @section('konten')
 
@@ -90,22 +90,28 @@
 @push('after-scripts')
 
 <script>
-  $(".confirm_script").click(function(e) {
-    id = e.target.dataset.id;
-    swal({
-        title: 'Yakin hapus data?',
-        text: 'Data yang dihapus tidak bisa dibalikin',
-        icon: 'warning',
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-        $(`#delete${id}`).submit();
-        } else {
-        swal('Your imaginary file is safe!');
-        }
+$(".confirm_script").click(function(e) {
+  // id = e.target.dataset.id;
+  swal({
+      title: 'Yakin hapus data?',
+      text: 'Data yang dihapus tidak bisa dibalikin',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+      swal('Data berhasil dihapus', {
+        icon: 'success',
       });
-  });
-  </script>
+      } else {
+      swal('Your imaginary file is safe!');
+      }
+    });
+});
+
+$(".habis").click(function() {
+  swal('Good Job', 'Data berhasil diubah', 'success');
+});
+</script>
 @endpush

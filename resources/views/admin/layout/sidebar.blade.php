@@ -18,7 +18,14 @@
 
               <li class="@yield('orderan')"><a class="nav-link" href="/orderan"><i class="ion ion-ios-pricetags"></i> <span>Orderan</span></a></li>
 
-              <li class="@yield('masakan')"><a class="nav-link" href="/masakan"><i class="ion ion-ios-box"></i> <span>Masakan</span></a></li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown "><i class="ion ion-ios-box"></i> <span>Menu</span></a>
+                <ul class="dropdown-menu">
+                  <li class="@yield('masakan')"><a class="nav-link" href="/masakan"><i class=""></i> <span>Makanan</span></a></li>
+                  <li class="@yield('masakan')"><a class="nav-link" href="/adminminuman"><i class=""></i> <span>Minuman</span></a></li>
+                  <li class="@yield('masakan')"><a class="nav-link" href="/admindessert"><i class=""></i> <span>Dessert</span></a></li>
+                </ul>
+              </li>
 
               <li class="@yield('kategori')"><a class="nav-link" href="/kategori"><i class="fas fa-th"></i> <span>Kategori</span></a></li>
 

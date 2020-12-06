@@ -25,9 +25,15 @@ Route::group(['middleware' => 'auth:admin'], function(){
 
 	Route::view('/dashboard','admin/dashboard.index');
 
-	Route::get('/masakan', 'MasakanController@index');
-	Route::view('/masakan/tambah','admin/masakan.create')->name('masakan.tambah');
-	Route::view('/masakan/edit','admin/masakan.edit')->name('masakan.edit');
+	Route::get('/masakan', 'MasakanController@makanan')->name('masakan.index');
+	Route::get('/adminminuman', 'MasakanController@minuman')->name('minuman.index');
+	Route::get('/admindessert', 'MasakanController@dessert')->name('dessert.index');
+	Route::post('/prosescreatemasakan', 'MasakanController@prosescreate');
+	Route::get('/masakan/tambah','MasakanController@create')->name('masakan.tambah');
+	Route::get('/masakan/{id}/edit','MasakanController@edit')->name('masakan.edit');
+	Route::post('/prosesedit/{id}','MasakanController@prosesedit')->name('masakan.prosesedit');
+	Route::delete('/masakan/delete/{id}','MasakanController@delete')->name('masakan.delete');
+	Route::post('/updatestatus/{id}','MasakanController@updatestatus')->name('masakan.updatestatus');
 
 	Route::view('/kategori','admin/kategori.index');
 	Route::view('/kategori/tambah','admin/kategori.create')->name('kategori.tambah');
