@@ -72,7 +72,7 @@
                           @endforeach               
                   </tbody>
               </table>
-              
+              {{$data_masakan->links()}}
           </div>
       </div>
     </div>

@@ -9,6 +9,20 @@ use Image;
 
 class MasakanController extends Controller
 {
+    private function _validation(Request $request){
+	    $validation = $request->validate([
+	        'namamasakan' => 'required|max:30',
+			'hargamasakan' => 'required|max:11'
+	    ],
+	    [
+	        'namamasakan.required' => 'Harus diisi',
+	        'namamasakan.max' => 'Jangan lebih dari 30 huruf',
+	        'hargamasakan.required' => 'Harus diisi',
+			'hargamasakan.max' => 'Jangan lebih dari 11 digit'
+	    ]
+	);
+    }
+    
     public function makanan()
     {
         $data_masakan = DB::table('tbl_masakan')
@@ -40,7 +54,7 @@ class MasakanController extends Controller
 
     public function prosescreate(Request $request)
     {
-
+        $this->_validation($request);
         //lokasi file foto di simpan
         $lokasi_file = public_path('/assets/img/produk');
         
@@ -62,10 +76,10 @@ class MasakanController extends Controller
         ]);
         }else{
             Masakan::create([
-                'gambar_masakan'=>'noimage.png',
-                'nama_masakan'=>$request->nama_masakan,
+                'gambar_masakan'=>'nonimage.jpg',
+                'nama_masakan'=>$request->namamasakan,
                 'nama_kategori'=>$request->kategori,
-                'harga'=>$request->harga_masakan,
+                'harga'=>$request->hargamasakan,
                 'status'=>'tersedia'
             ]); 
         }
@@ -89,6 +103,7 @@ class MasakanController extends Controller
 
     public function prosesedit(Request $request, $id)
     {
+        $this->_validation($request);
         //lokasi file foto di simpan
         $lokasi_file = public_path('/assets/img/produk');
         

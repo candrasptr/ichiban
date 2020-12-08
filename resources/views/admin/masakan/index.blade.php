@@ -72,7 +72,7 @@
                           @endforeach               
                   </tbody>
               </table>
-              
+              {{$data_masakan->links()}}
           </div>
       </div>
     </div>
@@ -101,6 +101,9 @@
       })
       .then((willDelete) => {
         if (willDelete) {
+          swal('Data berhasil diubah', {
+          icon: 'success',
+        });
         $(`#delete${id}`).submit();
         } else {
         swal('Your imaginary file is safe!');

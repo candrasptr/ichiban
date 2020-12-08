@@ -27,15 +27,37 @@
           </div>
 
           <div class="form-group">
-            <label>Nama Masakan</label>
-            <input type="text" name="namamasakan" value="{{ $data->nama_masakan }}" class="form-control" autocomplete="off">  
+            <label @error('namamasakan') class="text-danger" @enderror>
+              Nama Masakan
+              @error('namamasakan')
+                  {{ $message }}
+              @enderror
+            </label>
+            <input type="text" name="namamasakan" 
+            @if (old('namamasakan'))
+                value="{{ old('namamasakan') }}"
+            @else
+                value="{{ $data->nama_masakan }}"
+            @endif 
+            class="form-control" autocomplete="off">  
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
-            <label>Harga Masakan</label>
-            <input type="number" name="hargamasakan" value="{{ $data->harga }}" class="form-control" autocomplete="off">
+            <label @error('hargamasakan') class="text-danger" @enderror>
+              Harga Masakan
+              @error('hargamasakan')
+                  {{ $message }}
+              @enderror
+            </label>
+            <input type="number" name="hargamasakan" 
+            @if (old('hargamasakan'))
+                value="{{ old('hargamasakan') }}"
+            @else
+                value="{{ $data->harga }}"
+            @endif
+            class="form-control" autocomplete="off">
           </div>
         </div>
 

@@ -14,7 +14,7 @@
     @csrf
     <div class="row">
       <div class="col-md-2 mt-4 mb-2">
-        <img src="{{ asset('assets/img/stisla.svg') }}" width="150" class="img-thumbnail mr-3" align="left" id="preview">
+        <img src="{{ asset('assets/img/nonimage.jpg') }}" width="150" class="img-thumbnail mr-3" align="left" id="preview">
       </div>
       <div class="col-md-10">
         <label>Pilih Gambar Masakan</label>
@@ -26,15 +26,25 @@
           </div>
 
           <div class="form-group">
-            <label>Nama Masakan</label>
-            <input type="text" name="namamasakan" value="" class="form-control" autocomplete="off">  
+            <label @error('namamasakan') class="text-danger" @enderror>
+              Nama masakan
+              @error('namamasakan')
+              {{$message}}
+              @enderror
+              </label>
+            <input type="text" name="namamasakan" value="{{ old('namamasakan') }}" class="form-control" autocomplete="off">  
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
-            <label>Harga Masakan</label>
-            <input type="number" name="hargamasakan" class="form-control" autocomplete="off">
+            <label @error('hargamasakan') class="text-danger" @enderror>
+              Harga
+              @error('hargamasakan')
+              {{$message}}
+              @enderror
+              </label>
+            <input type="number" name="hargamasakan" value="{{ old('hargamasakan') }}" class="form-control" autocomplete="off">
           </div>
         </div>
 
