@@ -21,7 +21,7 @@ class pelanggan extends Authenticatable
     protected $primaryKey = 'id_pelanggan';
 
     protected $fillable = [
-        'nama_pelanggan','password','remember_token',
+        'kode','nama_pelanggan','no_meja','password','remember_token',
         ];
 
     /**

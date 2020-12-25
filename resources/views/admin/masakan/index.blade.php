@@ -52,21 +52,24 @@
                           </td>
                           <td></td>
                           <td>
-                            <a href="{{ route('masakan.edit',$data->id_masakan) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                            <a href="#" data-id="{{ $data->id_masakan }}" class="btn btn-danger confirm_script">
-                              <form action="{{ route('masakan.delete',$data->id_masakan) }}" id="delete{{ $data->id_masakan }}" method="POST">
-                                @csrf
-                                @method('delete')
-                              </form>
-                              <i class="fas fa-trash"></i></a>
-                              <form action="{{route('masakan.updatestatus',$data->id_masakan)}}" method="post">
-                                @csrf
-                                @if ($data->status == 'tersedia')
-                                  <button class="btn btn-warning mt-2 px-4" name='status' value="habis" type="submit">Habis</a>
-                                @else
-                                  <button class="btn btn-success mt-2 px-4" name='status' value="tersedia" type="submit">Tersedia</a>
-                                @endif 
-                              </form>
+                            <div class="mt-4">
+                              <a href="{{ route('masakan.edit',$data->id_masakan) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                              <a href="#" data-id="{{ $data->id_masakan }}" class="btn btn-danger confirm_script">
+                                <form action="{{ route('masakan.delete',$data->id_masakan) }}" id="delete{{ $data->id_masakan }}" method="POST">
+                                  @csrf
+                                  @method('delete')
+                                </form>
+                                <i class="fas fa-trash"></i></a>
+                                <form action="{{route('masakan.updatestatus',$data->id_masakan)}}" method="post" class="">
+                                  @csrf
+                                  @if ($data->status == 'tersedia')
+                                    <button class="btn btn-warning mt-2 px-4" name='status' value="habis" type="submit">Habis</a>
+                                  @else
+                                    <button class="btn btn-success mt-2 px-4" name='status' value="tersedia" type="submit">Tersedia</a>
+                                  @endif 
+                                </form>
+                            </div>
+                            
                           </td>
                         </tr>
                           @endforeach               
@@ -103,6 +106,7 @@
         if (willDelete) {
           swal('Data berhasil diubah', {
           icon: 'success',
+          buttons: false,
         });
         $(`#delete${id}`).submit();
         } else {

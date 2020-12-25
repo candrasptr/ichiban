@@ -6,13 +6,7 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav ml-3">
       <li class="nav-item">
-        <a class="nav-link text-light" href="/home" id="me">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="/menu" id="me">Menu</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="/keranjang" id="me"><i class="fas fa-shopping-cart"></i><span class="sr-only">(current)</span></a>
+        <a class="nav-link text-light" href="/home" id="me">Hi, {{ Auth::guard('pelanggan')->user()->nama_pelanggan }}</span></a>
       </li>
     </ul>
   </div>

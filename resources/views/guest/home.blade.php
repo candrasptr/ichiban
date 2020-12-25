@@ -2,88 +2,125 @@
 @section('title','home')
 
 @section('konten')
+<div class="container-fluid">
+	<div class="row d-flex justify-content-end float-right mb-5 mr-5 fixed-bottom ">
+		<a href="{{ route('pelanggan.logout') }}" class="btn btn-danger btn-circle btn-lg p-0"><i class=" text-light fas fa-sign-out-alt mt-3"></i></a>
+	</div>
+</div>
+
 <div class="container-fluid mb-5 mt-3">
 	<div class="row">
-		<div class="col-md-7 offset-md-1">
+		<div class="col-md-10 offset-md-1">
 			<div class="owl-carousel owl-theme">
-			    <div class="item"><img src="{{asset('assets/img/banner1.png')}}" style="width:95%"></div>
-			    <div class="item"><img src="{{asset('assets/img/banner2.png')}}" style="width:95%"></div>
-			    <div class="item"><img src="{{asset('assets/img/banner3.png')}}" style="width:95%"></div>
+			    <div class="item"><img src="{{asset('assets/img/banner1.png')}}" style="width:99%"></div>
+			    <div class="item"><img src="{{asset('assets/img/banner2.png')}}" style="width:99%"></div>
+			    <div class="item"><img src="{{asset('assets/img/banner3.png')}}" style="width:99%"></div>
 			</div>
 		</div>
-		<div class="col-md-3">
+		{{-- <div class="col-md-3">
 			<div><img src="{{asset('assets/img/banner4.png')}}" style="width:97%" class="mb-3"></div><hr class="bg-danger">
 			<div><img src="{{asset('assets/img/banner5.png')}}" style="width:97%" class="mt-3"></div>
-		</div>
+		</div> --}}
 	</div>
+	{{-- makanan --}}
 	<div class="row mt-5">
 	  <div class="col-md-12 text-center">
-	    <h1 class="text-danger mb-5" id="bo"> MENU </h1>
+	    <h1 class="text-danger mb-5" id="bo"> Makanan </h1>
 	  </div>
 	  <div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
 	    <div class="card-deck" >
-	      <div class="card shadow-sm" id="card">
-	      	<img src="{{asset('assets/img/produk/sushi.png')}}" class="card-img-top" alt="...">
-	        <div class="card-body">
-	          <h5 class="card-title text-center">Sushi</h5>
-	        </div>
-	        <div class="row">
-	        	<div class="col-md-8">
-	        		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
-	        	</div>
-	        	<div class="col-md-4 text-right">
-	        		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
-	        	</div>
-	        </div>
-	      </div>
-	      <div class="card shadow-sm" id="card">
-	        <img src="{{asset('assets/img/produk/yakiniku.png')}}" class="card-img-top" alt="...">
-	        <div class="card-body">
-	          <h5 class="card-title text-center">yakiniku</h5>
-	        </div>
-	        <div class="row">
-	        	<div class="col-md-8">
-	        		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
-	        	</div>
-	        	<div class="col-md-4 text-right">
-	        		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
-	        	</div>
-	        </div>
-	      </div>
-	      <div class="card shadow-sm" id="card">
-	        <img src="{{asset('assets/img/produk/orange.png')}}" class="card-img-top" alt="...">
-	        <div class="card-body">
-	          <h5 class="card-title text-center">Orange juice</h5>
-	        </div>
-	        <div class="row">
-	        	<div class="col-md-8">
-	        		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
-	        	</div>
-	        	<div class="col-md-4 text-right">
-	        		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
-	        	</div>
-	        </div>
-	      </div>
-	      <div class="card shadow-sm" id="card">
-	        <img src="{{asset('assets/img/produk/mochi.png')}}" class="card-img-top" alt="...">
-	        <div class="card-body">
-	          <h5 class="card-title text-center">Mochi</h5>
-	        </div>
-	        <div class="row">
-	        	<div class="col-md-8">
-	        		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
-	        	</div>
-	        	<div class="col-md-4 text-right">
-	        		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
-	        	</div>
-	        </div>
-	      </div>
+			@foreach ($makanan as $key)
+			<div class="card shadow-sm" id="card">
+				<img src="{{asset('assets/img/produk/'.$key->gambar_masakan)}}" class="card-img-top" alt="...">
+			  <div class="card-body">
+				<h5 class="card-title text-center">{{ $key->nama_masakan }}</h5>
+			  </div>
+			  <div class="row">
+				  <div class="col-md-8">
+					  <a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. {{ $key->harga }}</a>
+				  </div>
+				  <div class="col-md-4 text-right">
+					<form action="" method="">
+						@csrf
+						<div class="form-group">
+						  <input type="hidden" class="form-control" value="{{ $key->id_masakan }}" name="id_masakan">
+						</div>
+						<button type="submit" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></button>
+					</form>
+				  </div>
+			  </div>
+			</div>
+			@endforeach
 	    </div>
 	  </div>
-	  <div class="col-md-12 text-center">
-	    <a href="/menu" class="btn btn-danger mt-5 px-3" id="btn-menu">Semua menu</a>
-	  </div>
 	</div>
+
+	{{-- minuman --}}
+	<div class="row mt-5">
+		<div class="col-md-12 text-center">
+		  <h1 class="text-danger mb-5" id="bo"> Minuman </h1>
+		</div>
+		<div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
+		  <div class="card-deck" >
+			@foreach ($minuman as $key)
+			<div class="card shadow-sm" id="card">
+				<img src="{{asset('assets/img/produk/'.$key->gambar_masakan)}}" class="card-img-top" alt="...">
+			  <div class="card-body">
+				<h5 class="card-title text-center">{{ $key->nama_masakan }}</h5>
+			  </div>
+			  <div class="row">
+				  <div class="col-md-8">
+					  <a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. {{ $key->harga }}</a>
+				  </div>
+				  <div class="col-md-4 text-right">
+					<form action="" method="">
+						@csrf
+						<div class="form-group">
+						  <input type="hidden" class="form-control" value="{{ $key->id_masakan }}" name="id_masakan">
+						</div>
+						<button type="submit" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></button>
+					</form>
+				  </div>
+			  </div>
+			</div>
+			@endforeach
+		  </div>
+		</div>
+	</div>
+
+	{{-- Dessert --}}
+	<div class="row mt-5">
+		<div class="col-md-12 text-center">
+		  <h1 class="text-danger mb-5" id="bo"> Dessert </h1>
+		</div>
+		<div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
+		  <div class="card-deck" >
+			@foreach ($dessert as $key)
+			<div class="card shadow-sm" id="card">
+				<img src="{{asset('assets/img/produk/'.$key->gambar_masakan)}}" class="card-img-top" alt="...">
+			  <div class="card-body">
+				<h5 class="card-title text-center">{{ $key->nama_masakan }}</h5>
+			  </div>
+			  <div class="row">
+				  <div class="col-md-8">
+					  <a class="btn btn-transparent text-danger ml-2 mt-4" id="sb">Rp. {{ $key->harga }}</a>
+				  </div>
+				  <div class="col-md-4 text-right">
+					<form action="" method="">
+						@csrf
+						<div class="form-group">
+						  <input type="hidden" class="form-control" value="{{ $key->id_masakan }}" name="id_masakan">
+						</div>
+						<button type="submit" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></button>
+					</form>
+				  </div>
+			  </div>
+			</div>
+			@endforeach
+		  </div>
+		</div>
+	</div>
+
 </div>
 
 

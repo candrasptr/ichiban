@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/logout', 'LoginController@logout');
+Route::get('/logout', 'PelangganController@logout')->name('pelanggan.logout');
 Route::post('/proseslogin', 'LoginController@login');
 Route::post('/prosesloginpelanggan', 'PelangganController@login');
 Route::group(['middleware' => 'auth:admin'], function(){
@@ -73,7 +74,7 @@ Route::group(['middleware' => 'auth:admin'], function(){
 });
 
 Route::group(['middleware' => 'auth:pelanggan'], function(){
-Route::view('/home','guest/home');
+Route::get('/home','GuestController@index');
 Route::view('/menu','guest/menu');
 Route::view('/makanan','guest/makanan');
 Route::view('/minuman','guest/minuman');

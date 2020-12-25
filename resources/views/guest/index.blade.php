@@ -36,6 +36,14 @@
                 </div>
               </div>
 
+              <div class="form-group">
+                <label for="no_meja">No meja</label>
+                <input id="no_meja" type="no_meja" class="form-control" name="no_meja" tabindex="1" required autofocus autocomplete="off">
+                <div class="invalid-feedback">
+                  Isi no meja kalian terlebih dahulu
+                </div>
+              </div>
+
               <input id="Nama" type="hidden" class="form-control" name="password" value="candra" tabindex="1" required autofocus>
 
               <div class="form-group text-right">

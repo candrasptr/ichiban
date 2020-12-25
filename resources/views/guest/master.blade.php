@@ -15,9 +15,42 @@
   <link rel="stylesheet" href="{{ asset('owlcarousel/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="{{ asset('owlcarousel/owl.theme.default.min.css')}}">
 
-  <!-- Template CSS -->
-<!--   <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
-  <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}"> -->
+  <style>
+    .btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+.screen{
+  position: relative;
+}
+.innerdiv {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+  </style>
 
   @yield('page-styles')
 </head>
