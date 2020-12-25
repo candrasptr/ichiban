@@ -89,7 +89,7 @@ class GuestController extends Controller
         else if($hitung >= 1)
         {
             $no = $hitung + 1;
-            $kode = "KTP - ".$no;
+            $kode = "ICHBNRST".$no;
         }
             DB::table('tbl_transaksi')->insert([
                 'id_transaksi'=>$kode,
@@ -116,8 +116,19 @@ class GuestController extends Controller
             $join->on('tbl_order.user_order_id','=','tbl_pelanggan.id_pelanggan');
         })
         ->get();
+
         return view('guest.struk',['transaksi' => $transaksi, 'order' => $order])->with('alert','Transaksi berhasil');
 
+    }
+    
+    public function order_batal($id){
+        $ambil = DB::table('tbl_order')
+        ->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)
+        ->where('order_detail_id',$id)->update([
+            'status_order'=>'batal_dipesan'
+        ]);
+
+        return redirect('/home');
     }
 
 }

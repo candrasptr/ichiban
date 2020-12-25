@@ -50,3 +50,15 @@
 	color: #d9534f;
 	transform: scale(1.1);
 }
+
+#input {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+#input:hover{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}

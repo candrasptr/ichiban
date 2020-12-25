@@ -122,13 +122,13 @@
 	</div>
 
 	@if($order->count() != '')    
-        <div class="row">
+        <div class="row pb-5" style="background-color: #ffffff;">
 		<div class="text-center col-md-10 offset-md-1">
 			<h1 class="text-danger my-5" id="bo">PESANAN</h1>
 		</div>
         <div class="card col-lg-10 offset-lg-1">
             <div class="card-body">
-            <div class="table-responsive">
+            {{-- <div class="table-responsive">
             <table class="table table-bordered table-hover" id="example"  cellspacing="0" width="100%">
                 <thead>
                 <tr>
@@ -162,6 +162,39 @@
 				</tbody>
 				
 			</table>
+		</div> --}}
+
+			<div class="row">
+				@foreach ($order as $item)
+				<div class="col-md-2">
+					<img src="{{asset('assets/img/produk/'.$item->gambar_masakan)}}" style="width: 150px;" alt="...">
+				</div>
+				<div class="col-md-5 my-auto">
+					<span id="me">{{ $item->nama_masakan }}</span><br>
+					<span id="me" class="text-danger">Rp {{ $item->harga }}</span>
+				</div>
+				<div class="col-md-5"></div>
+				<div class="col-md-2 my-auto text-center">
+					<span id="me" class="text-danger">{{ $item->nama_kategori }}</span>
+				</div>
+				<div class="col-md-2 offset-md-7 justify-content-end">
+					<form action="/order_update" class="row" method="POST">
+						@csrf
+						<input type="hidden" value="{{$item->id_order}}" name="id_order">
+						<div class="col-md-1 mx-auto my-auto">
+							<a href="" class="text-danger"><i class="fas fa-trash"></i></a>
+						</div>
+						<div class="col-md-6 ml-2">
+							<input type="text" class="form-control" value="{{$item->jumlah}}" maxlength="4" size="4" id="input" name="jumlah">
+						</div>
+						<div class="col-md-2 my-auto ">
+							<button type="submit" class="btn btn-transparent text-danger" data-toggle="tooltip" data-placement="top" title="Update"><i class="fas fa-edit"></i></button>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-12"><hr></div>
+				@endforeach
+			</div>
 			
 			{{-- BAYAR --}}
 			<div class="row">
@@ -186,7 +219,7 @@
 				</div>
 			</div>
 
-            </div>
+            
             </div>
         </div>
         <div class="col-lg-4">

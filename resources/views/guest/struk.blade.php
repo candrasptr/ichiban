@@ -109,7 +109,7 @@
             <a href="/home" class="btn btn-outline-danger btn-block text-danger my-3" id="me">Pesan lagi</a>
         </div>
         <div class="col-md-3">
-            <a href="" class="btn btn-danger btn-block text-light my-3" id="me">Batalkan pesanan</a>
+            <a href="{{ route('order.batal',$transaksi->order_detail_id) }}" class="btn btn-danger btn-block text-light my-3" id="me">Batalkan pesanan</a>
         </div>
         <div class="col-md-6 offset-md-3 text-center">
             <a href="" class="text-danger" id="me"><i class="fas fa-phone"></i> Panggil waiter</a>

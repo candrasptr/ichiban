@@ -79,6 +79,7 @@ Route::group(['middleware' => 'auth:pelanggan'], function(){
 	Route::post('/pesan_order','GuestController@pesan_order');
 	Route::post('/order_update','GuestController@order_update');
 	Route::post('/order_bayar','GuestController@order_bayar');
+	Route::get('/order_batal/{id}','GuestController@order_batal')->name('order.batal');
 	Route::view('/menu','guest/menu');
 	Route::view('/makanan','guest/makanan');
 	Route::view('/minuman','guest/minuman');
