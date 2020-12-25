@@ -73,13 +73,17 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::view('/transaksi','admin/transaksi.index');
 });
 
+// pelanggan
 Route::group(['middleware' => 'auth:pelanggan'], function(){
-Route::get('/home','GuestController@index');
-Route::view('/menu','guest/menu');
-Route::view('/makanan','guest/makanan');
-Route::view('/minuman','guest/minuman');
-Route::view('/dessert','guest/dessert');
-Route::view('/keranjang','guest/keranjang');
+	Route::get('/home','GuestController@index');
+	Route::post('/pesan_order','GuestController@pesan_order');
+	Route::post('/order_update','GuestController@order_update');
+	Route::post('/order_bayar','GuestController@order_bayar');
+	Route::view('/menu','guest/menu');
+	Route::view('/makanan','guest/makanan');
+	Route::view('/minuman','guest/minuman');
+	Route::view('/dessert','guest/dessert');
+	Route::view('/keranjang','guest/keranjang');
 });
 
 // kasir

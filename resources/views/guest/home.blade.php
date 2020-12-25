@@ -40,7 +40,7 @@
 					  <a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. {{ $key->harga }}</a>
 				  </div>
 				  <div class="col-md-4 text-right">
-					<form action="" method="">
+					<form action="/pesan_order" method="POST">
 						@csrf
 						<div class="form-group">
 						  <input type="hidden" class="form-control" value="{{ $key->id_masakan }}" name="id_masakan">
@@ -73,7 +73,7 @@
 					  <a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. {{ $key->harga }}</a>
 				  </div>
 				  <div class="col-md-4 text-right">
-					<form action="" method="">
+					<form action="/pesan_order" method="POST">
 						@csrf
 						<div class="form-group">
 						  <input type="hidden" class="form-control" value="{{ $key->id_masakan }}" name="id_masakan">
@@ -106,7 +106,7 @@
 					  <a class="btn btn-transparent text-danger ml-2 mt-4" id="sb">Rp. {{ $key->harga }}</a>
 				  </div>
 				  <div class="col-md-4 text-right">
-					<form action="" method="">
+					<form action="/pesan_order" method="POST">
 						@csrf
 						<div class="form-group">
 						  <input type="hidden" class="form-control" value="{{ $key->id_masakan }}" name="id_masakan">
@@ -120,6 +120,82 @@
 		  </div>
 		</div>
 	</div>
+
+	@if($order->count() != '')    
+        <div class="row">
+		<div class="text-center col-md-10 offset-md-1">
+			<h1 class="text-danger my-5" id="bo">PESANAN</h1>
+		</div>
+        <div class="card col-lg-10 offset-lg-1">
+            <div class="card-body">
+            <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="example"  cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th> Nama Masakan </th>
+                    <th> Jumlah </th>
+                    <th> Harga </th>
+                    <th> Sub Total </th>
+                    <th>Aksi</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                @foreach($order as $m)
+                <tr>
+                  <td></td>
+                  <td>{{$m->nama_masakan}} </td>
+                  <form action="/order_update" method="POST">
+                  @csrf
+                  <input type="hidden" value="{{$m->id_order}}" name="id_order">
+                  <td> <input type="text" value="{{$m->jumlah}}" maxlength="4" size="4" name="jumlah"> </td>
+                  <td>{{$m->harga}} </td>
+                  <td> {{$m->jumlah * $m->harga }} </td>
+                  <td>
+                    <button type="submit" data-toggle="tooltip" data-placement="top" title="Update"><i class="fas fa-edit"></i></button>
+                    <a href="order_hapus/{{$m->id_order}}" onclick="return confirm('Anda yakin ?')" data-toggle="tooltip" data-placement="top" title="Hapus"><ion-icon name="trash-outline" class="text-danger"></ion-icon></a>
+                    </form>
+                  </td>
+                </tr>
+                @endforeach
+				</tbody>
+				
+			</table>
+			
+			{{-- BAYAR --}}
+			<div class="row">
+				<div class="col-md-7"></div>
+				<div class="col-md-5">
+					<form action="/order_bayar" method="POST">
+						@csrf
+						<div class="row mb-5">
+							<div class="col-md-5"></div>
+							<div class="col-md-3">
+								<span>Rp. {{$order->sum('sub_total')}}</span>
+								<input type="hidden" id="total" value="{{$order->sum('sub_total')}}" class="total" name="total_bayar">
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-primary btn-sm btn-block btn-danger" id="bayar">Bayar</button>
+							</div>
+						</div>
+									
+
+								
+						</form>
+				</div>
+			</div>
+
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+        
+            </div>
+            </div>
+        </div>
+    </div>
+            @endif
 
 </div>
 
