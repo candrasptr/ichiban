@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Nov 2020 pada 13.09
+-- Waktu pembuatan: 26 Des 2020 pada 07.57
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -35,6 +35,16 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kosong`
+--
+
+CREATE TABLE `kosong` (
+  `username` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -82,7 +92,7 @@ CREATE TABLE `tbl_admin` (
   `password` varchar(191) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `remember_token` varchar(100) NOT NULL
+  `remember_token` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -90,8 +100,8 @@ CREATE TABLE `tbl_admin` (
 --
 
 INSERT INTO `tbl_admin` (`id_admin`, `nama_admin`, `username`, `password`, `created_at`, `updated_at`, `remember_token`) VALUES
-(1, 'admin', 'admin', 'admin', '2020-11-17 09:13:07', '2020-11-17 09:13:07', ''),
-(2, 'candra', 'adminn', '$2y$10$zpYLbBzFtGntL0qL8zY2Iu1JDFA5eaSVpCwkmz5SnBcaYbVJlvp1m', '2020-11-21 19:00:32', '2020-11-21 19:00:32', 'db329hKomkAOfpKMElkUzVDra8jwR5Dg9lgCyaYiKy13iZNqL9BGJWmyBj25');
+(13, 'admin', 'admin', '$2y$10$QdP8uA6ZfIvcZay9TszkcO1ROXoC1YFVXdJhUSzrGuEzQZjG346gS', '2020-11-25 02:21:06', '2020-11-25 02:21:06', NULL),
+(14, 'adm', 'adm', '$2y$10$PvgHM4oJDfRJf0NzdP5vFurriAcKchZA635BmlEfWvN656XzvuSlO', '2020-11-25 02:23:21', '2020-11-25 02:23:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -117,7 +127,8 @@ CREATE TABLE `tbl_kasir` (
 --
 
 INSERT INTO `tbl_kasir` (`id_kasir`, `nama_kasir`, `jenis_kelamin`, `alamat`, `no_hp`, `email`, `username`, `password`, `updated_at`, `created_at`) VALUES
-(1, 'saputra', 'laki-laki', 'kdw', '088989', 'cs@g.com', 'kasir1', '$2y$10$X/uWK5BqeG/JBStZbAd6fOjQis/QYZaEQuVWa49pfplfIQe8apLPy', '2020-11-23', '2020-11-23');
+(1, 'saputraaaaaa', 'laki-laki', 'kdw', '088989', 'cs@g.com', 'kasir1', '$2y$10$X41nT/ek7vYyeLkWW7wRbOr/VnOK9X/wxhC2f6sAJN/CtNTMmP6/y', '2020-11-25', '2020-11-23'),
+(2, 'a', 'a', 'a', '1', 'a', 'a', '$2y$10$uWVVb0GS4f5W6VjaiOfbR.GcHV1ZDNOZ4iwlUYDAknrNQt//dvpjW', '2020-11-25', '2020-11-25');
 
 -- --------------------------------------------------------
 
@@ -157,19 +168,29 @@ CREATE TABLE `tbl_laporan` (
 CREATE TABLE `tbl_masakan` (
   `id_masakan` int(11) NOT NULL,
   `nama_masakan` varchar(100) NOT NULL,
-  `id_kategori` int(100) NOT NULL,
-  `nama_kategori` varchar(100) NOT NULL,
-  `deskripsi` text NOT NULL,
+  `gambar_masakan` varchar(100) NOT NULL,
+  `nama_kategori` varchar(30) NOT NULL,
   `harga` int(11) NOT NULL,
-  `diskon` int(11) NOT NULL
+  `status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tbl_masakan`
 --
 
-INSERT INTO `tbl_masakan` (`id_masakan`, `nama_masakan`, `id_kategori`, `nama_kategori`, `deskripsi`, `harga`, `diskon`) VALUES
-(1, 'a', 1, 'a', 'a', 1, 1);
+INSERT INTO `tbl_masakan` (`id_masakan`, `nama_masakan`, `gambar_masakan`, `nama_kategori`, `harga`, `status`) VALUES
+(1, 'Ichiban donut', 'donut.png', 'dessert', 10000, 'tersedia'),
+(2, 'Ichiban lemon tea', 'esteh.png', 'minuman', 10000, 'tersedia'),
+(3, 'Ichiban sashimi', 'sashimi.png', 'makanan', 10000, 'tersedia'),
+(7, 'Ichiban ramen', 'produk_1607239257.png', 'makanan', 10000, 'tersedia'),
+(22, 'Ichiban yakiniku', 'produk_1607408126.png', 'makanan', 10000, 'tersedia'),
+(23, 'Ichiban spesial sushi', 'produk_1607408173.png', 'makanan', 10000, 'tersedia'),
+(24, 'Ichiban orange juice', 'produk_1607408238.png', 'minuman', 10000, 'tersedia'),
+(25, 'Ichiban matcha', 'produk_1607408277.png', 'minuman', 10000, 'tersedia'),
+(26, 'Ichiban chocolate milkshake', 'produk_1607408305.png', 'minuman', 10000, 'tersedia'),
+(27, 'Ichiban dorayaki', 'produk_1607408334.png', 'dessert', 10000, 'tersedia'),
+(28, 'Ichiban mochi', 'produk_1607408354.png', 'dessert', 10000, 'tersedia'),
+(29, 'ichiban takiyaki', 'produk_1607408376.png', 'dessert', 10000, 'tersedia');
 
 -- --------------------------------------------------------
 
@@ -179,16 +200,74 @@ INSERT INTO `tbl_masakan` (`id_masakan`, `nama_masakan`, `id_kategori`, `nama_ka
 
 CREATE TABLE `tbl_order` (
   `id_order` int(11) NOT NULL,
-  `no_meja` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `id_pelanggan` int(11) NOT NULL,
-  `id_masakan` int(11) NOT NULL,
-  `nama_masakan` varchar(100) NOT NULL,
+  `masakan_id` int(11) NOT NULL,
+  `order_detail_id` int(11) NOT NULL,
+  `user_order_id` int(11) NOT NULL,
+  `tanggal_order` date NOT NULL,
+  `status_order` varchar(30) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `total_bayar` int(11) NOT NULL,
-  `keterangan` text NOT NULL,
-  `status` varchar(10) NOT NULL
+  `sub_total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`id_order`, `masakan_id`, `order_detail_id`, `user_order_id`, `tanggal_order`, `status_order`, `jumlah`, `sub_total`) VALUES
+(1, 3, 0, 22, '2020-12-25', 'sudah_dipesan', 3, 30000),
+(2, 7, 0, 23, '2020-12-25', 'sedang_dipesan', 1, 10000),
+(3, 22, 0, 23, '2020-12-25', 'sedang_dipesan', 1, 10000),
+(4, 25, 0, 22, '2020-12-25', 'sudah_dipesan', 1, 10000),
+(5, 27, 0, 22, '2020-12-25', 'sudah_dipesan', 1, 10000),
+(6, 3, 0, 22, '2020-12-25', 'sudah_dipesan', 1, 10000),
+(7, 27, 0, 22, '2020-12-25', 'sudah_dipesan', 1, 10000),
+(8, 3, 0, 22, '2020-12-25', 'sudah_dipesan', 1, 10000),
+(9, 27, 0, 22, '2020-12-25', 'sudah_dipesan', 1, 10000),
+(10, 26, 0, 22, '2020-12-25', 'sudah_dipesan', 1, 10000),
+(11, 2, 11, 22, '2020-12-25', 'sudah_dipesan', 1, 10000),
+(12, 28, 13, 22, '2020-12-25', 'batal_dipesan', 1, 10000),
+(13, 27, 13, 22, '2020-12-25', 'batal_dipesan', 1, 10000),
+(14, 1, 15, 22, '2020-12-25', 'sudah_dibayar', 2, 20000),
+(15, 28, 15, 22, '2020-12-25', 'sudah_dibayar', 1, 10000),
+(16, 22, 17, 24, '2020-12-26', 'sudah_dibayar', 1, 10000),
+(17, 2, 17, 24, '2020-12-26', 'sudah_dibayar', 1, 10000),
+(18, 23, 18, 24, '2020-12-26', 'sudah_dipesan', 1, 10000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_order_detail`
+--
+
+CREATE TABLE `tbl_order_detail` (
+  `id_order_detail` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_order_detail`
+--
+
+INSERT INTO `tbl_order_detail` (`id_order_detail`, `order_id`) VALUES
+(5, 1),
+(5, 4),
+(5, 5),
+(5, 1),
+(5, 4),
+(5, 5),
+(7, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(13, 12),
+(13, 13),
+(15, 14),
+(15, 15),
+(17, 16),
+(17, 17),
+(18, 18);
 
 -- --------------------------------------------------------
 
@@ -214,7 +293,9 @@ CREATE TABLE `tbl_owner` (
 
 CREATE TABLE `tbl_pelanggan` (
   `id_pelanggan` int(11) NOT NULL,
+  `kode` varchar(30) NOT NULL,
   `nama_pelanggan` varchar(100) NOT NULL,
+  `no_meja` int(11) NOT NULL,
   `password` varchar(200) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -225,17 +306,12 @@ CREATE TABLE `tbl_pelanggan` (
 -- Dumping data untuk tabel `tbl_pelanggan`
 --
 
-INSERT INTO `tbl_pelanggan` (`id_pelanggan`, `nama_pelanggan`, `password`, `created_at`, `updated_at`, `remember_token`) VALUES
-(1, 'candra', 'candra', '2020-11-21 23:24:27', '2020-11-21 23:24:27', 'nU5DuJxnbbv4acdVDWFZv3JueuRjM2L5cKDjwFcSdWQWBHqPln'),
-(2, 'candraa', '$2y$10$aSd58JErRH72uTVgUE31vOScYhBUxTqwavExxM6bp39av4lb28Xf2', '2020-11-22 05:21:42', '2020-11-22 05:21:42', 'AiEfGnHiyykkJ0TJuA83R3Dj9pM03DNTltsxHX2x'),
-(3, 'abc', '$2y$10$6TFhuzJy4zOPcT.vyX59F.ua0wtna1R4KX9oWadd1R7/qmgH5.I2.', '2020-11-22 05:49:27', '2020-11-22 05:49:27', 'TLKueSGCHkKuaQQWJhRmbASIZ24Pc2'),
-(4, 'abcd', '$2y$10$9xALfl5STL7lSM8t4l.Tl.a.XCA54SvAeqv3ieGmVuWveeNNv2nyK', '2020-11-22 05:51:14', '2020-11-22 05:51:14', 'tWEMfOlkkW2FZKrQ0e1MIlxfgIilHu'),
-(5, 'a', '$2y$10$t0F81geCWaT5dkopUvyfROnYNA/yEFMQhK6L/1W0/oul/YMFd6ZaW', '2020-11-23 01:59:19', '2020-11-23 01:59:19', 'hELKAMJoXtwTVHH3H9TNctHdEIazrS'),
-(6, 'aaa', '$2y$10$GWNUdDtmvRM1bttYjVP1/uYYF/XcNLrn/b4Rmg6gdUD9lLMFU3Dse', '2020-11-23 03:03:41', '2020-11-23 03:03:41', '2TaHtcAAg8rdV919EhN96C7KgJLuOH'),
-(7, 'candrasaputra', '$2y$10$fTS9blcSANSN741hJPTwi.l5EzervqbId85Xr2lefYVxDTJx1VJ3W', '2020-11-23 03:55:32', '2020-11-23 03:55:32', 'O86y3hdhVopAlBa5J7Ub40yw8UxlLn'),
-(8, 'candrasaputra', '$2y$10$lF0YIDD6RoGpaKyDcmRXLuZVTlaWUNOzPnhI5EwpVm.xyTbpPQQPe', '2020-11-23 03:56:20', '2020-11-23 03:56:20', '5Qqzg88ArAXNShndvJ7Bdq7q6ua08q'),
-(9, 'candrasaputra', '$2y$10$8GP2bo39PvtxQIAbJeMwoOcNI7cJod0ptX64817og3WYJdPSuVLH2', '2020-11-23 03:58:29', '2020-11-23 03:58:29', 'eyKpuSkIBtxg2oSRNhMDcs6hjTVQNa'),
-(10, 'candrasaputraa', '$2y$10$apFn2OlQxjZg2NOU/s1TRu5Q4PtLICmSvNKBGPI3cX.Zoc4dLUXD.', '2020-11-23 04:06:08', '2020-11-23 04:06:08', 'T3qVcNIrAma2l0ZD6JYwFMGMZAta3T');
+INSERT INTO `tbl_pelanggan` (`id_pelanggan`, `kode`, `nama_pelanggan`, `no_meja`, `password`, `created_at`, `updated_at`, `remember_token`) VALUES
+(19, 'plg12', 'ca', 1, '$2y$10$2p3qfokxld.oCHnECJsm6OSRJctzBhxdlKu4RCI9qaUw2Tvgi0Z92', '2020-12-21 19:05:46', '2020-12-21 19:05:46', '2Loggr6r9nQ7tcKOKRWvQ4XjflOntn'),
+(21, 'plg1', 'eren', 1, '$2y$10$R5m0KNeFREL/xIwirtO5Ce0MnkDoPCDvli1x8V3vfHuooAOltBtl.', '2020-12-23 19:37:38', '2020-12-23 19:37:38', '1G9iy8RAnAORymQGke1uDJLJ8lSlbUJpFXLj5r8JEnQDux5QKB3slbE7Hoou'),
+(22, 'plg2', 'eer', 2, '$2y$10$5cYl/ahJY9VZX3IDi9yo4.QsL0XFtXdUGJ3nZW1rnNr5xBctmhDTm', '2020-12-24 18:21:29', '2020-12-24 18:21:29', 'qjDeMh3jW7XiNEpDFLi3wikwvkBXR7'),
+(23, 'plg3', 'For', 1, '$2y$10$ABWRpJxQJGFywht2hPjPy.iVYZfqjidoyTTYnomR9DInWMhzPiTIu', '2020-12-24 18:52:54', '2020-12-24 18:52:54', 'uSFbKGxNWkqeyOIRDix26rF3NBfeU4'),
+(24, 'plg4', 'candra', 1, '$2y$10$UNqgp.eAuShrTBPTmVjuw.G2eQ9eXvfW886CknPQ79XUs0QeILECe', '2020-12-25 21:46:05', '2020-12-25 21:46:05', 'pTfhk9MWtcbxro52LzBRoIsXZcCXfg');
 
 -- --------------------------------------------------------
 
@@ -275,14 +351,25 @@ CREATE TABLE `tbl_suplier` (
 --
 
 CREATE TABLE `tbl_transaksi` (
-  `id_transaksi` int(11) NOT NULL,
-  `id_pelanggan` int(11) NOT NULL,
-  `nama_pelanggan` int(11) NOT NULL,
-  `id_order` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
+  `id_transaksi` varchar(100) NOT NULL,
+  `order_detail_id` int(11) NOT NULL,
+  `tanggal_transaksi` date NOT NULL,
   `total_bayar` int(11) NOT NULL,
-  `id_kasir` int(11) NOT NULL
+  `jumlah_pembayaran` int(11) NOT NULL,
+  `kembalian` int(11) NOT NULL,
+  `user_transaksi_id` int(11) NOT NULL,
+  `status_order` varchar(50) NOT NULL,
+  `diantar` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_transaksi`
+--
+
+INSERT INTO `tbl_transaksi` (`id_transaksi`, `order_detail_id`, `tanggal_transaksi`, `total_bayar`, `jumlah_pembayaran`, `kembalian`, `user_transaksi_id`, `status_order`, `diantar`) VALUES
+('ICHBNRST3', 18, '2020-12-26', 10000, 0, 0, 24, 'belum_dibayar', 'belum'),
+('ICHBNRST91', 15, '2020-12-25', 30000, 50000, -20000, 22, '', ''),
+('ICHBNRST92', 17, '2020-12-26', 20000, 50000, 30000, 24, 'sudah_dibayar', '');
 
 -- --------------------------------------------------------
 
@@ -293,7 +380,7 @@ CREATE TABLE `tbl_transaksi` (
 CREATE TABLE `tbl_waiter` (
   `id_waiter` int(11) NOT NULL,
   `nama_waiter` varchar(100) NOT NULL,
-  `jenis_kelamin` varchar(8) NOT NULL,
+  `jenis_kelamin` varchar(10) NOT NULL,
   `alamat` text NOT NULL,
   `no_hp` varchar(12) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -301,7 +388,7 @@ CREATE TABLE `tbl_waiter` (
   `password` varchar(191) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `remember_token` varchar(100) NOT NULL
+  `remember_token` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -309,7 +396,8 @@ CREATE TABLE `tbl_waiter` (
 --
 
 INSERT INTO `tbl_waiter` (`id_waiter`, `nama_waiter`, `jenis_kelamin`, `alamat`, `no_hp`, `email`, `username`, `password`, `created_at`, `updated_at`, `remember_token`) VALUES
-(1, 'candra', 'L', 'kdw', '088', 'cs@g.com', 'waiter1', '$2y$10$lLWxQ.vQla130zc36RywC.DCfC9Te3XILVUe7XdIbgU7BUhLDbPoG', '2020-11-23 00:45:47', '2020-11-23 00:45:47', '0dnuOevtFsknwS9e8PfB2pYfF165B41HWgo61wr8AZbMBwdxmJknPL79HVy0');
+(1, 'candra', 'L', 'kdw', '088', 'cs@g.com', 'waiter1', '$2y$10$lLWxQ.vQla130zc36RywC.DCfC9Te3XILVUe7XdIbgU7BUhLDbPoG', '2020-11-23 00:45:47', '2020-11-23 00:45:47', 'FjMPglZug5WeIUZVPIJevugrH5sLU3JDPM8CoJLuFkR9tz1WmHiS1qtkIxtR'),
+(3, 'add', 'Laki-Laki', 'ad', 'ad', 'ad', 'ad', '$2y$10$2i/X5lV0ijngXqDGX43WZetNnl9anrTVfKjY4tE0A1QjB9ixHoeQK', '2020-11-26 00:52:49', '2020-11-26 01:12:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -388,13 +476,14 @@ ALTER TABLE `tbl_laporan`
 -- Indeks untuk tabel `tbl_masakan`
 --
 ALTER TABLE `tbl_masakan`
-  ADD PRIMARY KEY (`id_masakan`,`id_kategori`);
+  ADD PRIMARY KEY (`id_masakan`);
 
 --
 -- Indeks untuk tabel `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  ADD PRIMARY KEY (`id_order`,`id_pelanggan`,`id_masakan`);
+  ADD PRIMARY KEY (`id_order`),
+  ADD KEY `masakan_id` (`masakan_id`);
 
 --
 -- Indeks untuk tabel `tbl_owner`
@@ -406,7 +495,8 @@ ALTER TABLE `tbl_owner`
 -- Indeks untuk tabel `tbl_pelanggan`
 --
 ALTER TABLE `tbl_pelanggan`
-  ADD PRIMARY KEY (`id_pelanggan`);
+  ADD PRIMARY KEY (`id_pelanggan`),
+  ADD UNIQUE KEY `kode` (`kode`);
 
 --
 -- Indeks untuk tabel `tbl_pengaturan`
@@ -424,7 +514,8 @@ ALTER TABLE `tbl_suplier`
 -- Indeks untuk tabel `tbl_transaksi`
 --
 ALTER TABLE `tbl_transaksi`
-  ADD PRIMARY KEY (`id_transaksi`,`id_pelanggan`,`id_order`,`id_kasir`);
+  ADD PRIMARY KEY (`id_transaksi`),
+  ADD KEY `order_id` (`order_detail_id`);
 
 --
 -- Indeks untuk tabel `tbl_waiter`
@@ -459,13 +550,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kasir`
 --
 ALTER TABLE `tbl_kasir`
-  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kategori`
@@ -483,13 +574,13 @@ ALTER TABLE `tbl_laporan`
 -- AUTO_INCREMENT untuk tabel `tbl_masakan`
 --
 ALTER TABLE `tbl_masakan`
-  MODIFY `id_masakan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_masakan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_owner`
@@ -501,7 +592,7 @@ ALTER TABLE `tbl_owner`
 -- AUTO_INCREMENT untuk tabel `tbl_pelanggan`
 --
 ALTER TABLE `tbl_pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pengaturan`
@@ -516,16 +607,10 @@ ALTER TABLE `tbl_suplier`
   MODIFY `id_suplier` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_transaksi`
---
-ALTER TABLE `tbl_transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT untuk tabel `tbl_waiter`
 --
 ALTER TABLE `tbl_waiter`
-  MODIFY `id_waiter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_waiter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

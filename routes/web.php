@@ -65,12 +65,14 @@ Route::group(['middleware' => 'auth:admin'], function(){
 
 	Route::get('/pelanggan','PelangganController@index');
 
-	Route::view('/orderan','admin/orderan.index');
+	Route::get('/orderan','OrderanController@index');
 	Route::view('/orderan/detail','admin/orderan.detail')->name('orderan.detail');
 
 	Route::view('/laporan','admin/laporan.index');
 
-	Route::view('/transaksi','admin/transaksi.index');
+	Route::get('/transaksi','TransaksiController@index');
+	Route::post('/cari_order','TransaksiController@cari_order');
+	Route::post('/order_bayar/{id}','TransaksiController@order_bayar')->name('order.bayar');
 });
 
 // pelanggan

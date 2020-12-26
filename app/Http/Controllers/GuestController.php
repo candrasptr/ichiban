@@ -99,6 +99,8 @@ class GuestController extends Controller
                 'jumlah_pembayaran' => 0,
                 'kembalian' => 0,
                 'user_transaksi_id' => Auth::guard('pelanggan')->user()->id_pelanggan,
+                'status_order' => 'belum_dibayar',
+                'diantar' => 'belum',
             ]);
      
         $ambil = DB::table('tbl_order')->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)->where('status_order','sedang_dipesan')->update([
@@ -122,10 +124,15 @@ class GuestController extends Controller
     }
     
     public function order_batal($id){
-        $ambil = DB::table('tbl_order')
+        DB::table('tbl_order')
         ->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)
         ->where('order_detail_id',$id)->update([
             'status_order'=>'batal_dipesan'
+        ]);
+
+        DB::table('tbl_transaksi')
+        ->where('user_order_id',$id)->update([
+            'status_order' => 'batal_dipesan'
         ]);
 
         return redirect('/home');
