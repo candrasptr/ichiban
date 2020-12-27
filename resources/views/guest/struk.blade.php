@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Ichiban - @yield('title')</title>
+  <title>Ichiban - struk</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -123,10 +123,10 @@
                     <img src="{{asset('assets/img/produk/'.$item->gambar_masakan)}}" style="width: 100px;">
                 </div>
                 <div class="col-md-4 my-auto">
-                    <span id="me" class="text-secondary">{{ $item->nama_masakan }}</span>            
+                    <span id="me" class="text-secondary">{{ $item->jumlah }}x {{ $item->nama_masakan }}</span>            
                 </div>
                 <div class="col-md-4 offset-md-2 my-auto text-right">
-                    <span id="me" class="text-secondary">Rp{{ $item->harga }}</span>
+                    <span id="me" class="text-secondary">Rp {{ $item->harga*$item->jumlah }}</span>
                 </div>
                 <div class="col-md-12"><hr></div>
                 @endforeach

@@ -66,7 +66,16 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('/pelanggan','PelangganController@index');
 
 	Route::get('/orderan','OrderanController@index');
-	Route::view('/orderan/detail','admin/orderan.detail')->name('orderan.detail');
+	Route::get('/orderan/detail/{id}','OrderanController@order_detail')->name('orderan.detail');
+	Route::get('/filter_penjualan','OrderanController@filter_penjualan');
+	Route::get('/orderan_belum','OrderanController@belum');
+	Route::get('/filter_penjualan_belum','OrderanController@filter_penjualan_belum');
+	Route::get('/orderan_batal','OrderanController@batal');
+	Route::get('/filter_penjualan_batal','OrderanController@filter_penjualan_batal');
+	Route::get('/orderan_belum_diantar','OrderanController@belum_diantar');
+	Route::get('/filter_penjualan_belum_diantar','OrderanController@filter_penjualan_belum_diantar');
+	Route::get('/selesai/{id}','OrderanController@selesai')->name('order.selesai');
+	Route::get('/batal/{id}','OrderanController@batalkan')->name('order.batalkan');
 
 	Route::view('/laporan','admin/laporan.index');
 

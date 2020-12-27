@@ -83,7 +83,7 @@ class GuestController extends Controller
         if($hitung < 1)
         {
             $no = $hitung + 1;
-            $kode = "KTP - ".$no;
+            $kode = "ICHBNRST".$no;
         }
         
         else if($hitung >= 1)
@@ -131,7 +131,7 @@ class GuestController extends Controller
         ]);
 
         DB::table('tbl_transaksi')
-        ->where('user_order_id',$id)->update([
+        ->where('order_detail_id',$id)->update([
             'status_order' => 'batal_dipesan'
         ]);
 

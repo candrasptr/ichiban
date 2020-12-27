@@ -11,7 +11,7 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <form action="/filter_penjualan" class="row" method="GET">
+          <form action="/filter_penjualan_belum" class="row" method="GET">
             <div class="form-group col-md-6">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
@@ -48,12 +48,12 @@
       <div class="card mt-3">
         <div class="card-header row my-auto">
           <div class="col-md-6 mt-2">
-            <h5 class="text-danger">Sudah dibayar</h5>
+            <h5 class="text-danger">Belum dibayar</h5>
           </div>
           <div class="col-md-6 justify-content-end">
-            <a href="/orderan" class="btn btn-danger mr-2">Selesai</a>
+            <a href="/orderan" class="btn btn-outline-danger mr-2">Selesai</a>
             <a href="/orderan_belum_diantar" class="btn btn-outline-danger mr-2">Belum diantar</a>
-            <a href="/orderan_belum" class="btn btn-outline-danger mr-2">Belum dibayar</a>
+            <a href="/orderan_belum" class="btn btn-danger mr-2">Belum dibayar</a>
             <a href="/orderan_batal" class="btn btn-outline-danger">Dibatalakan</a>
           </div>
         </div>
@@ -78,7 +78,7 @@
                           <th>total</th>
                           <th>bayar</th>
                           <th>kembalian</th>
-                          <th>diantar</th>
+                          <th>status</th>
                           <th>Aksi</th>
                       </tr>
                   </thead>
@@ -96,10 +96,10 @@
                       <td>{{ $item->total_bayar }}</td>
                       <td>{{ $item->jumlah_pembayaran }}</td>
                       <td>{{ $item->kembalian }}</td>
-                      <td>{{ $item->diantar }}</td>
+                      <td>{{ $item->status_order }}</td>
                       <td>
                         <a href="" class="btn btn-primary btn-block my-2"><i class="fas fa-print"></i></a>
-                        
+                        <a href="{{ route('order.batalkan',$item->id_transaksi) }}" class="btn btn-danger btn-block confirm_script mb-2">Batal</a>
                       </td>
                   </tr>
                     @endforeach

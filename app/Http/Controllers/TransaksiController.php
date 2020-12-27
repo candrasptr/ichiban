@@ -52,6 +52,6 @@ class TransaksiController extends Controller
             'status_order' => 'sudah_dibayar'
         ]);
 
-        return redirect('/orderan');
+        return redirect('/orderan_belum_diantar');
     }
 }
