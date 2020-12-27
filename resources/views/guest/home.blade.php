@@ -8,7 +8,7 @@
 	</div>
 </div>
 
-<div class="container-fluid mb-5 mt-3">
+<div class="container-fluid mt-3">
 	<div class="row">
 		<div class="col-md-10 offset-md-1">
 			<div class="owl-carousel owl-theme">
@@ -123,113 +123,71 @@
 
 	@if($order->count() != '')    
         <div class="row pb-5" style="background-color: #ffffff;">
-		<div class="text-center col-md-10 offset-md-1">
-			<h1 class="text-danger my-5" id="bo">PESANAN</h1>
+			<div class="text-center col-md-10 offset-md-1">
+				<h1 class="text-danger my-5" id="bo">PESANAN</h1>
+			</div>
+		
+        	 	<div class="col-lg-7 offset-lg-1">
+            {{--	<div class="card-body">--}}
+					<div class="row"> 
+						@foreach ($order as $item)
+						<div class="col-md-3">
+							<img src="{{asset('assets/img/produk/'.$item->gambar_masakan)}}" style="width: 150px;" alt="...">
+						</div>
+						<div class="col-md-4 my-auto">
+							<span id="me">{{ $item->nama_masakan }}</span><br>
+							<span id="me" class="text-danger">Rp {{ $item->harga }}</span>
+						</div>
+						<div class="col-md-4 offset-md-1 my-auto ">
+							<form action="/order_update" class="row justify-content-end" method="POST">
+								@csrf
+								<input type="hidden" value="{{$item->id_order}}" name="id_order">
+								<div class="input-group col-md-8 ml-2">
+									<div class="input-group-prepend my-auto mr-2">
+										<a href="{{ route('order.hapus',$item->id_order) }}" class="" id="button-cart"><i class="fas fa-trash"></i></a>
+									</div>
+									<input type="number" class="form-control text-center" value="{{$item->jumlah}}" maxlength="4" size="4" id="input" name="jumlah">
+									<div class="input-group-append">
+										<button id="button-cart" type="submit" class="btn btn-transparent" data-toggle="tooltip" data-placement="top" title="Update"><i class="fas fa-edit"></i></button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-12 my-4 garis-bawah"></div>
+						@endforeach
+					</div>
+				</div>
+						{{-- BAYAR --}}
+						{{-- <div class="row"> --}}
+						{{-- <div class="col-md-7"></div> --}}
+						<div class="col-md-3">
+							<div class="card shadow" id="card-cart">
+								<div class="card-body">
+									<form action="/order_bayar" class="row" method="POST">
+										@csrf			
+										<div class="col-md-12 mb-3">
+											<span id="bo">Ringkasan pesanan</span>	
+										</div>
+										<div class="col-md-6">
+											<span id="me">Total harga :</span>
+										</div>
+										<div class="col-md-6 text-right">
+											<span class="text-danger" id="bo">Rp. {{$order->sum('sub_total')}}</span>
+										</div>							
+										<input type="hidden" id="total" value="{{$order->sum('sub_total')}}" class="total" name="total_bayar">
+										<div class="col-md-12"><hr></div>
+										<div class="col-md-12">
+											<button class="btn btn-primary btn-sm btn-block btn-danger py-2" id="bayar"><i class="fas fa-shopping-cart fas-2x"></i> Checkout</button>		
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					{{-- </div> --}}
+            	{{-- </div>
+			</div> --}}
 		</div>
-        <div class="card col-lg-10 offset-lg-1">
-            <div class="card-body">
-            {{-- <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="example"  cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th>No</th>
-                    <th> Nama Masakan </th>
-                    <th> Jumlah </th>
-                    <th> Harga </th>
-                    <th> Sub Total </th>
-                    <th>Aksi</th>
-                </tr>
-                </thead>
-                <tbody>
-                    
-                @foreach($order as $m)
-                <tr>
-                  <td></td>
-                  <td>{{$m->nama_masakan}} </td>
-                  <form action="/order_update" method="POST">
-                  @csrf
-                  <input type="hidden" value="{{$m->id_order}}" name="id_order">
-                  <td> <input type="text" value="{{$m->jumlah}}" maxlength="4" size="4" name="jumlah"> </td>
-                  <td>{{$m->harga}} </td>
-                  <td> {{$m->jumlah * $m->harga }} </td>
-                  <td>
-                    <button type="submit" data-toggle="tooltip" data-placement="top" title="Update"><i class="fas fa-edit"></i></button>
-                    <a href="order_hapus/{{$m->id_order}}" onclick="return confirm('Anda yakin ?')" data-toggle="tooltip" data-placement="top" title="Hapus"><ion-icon name="trash-outline" class="text-danger"></ion-icon></a>
-                    </form>
-                  </td>
-                </tr>
-                @endforeach
-				</tbody>
-				
-			</table>
-		</div> --}}
-
-			<div class="row">
-				@foreach ($order as $item)
-				<div class="col-md-2">
-					<img src="{{asset('assets/img/produk/'.$item->gambar_masakan)}}" style="width: 150px;" alt="...">
-				</div>
-				<div class="col-md-5 my-auto">
-					<span id="me">{{ $item->nama_masakan }}</span><br>
-					<span id="me" class="text-danger">Rp {{ $item->harga }}</span>
-				</div>
-				<div class="col-md-5"></div>
-				<div class="col-md-2 my-auto text-center">
-					<span id="me" class="text-danger">{{ $item->nama_kategori }}</span>
-				</div>
-				<div class="col-md-2 offset-md-7 justify-content-end">
-					<form action="/order_update" class="row" method="POST">
-						@csrf
-						<input type="hidden" value="{{$item->id_order}}" name="id_order">
-						<div class="col-md-1 mx-auto my-auto">
-							<a href="" class="text-danger"><i class="fas fa-trash"></i></a>
-						</div>
-						<div class="col-md-6 ml-2">
-							<input type="text" class="form-control" value="{{$item->jumlah}}" maxlength="4" size="4" id="input" name="jumlah">
-						</div>
-						<div class="col-md-2 my-auto ">
-							<button type="submit" class="btn btn-transparent text-danger" data-toggle="tooltip" data-placement="top" title="Update"><i class="fas fa-edit"></i></button>
-						</div>
-					</form>
-				</div>
-				<div class="col-md-12"><hr></div>
-				@endforeach
-			</div>
-			
-			{{-- BAYAR --}}
-			<div class="row">
-				<div class="col-md-7"></div>
-				<div class="col-md-5">
-					<form action="/order_bayar" method="POST">
-						@csrf
-						<div class="row mb-5">
-							<div class="col-md-5"></div>
-							<div class="col-md-3">
-								<span>Rp. {{$order->sum('sub_total')}}</span>
-								<input type="hidden" id="total" value="{{$order->sum('sub_total')}}" class="total" name="total_bayar">
-							</div>
-							<div class="col-md-4">
-								<button class="btn btn-primary btn-sm btn-block btn-danger" id="bayar">Bayar</button>
-							</div>
-						</div>
-									
-
-								
-						</form>
-				</div>
-			</div>
-
-            
-            </div>
-        </div>
-        <div class="col-lg-4">
-        
-            </div>
-            </div>
-        </div>
-    </div>
-            @endif
-
+    @endif
 </div>
 
 

@@ -138,4 +138,12 @@ class GuestController extends Controller
         return redirect('/home');
     }
 
+    public function order_hapus($id)
+    {
+        DB::table('tbl_order')
+        ->where('id_order',$id)
+        ->delete();
+        return redirect('/home');
+    }
+
 }

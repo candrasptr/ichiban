@@ -55,7 +55,7 @@
   @yield('page-styles')
 </head>
 
-<body style="background-image: url(../assets/img/background.png);  /* Full height */
+<body style="background-image: url(../assets/img/background3.png);  /* Full height */
   width: 100%; 
 
   /* Center and scale the image nicely */
@@ -70,10 +70,10 @@
 
     @yield('konten')      
 
-  <footer class="main-footer bg-dark mt-5">
-    <div class="text-center text-light py-3">
-      <img src="{{asset('assets/img/logo3.png')}}" style="width: 100px;" class="mb-2"><br>
-      Copyright &copy; 2020 <i class="fas fa-copyright"></i> Candra saputra 
+  <footer class="main-footer bg-transparent mt-5">
+    <div class="text-center text-secondary py-3">
+      <img src="{{asset('assets/img/logo4.png')}}" style="width: 100px;" class="mb-2"><br>
+      Copyright &copy; 2020 Candra saputra 
     </div></div>
   </footer>
 

@@ -9,6 +9,12 @@
 	transition: transform 1s ease;
 }
 
+#card-cart{
+	border: none;
+	border-radius: 7px;
+	transition: transform 1s ease;
+}
+
 #card:hover{
 	transform: scale(1.1);
 }
@@ -61,4 +67,19 @@
 	border-top: none;
 	border-left: none;
 	border-right: none;
+}
+
+#button-cart{
+	color: darkgrey;
+}
+
+#button-cart:hover{
+	transform: scale(1.1);
+	color:  #d9534f;
+}
+
+.garis-bawah{
+	background-color: #f1f1f1;
+	width: 5px;
+	height: 5px;
 }
