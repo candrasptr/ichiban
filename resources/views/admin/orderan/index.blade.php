@@ -98,7 +98,7 @@
                       <td>{{ $item->kembalian }}</td>
                       <td>{{ $item->diantar }}</td>
                       <td>
-                        <a href="" class="btn btn-primary btn-block my-2"><i class="fas fa-print"></i></a>
+                        <a href="{{ route('orderan.struk',$item->order_detail_id)}}" class="btn btn-primary btn-block my-2"><i class="fas fa-print"></i></a>
                         
                       </td>
                   </tr>

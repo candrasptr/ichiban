@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth:admin'], function(){
 
 	Route::get('/orderan','OrderanController@index');
 	Route::get('/orderan/detail/{id}','OrderanController@order_detail')->name('orderan.detail');
+	Route::get('/orderan/struk/{id}','OrderanController@order_struk')->name('orderan.struk');
 	Route::get('/filter_penjualan','OrderanController@filter_penjualan');
 	Route::get('/orderan_belum','OrderanController@belum');
 	Route::get('/filter_penjualan_belum','OrderanController@filter_penjualan_belum');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class OrderanController extends Controller
 {
@@ -147,5 +148,23 @@ class OrderanController extends Controller
         $transaksi = DB::table('tbl_transaksi')->where('order_detail_id',$id)->first();
         
         return view('admin/orderan.detail',['transaksi' => $transaksi, 'order' => $order]);
+    }
+
+    public function order_struk($id)
+    {
+        $order = DB::table('tbl_order')->where('order_detail_id',$id)
+        ->join('tbl_masakan', function($join){
+            $join->on('tbl_order.masakan_id','=','tbl_masakan.id_masakan');
+        })
+        ->join('tbl_pelanggan', function($join){
+            $join->on('tbl_order.user_order_id','=','tbl_pelanggan.id_pelanggan');
+        })
+        ->get();
+
+        $transaksi = DB::table('tbl_transaksi')->where('order_detail_id',$id)->first();
+        
+        // return view('admin/orderan.pdf',['transaksi' => $transaksi, 'order' => $order]);
+        $pdf = PDF::loadview('admin/orderan.pdf',['transaksi' => $transaksi, 'order' => $order]);
+    	return $pdf->download('struk-pdf');
     }
 }
