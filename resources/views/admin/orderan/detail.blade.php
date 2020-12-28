@@ -8,9 +8,9 @@
 <div class="container-fluid">
   <div class="row mt-1">
     <!-- Judul Buku -->
-    @foreach ($order as $item)
-    <h1>{{ $item->nama_pelanggan }}</h1>
-    @endforeach
+    
+    <h1>{{ $order2->nama_pelanggan }}</h1>
+    
     
     <div class="col-md-12">
       <div class="card border rounded shadow-sm">

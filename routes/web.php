@@ -79,6 +79,7 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('/batal/{id}','OrderanController@batalkan')->name('order.batalkan');
 
 	Route::view('/laporan','admin/laporan.index');
+	Route::get('/rekap_laporan', 'LaporanController@pdf');
 
 	Route::get('/transaksi','TransaksiController@index');
 	Route::post('/cari_order','TransaksiController@cari_order');

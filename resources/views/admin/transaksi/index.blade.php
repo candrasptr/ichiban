@@ -7,7 +7,7 @@
 <div class="container-fluid mt-3">
 	<div class="row">
 		<div class="col-md-6">
-			<h1 id="sbita" class="text-danger">RESTO</h1>
+			<img src="{{ asset('assets/img/logo4.png') }}" style="width: 150px;" alt="">
 		</div>
 		<div class="col-md-6 text-right">
 			<span id="me">Kasir</span><br>
@@ -20,14 +20,25 @@
 					<div class="input-group-prepend">
 					  <span class="input-group-text" id="inputGroup-sizing-sm">Kode transaksi</span>
 					</div>
-					<input name="id" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+					<input autocomplete="off" name="id" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 					<div class="input-group-append">
-						<button class="btn btn-danger" type="submit" id="button-addon2">Cari</button>
+						<button class="btn btn-danger px-3" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
 					</div>
 				  </div>
 			</form>
-			
 		</div>
+		@if(session('message'))
+		<div class="col-md-12">
+			<div class="alert alert-danger alert-dismissible show fade">
+				<div class="alert-body">
+				  <button class="close" data-dismiss="alert">
+					<span>×</span>
+				  </button>
+				  {{ session('message') }}
+				</div>
+			</div>
+		</div> 
+        @endif
 		@if ($transaksi->count() != '')
 		<div class="col-md-8">
 			<table class="table table-striped">
@@ -70,7 +81,7 @@
 							<span class="input-group-text" id="inputGroup-sizing-sm">Bayar</span>
 							<input type="hidden" id="total" value="{{$transaksi->sum('sub_total')}}" class="total" name="total_bayar">
 						  </div>
-						  <input name="jumlah_pembayaran" id="jumlah_pembayaran" onkeyup="hitung()" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+						  <input autocomplete="off" name="jumlah_pembayaran" id="jumlah_pembayaran" onkeyup="hitung()" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 						</div>
 						<div class="input-group input-group-sm mb-3">
 						  <div class="input-group-prepend">
@@ -79,8 +90,11 @@
 						  <input type="text" class="form-control kembalian" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="kembalian" id="kembalian" disabled>
 						</div>
 					</div>
-					<div class="col-md-12">
+					<div class="col-md-12 text-center">
 						<button type="submit" class="btn btn-danger btn-block">Bayar</button>
+					</div>
+					<div class="col-md-12 text-center mt-3">
+						<a href="/transaksi" class="text-danger" id="bo">X Clear</a>
 					</div>
 				</form>
 			</div>

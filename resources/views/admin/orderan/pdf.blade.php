@@ -22,10 +22,8 @@
 
     <span>
         Kode order : {{ $transaksi->id_transaksi }} <br>
-        @foreach ($order as $item)
-        Nama : {{ $item->nama_pelanggan }} <br>
-        No meja: {{ $item->no_meja }} <br>
-        @endforeach
+        Nama : {{ $order2->nama_pelanggan }} <br>
+        No meja : {{ $order2->no_meja }} <br>
         Tanggal : {{ $transaksi->tanggal_transaksi }}          
     </span>
     <hr>

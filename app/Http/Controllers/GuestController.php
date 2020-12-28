@@ -24,7 +24,7 @@ class GuestController extends Controller
         ->where('nama_kategori','dessert')
         ->paginate(5);
 
-        $order = DB::table('tbl_order')->where('status_order','sedang_dipesan')->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)
+        $order = DB::table('tbl_order')->where('status_order2','sedang_dipesan')->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)
         ->join('tbl_masakan', function($join){
             $join->on('tbl_order.masakan_id','=','tbl_masakan.id_masakan');
         })
@@ -45,7 +45,7 @@ class GuestController extends Controller
             'order_detail_id'=>0,
             'user_order_id'=>Auth::guard('pelanggan')->user()->id_pelanggan,
             'tanggal_order'=>$now,
-            'status_order' => 'sedang_dipesan',
+            'status_order2' => 'sedang_dipesan',
             'jumlah' => '1',
             'sub_total'=>$hasil
         ]);
@@ -67,7 +67,7 @@ class GuestController extends Controller
     public function order_bayar(Request $request)
     {      
 
-        $ambil = DB::table('tbl_order')->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)->where('status_order','sedang_dipesan')->get();
+        $ambil = DB::table('tbl_order')->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)->where('status_order2','sedang_dipesan')->get();
         $order = DB::table('tbl_order')->where('id_order', \DB::raw("(select max(`id_order`) from tbl_order)"))->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)->first();
             
         foreach($ambil as $a)
@@ -103,9 +103,9 @@ class GuestController extends Controller
                 'diantar' => 'belum',
             ]);
      
-        $ambil = DB::table('tbl_order')->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)->where('status_order','sedang_dipesan')->update([
+        $ambil = DB::table('tbl_order')->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)->where('status_order2','sedang_dipesan')->update([
             'order_detail_id'=>$order->id_order,
-            'status_order'=>'sudah_dipesan'
+            'status_order2'=>'sudah_dipesan'
         ]);
         
         $transaksi = DB::table('tbl_transaksi')->where('order_detail_id',$order->id_order)->first();
@@ -127,7 +127,7 @@ class GuestController extends Controller
         DB::table('tbl_order')
         ->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)
         ->where('order_detail_id',$id)->update([
-            'status_order'=>'batal_dipesan'
+            'status_order2'=>'batal_dipesan'
         ]);
 
         DB::table('tbl_transaksi')
