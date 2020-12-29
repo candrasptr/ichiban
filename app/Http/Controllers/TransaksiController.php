@@ -67,9 +67,6 @@ class TransaksiController extends Controller
         return redirect('/orderan_belum_diantar');
         } else {
             return redirect('/transaksi')->with('message','Pembayaran kurang');
-        }
-        
-
-        
+        }    
     }
 }

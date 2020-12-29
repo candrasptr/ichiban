@@ -1,8 +1,8 @@
 @extends('admin/layout.master')
 
-@section('title','Admin')
+@section('title','transaksi')
 @section('title2','index')
-@section('user','active')
+@section('transaksi','active')
 @section('konten')
 <div class="container-fluid mt-3">
 	<div class="row">

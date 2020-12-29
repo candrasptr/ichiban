@@ -103,7 +103,9 @@ Route::group(['middleware' => 'auth:pelanggan'], function(){
 
 // kasir
 Route::group(['middleware' => 'auth:kasir'], function(){
-	Route::view('/kasir','kasir/transaksi.index');
+	Route::get('/kasir','KasirController@kasir');
+	Route::post('/cari_order_kasir','KasirController@cari_order');
+	Route::post('/kasir_bayar/{id}','KasirController@order_bayar')->name('kasir.bayar');
 });
 
 

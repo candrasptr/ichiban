@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\kasir;
+use PDF;
 
 class kasirController extends Controller
 {
@@ -79,6 +80,80 @@ class kasirController extends Controller
         kasir::where('id_kasir',$id)->delete();
 
         return redirect()->back()->with('message','Data berhasil dihapus');
+    }
+
+    public function kasir(Type $var = null)
+    {
+        $transaksi = DB::table('kosong');
+        return view('kasir/transaksi.index', ['transaksi' => $transaksi]);
+    }
+
+    public function cari_order(Request $request)
+    {
+        
+        $ambil = DB::table('tbl_transaksi')->where('id_transaksi',$request->id)->where('status_order','belum_dibayar')->first();
+        if ($ambil != '') {
+            $order = DB::table('tbl_order')
+            ->where('order_detail_id',$ambil->order_detail_id)
+            ->join('tbl_masakan', function($join){
+            $join->on('tbl_order.masakan_id','=','tbl_masakan.id_masakan');
+            })
+            ->join('tbl_pelanggan', function($join){
+            $join->on('tbl_order.user_order_id','=','tbl_pelanggan.id_pelanggan');
+            })
+            ->get();
+        return view('kasir/transaksi.index', ['transaksi' => $order, 'transaksi2' => $ambil]);
+        } else {
+            return redirect()->back()->with('message','Data tidak ditemukan');
+        }
+    }
+
+    public function order_bayar(Request $request, $id)
+    {
+        
+        $order = DB::table('tbl_order')->where('order_detail_id',$id)
+        ->join('tbl_masakan', function($join){
+            $join->on('tbl_order.masakan_id','=','tbl_masakan.id_masakan');
+        })
+        ->join('tbl_pelanggan', function($join){
+            $join->on('tbl_order.user_order_id','=','tbl_pelanggan.id_pelanggan');
+        })
+        ->get();
+
+        $order2 = DB::table('tbl_order')->where('order_detail_id',$id)
+        ->join('tbl_masakan', function($join){
+            $join->on('tbl_order.masakan_id','=','tbl_masakan.id_masakan');
+        })
+        ->join('tbl_pelanggan', function($join){
+            $join->on('tbl_order.user_order_id','=','tbl_pelanggan.id_pelanggan');
+        })
+        ->first();
+
+        $transaksi = DB::table('tbl_transaksi')->where('order_detail_id',$id)->first();
+
+        $jumlah_pembayaran = $request->jumlah_pembayaran;
+        $total_harga = $order->sum('sub_total');
+        $kembalian = $request->jumlah_pembayaran-$order->sum('sub_total');
+
+        if ($jumlah_pembayaran >= $total_harga) {
+            DB::table('tbl_order')
+        ->where('order_detail_id',$id)->update([
+            'status_order2'=>'sudah_dibayar'
+        ]);
+
+        DB::table('tbl_transaksi')
+        ->where('order_detail_id',$id)->update([
+            'jumlah_pembayaran' => $request->jumlah_pembayaran,
+            'kembalian' => $kembalian,
+            'status_order' => 'sudah_dibayar'
+        ]);
+
+        // return redirect('/kasir');
+        $pdf = PDF::loadview('kasir/transaksi.pdf',['transaksi' => $transaksi, 'order' => $order,'order2' => $order2]);
+    	return $pdf->stream('struk-pdf');
+        } else {
+            return redirect('/kasir')->with('message','Pembayaran kurang');
+        }    
     }
 
 }

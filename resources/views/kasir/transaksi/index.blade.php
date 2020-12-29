@@ -10,72 +10,100 @@
 	<div class="container-fluid mt-3">
 		<div class="row">
 			<div class="col-md-6">
-				<img src="{{asset('assets/img/logo.png')}}" style="width: 50px;">
+				<img src="{{ asset('assets/img/logo4.png') }}" style="width: 150px;" alt="">
 			</div>
 			<div class="col-md-6 text-right">
-				<span id="me">Kasir </span> <a href="/logout" class="text-danger"><i class="fas fa-sign-out-alt"></i></a><br>
-				<span class="text-danger" id="me">{{ Auth::guard('kasir')->user()->nama_kasir }}</span>
+				<span id="me">Kasir</span><br>
+				<span class="text-danger"><i class="fas fa-user"></i> {{ Auth::guard('kasir')->user()->nama_kasir }}</span>
 			</div>
-			<div class="col-md-6 mt-5">
-				<div class="input-group input-group-sm mb-3">
-				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="inputGroup-sizing-sm">Kode bayar</span>
-				  </div>
-				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off">
-				</div>
-				<div class="input-group input-group-sm mb-3">
-				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="inputGroup-sizing-sm">Barang</span>
-				  </div>
-				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off">
-				  <div class="input-group-append">
-				      <button class="btn btn-danger" type="button" id="button-addon2">Tambahkan</button>
-				    </div>
-				</div>
+			<div class="col-md-6 offset-md-1 mb-5 mt-5">
+				<form action="/cari_order_kasir" method="POST">
+					@csrf
+					<div class="input-group input-group-sm mb-3">
+						<div class="input-group-prepend">
+						  <span class="input-group-text" id="inputGroup-sizing-sm">Kode transaksi</span>
+						</div>
+						<input autocomplete="off" name="id" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+						<div class="input-group-append">
+							<button class="btn btn-danger px-3" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+						</div>
+					  </div>
+				</form>
 			</div>
+			@if(session('message'))
 			<div class="col-md-12">
+				<div class="alert alert-danger alert-dismissible show fade">
+					<div class="alert-body">
+					  <button class="close" data-dismiss="alert">
+						<span>×</span>
+					  </button>
+					  {{ session('message') }}
+					</div>
+				</div>
+			</div> 
+			@endif
+			@if ($transaksi->count() != '')
+			<div class="col-md-7 offset-md-1">
 				<table class="table table-striped">
 				  <thead>
-				    <tr>
-				      <th scope="col">No</th>
-				      <th scope="col">Nama menu</th>
-				      <th scope="col">harga</th>
-				      <th scope="col">jumlah</th>
-				      <th scope="col">total</th>
-				    </tr>
+					<tr>
+					  <th scope="col">No</th>
+					  <th scope="col">Nama menu</th>
+					  <th scope="col">harga</th>
+					  <th scope="col">jumlah</th>
+					  <th scope="col">Total</th>
+					</tr>
 				  </thead>
 				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Ramen</td>
-				      <td>10000</td>
-				      <td>1</td>
-				      <td>10000</td>
-				    </tr>
+					  @php
+						  $no = 1;
+					  @endphp
+					  @foreach ($transaksi as $item)
+					  <tr>
+						<th scope="row">{{ $no++ }}</th>
+						<td>{{ $item->nama_masakan }}</td>
+						<td>{{ $item->harga }}</td>
+						<td>{{ $item->jumlah }}</td>
+						<td>{{ $item->jumlah * $item->harga }}</td>
+					  </tr>
+					  @endforeach	
 				  </tbody>
 				</table>
 				<hr>
 			</div>
-			<div class="col-md-8 text-right justfy-content-end">
-				<span>Total : Rp 10.000</span> |
-			</div>
-			<div class="col-md-2">
-				<div class="input-group input-group-sm mb-3">
-				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="inputGroup-sizing-sm">Bayar</span>
-				  </div>
-				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off">
+			<div class="col-md-3 ">
+				<div class="row">
+					<form action="{{ route('kasir.bayar',$transaksi2->order_detail_id) }}" method="POST" class="row">
+						@csrf
+						<div class="col-md-12 mb-3">
+							<span>Total : Rp {{$transaksi->sum('sub_total')}}</span> 
+						</div>
+						<div class="col-md-12">
+							<div class="input-group input-group-sm mb-3">
+							  <div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroup-sizing-sm">Bayar</span>
+								<input type="hidden" id="total" value="{{$transaksi->sum('sub_total')}}" class="total" name="total_bayar">
+							  </div>
+							  <input autocomplete="off" name="jumlah_pembayaran" id="jumlah_pembayaran" onkeyup="hitung()" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+							</div>
+							<div class="input-group input-group-sm mb-3">
+							  <div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroup-sizing-sm">Kembali</span>
+							  </div>
+							  <input type="text" class="form-control kembalian" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="kembalian" id="kembalian" disabled>
+							</div>
+						</div>
+						<div class="col-md-12 text-center">
+							<button type="submit" class="btn btn-danger btn-block">Bayar</button>
+						</div>
+						<div class="col-md-12 text-center mt-3">
+							<a href="/kasir" class="text-danger" id="bo">X Clear</a>
+						</div>
+					</form>
 				</div>
-				<div class="input-group input-group-sm mb-3">
-				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="inputGroup-sizing-sm">Kembali</span>
-				  </div>
-				  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" disabled value="0">
-				</div>
 			</div>
-			<div class="col-md-2">
-				<a href="#" class="btn btn-danger btn-block confirm_script">Bayar</a>
-			</div>
+			@endif
+			
 		</div>		
 	</div>
 
@@ -84,7 +112,44 @@
 	<script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
 </body>
 </html>
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script>
+    
 
+  function hitung()
+  {
+    var total = $('#total').val();
+    var jumlah_pembayaran = $('#jumlah_pembayaran').val();
+    var kembalian = $('#kembalian').val();
+    var bayar = $('#bayar').val();
+    var a = jumlah_pembayaran - total;
+    $('#kembalian').val(a);
+    if(a < 0)
+    {
+      $("#bayar").prop("disabled", true);
+    }
+    else
+    {
+      $("#bayar").prop("disabled", false);
+    }
+  }
+
+$(document).ready(function() {
+    var t = $('#example').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "order": [[ 1, 'asc' ]]
+    } );
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+} );
+    </script>
 
 
 
