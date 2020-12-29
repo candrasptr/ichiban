@@ -82,7 +82,7 @@ class kasirController extends Controller
         return redirect()->back()->with('message','Data berhasil dihapus');
     }
 
-    public function kasir(Type $var = null)
+    public function kasir()
     {
         $transaksi = DB::table('kosong');
         return view('kasir/transaksi.index', ['transaksi' => $transaksi]);

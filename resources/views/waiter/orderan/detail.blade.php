@@ -2,48 +2,79 @@
 
 @section('title','Orderan')
 @section('title2','detail')
-@section('waiter','active')
+@section('orderan','active')
 @section('konten')
 
 <div class="container-fluid">
   <div class="row mt-1">
     <!-- Judul Buku -->
-    <h1>Candra saputra</h1>
+    
+    <h1>{{ $order2->nama_pelanggan }}</h1>
+    
+    
     <div class="col-md-12">
       <div class="card border rounded shadow-sm">
         <!-- Status -->
         <h5 class="card-header text-warning">
-          BELUM DIBAYAR
+          @if ($transaksi->status_order == 'sudah_dibayar')
+              {{ $transaksi->status_order }} | {{ $transaksi->diantar }} diantar
+          @else
+              {{ $transaksi->status_order }}
+          @endif
         </h5>
 
-        <div class="card-body">
+        <div class="card-body row">
+          <div class="col-md-12">
+            <table class="table table-sm table-hover mb-5">
+              <thead>
+                <tr>
+                  <th>Nama masakan</th>
+                  <th>Jumlah</th>
+                  <th>Harga</th>
+                  <th>Sub total</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($order as $item)
+                <tr>
+                  <td>{{ $item->nama_masakan }}</td>
+                  <td>{{ $item->jumlah }}</td>
+                  <td>{{ $item->harga }}</td>
+                  <td>{{ $item->harga*$item->jumlah }}</td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="col-md-6 mb-4">
+            <table class="table table-hover table-border borderless">
+              <thead>
+                <tr>
+                  <th>total_harga</th>
+                  <td>Rp {{ $transaksi->total_bayar }}</td>
+                </tr>
+                <tr>
+                  <th>Jumlah bayar</th>
+                  <td>Rp {{ $transaksi->jumlah_pembayaran }}</td>
+                </tr>
+                <tr>
+                  <th>Kembalian</th>
+                  <td>Rp {{ $transaksi->kembalian }}</td>
+                </tr>
+              </thead>
+            </table>
+          </div>
 
-              <!-- Nomeja -->
-              <div class="form-group row">
-                <label for="Nomeja" class="col-md-3 col-form-label col-form-label-md">No meja</label>
-                <div class="col-md-9">
-                  <input value="Meja 1" type="text" name="nomeja" class="form-control form-control-md border bg-light" id="colFormLabelSm" disabled value="">
-                </div>
-              </div>
+          <div class="col-md-6"></div>
 
-              <!-- Masakan -->
-              <div class="form-group row">
-                <label for="Masakan" class="col-md-3 col-form-label col-form-label-md">Masakan</label>
-                <div class="col-md-9">
-                  <input value="Ramen" type="text" name="masakan" class="form-control form-control-md border bg-light" id="colFormLabelSm" disabled value="">
-                </div>
-              </div>
-
-              <!-- harga -->
-              <div class="form-group row">
-                <label for="harga" class="col-md-3 col-form-label col-form-label-md">Harga</label>
-                <div class="col-md-9">
-                  <input value="Rp 10.000" type="text" name="harga" class="form-control form-control-md border bg-light" id="colFormLabelSm" disabled value="">
-                </div>
-              </div>
+          <div class="col-md-3 offset-md-9">
+            <a href="{{ url()->previous() }}" class="btn btn-danger btn-block">Kembali</a>
+          </div>
+              
 
               
-              <a href="{{ url()->previous() }}" class="btn btn-danger">Kembali</a> 
+               
         </div>
       </div>
     </div>

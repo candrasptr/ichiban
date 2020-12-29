@@ -111,10 +111,18 @@ Route::group(['middleware' => 'auth:kasir'], function(){
 
 // waiter
 Route::group(['middleware' => 'auth:waiter'], function(){
-	Route::view('/loginwaiter','waiter/login.index');
-	Route::view('/waiter','waiter/orderan.index');
-	Route::view('/waiter/detail','waiter/orderan.detail');
-	Route::view('/laporanwaiter','waiter/laporan.index');
+	Route::get('/waiter','WaiterController@waiter');
+	Route::get('/waiter/detail/{id}','WaiterController@order_detail')->name('waiter.detail');
+	Route::get('/waiter/struk/{id}','WaiterController@order_struk')->name('waiter.struk');
+	Route::get('/waiter_filter_penjualan','WaiterController@filter_penjualan');
+	Route::get('/waiter_belum','WaiterController@belum');
+	Route::get('/waiter_filter_penjualan_belum','WaiterController@filter_penjualan_belum');
+	Route::get('/waiter_batal','WaiterController@batal');
+	Route::get('/waiter_filter_penjualan_batal','WaiterController@filter_penjualan_batal');
+	Route::get('/waiter_belum_diantar','WaiterController@belum_diantar');
+	Route::get('/waiter_filter_penjualan_belum_diantar','WaiterController@filter_penjualan_belum_diantar');
+	Route::get('/selesai/{id}','WaiterController@selesai')->name('waiter.selesai');
+	Route::get('/batal/{id}','WaiterController@batalkan')->name('waiter.batalkan');
 });
 
 
