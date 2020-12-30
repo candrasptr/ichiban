@@ -123,6 +123,8 @@ Route::group(['middleware' => 'auth:waiter'], function(){
 	Route::get('/waiter_filter_penjualan_belum_diantar','WaiterController@filter_penjualan_belum_diantar');
 	Route::get('/selesai/{id}','WaiterController@selesai')->name('waiter.selesai');
 	Route::get('/batal/{id}','WaiterController@batalkan')->name('waiter.batalkan');
+	Route::view('/waiter_laporan','waiter/laporan.index');
+	Route::get('/waiter_rekap_laporan', 'LaporanController@pdf');
 });
 
 

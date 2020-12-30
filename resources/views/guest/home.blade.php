@@ -27,7 +27,7 @@
 	  <div class="col-md-12 text-center">
 	    <h1 class="text-danger mb-5" id="bo"> Makanan </h1>
 	  </div>
-	  <div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
+	  <div class="col-sm-10 col-md-10 col-xs-10 offset-sm-1 offset-md-1 mb-3" >
 	    <div class="card-deck" >
 			@foreach ($makanan as $key)
 			<div class="card shadow-sm" id="card">

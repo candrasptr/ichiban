@@ -8,7 +8,7 @@
           </div>
           <ul class="sidebar-menu">
               <li class="@yield('waiter')"><a class="nav-link" href="/waiter"><i class="fas fa-fw fa-folder"></i> <span>Orderan</span></a></li>
-              <li class="@yield('laporanwaiter')"><a class="nav-link" href="/laporanwaiter"><i class="fas fa-fw fa-folder"></i> <span>Laporan</span></a></li>
+              <li class="@yield('laporanwaiter')"><a class="nav-link" href="/waiter_laporan"><i class="fas fa-fw fa-folder"></i> <span>Laporan</span></a></li>
               <!-- <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
                 <ul class="dropdown-menu">
