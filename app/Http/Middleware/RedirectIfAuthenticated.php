@@ -33,6 +33,9 @@ class RedirectIfAuthenticated
             } else if (Auth::guard('waiter')->check()) {
 
               return redirect('/waiter');
+            } else if (Auth::guard('owner')->check()) {
+
+              return redirect('/owner');
             }
 
         return $next($request);

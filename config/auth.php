@@ -87,6 +87,16 @@ return [
             'provider' => 'waiter',
         ],
 
+        'owner' => [
+          'driver' => 'session',
+          'provider' => 'owner',
+        ],
+
+        'owner-api' => [
+            'driver' => 'token',
+            'provider' => 'owner',
+        ],
+
         'user' => [
           'driver' => 'session',
           'provider' => 'user',
@@ -139,6 +149,11 @@ return [
         'waiter' => [
           'driver' => 'eloquent',
           'model' => App\waiter::class,
+        ],
+
+        'owner' => [
+          'driver' => 'eloquent',
+          'model' => App\owner::class,
         ],
     ],
 

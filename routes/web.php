@@ -127,6 +127,11 @@ Route::group(['middleware' => 'auth:waiter'], function(){
 	Route::get('/waiter_rekap_laporan', 'LaporanController@pdf');
 });
 
+Route::group(['middleware' => 'auth:owner'], function(){
+	Route::view('/owner','owner/laporan.index');
+	Route::get('/owner_rekap_laporan', 'LaporanController@pdf');
+});
+
 
 
 
