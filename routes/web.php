@@ -24,7 +24,7 @@ Route::post('/proseslogin', 'LoginController@login');
 Route::post('/prosesloginpelanggan', 'PelangganController@login');
 Route::group(['middleware' => 'auth:admin'], function(){
 
-	Route::view('/dashboard','admin/dashboard.index');
+	Route::get('/dashboard','DashboardController@index');
 
 	Route::get('/masakan', 'MasakanController@makanan')->name('masakan.index');
 	Route::get('/adminminuman', 'MasakanController@minuman')->name('minuman.index');

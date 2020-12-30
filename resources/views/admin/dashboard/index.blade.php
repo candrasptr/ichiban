@@ -17,22 +17,22 @@
           <h4>Total Order</h4>
         </div>
         <div class="card-body">
-          10
+          {{ $totaltransaksi }}
         </div>
       </div>
     </div>
   </div>
   <div class="col-lg-3 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
-      <div class="card-icon bg-danger">
+      <div class="card-icon bg-success">
         <i class="fas fa-envelope"></i>
       </div>
       <div class="card-wrap">
         <div class="card-header">
-          <h4>Pending</h4>
+          <h4>Selesai</h4>
         </div>
         <div class="card-body">
-          42
+          {{  $selesai }}
         </div>
       </div>
     </div>
@@ -44,25 +44,25 @@
       </div>
       <div class="card-wrap">
         <div class="card-header">
-          <h4>Selesai</h4>
+          <h4>Belum diantar</h4>
         </div>
         <div class="card-body">
-          1,201
+          {{ $belumdiantar }}
         </div>
       </div>
     </div>
   </div>
   <div class="col-lg-3 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
-      <div class="card-icon bg-success">
+      <div class="card-icon bg-danger">
         <i class="fas fa-users"></i>
       </div>
       <div class="card-wrap">
         <div class="card-header">
-          <h4>Total admin</h4>
+          <h4>Belum dibayar</h4>
         </div>
         <div class="card-body">
-          47
+          {{ $belumdibayar }}
         </div>
       </div>
     </div>
