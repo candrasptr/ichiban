@@ -6,10 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\pelanggan;
 use Auth;
+use Carbon\Carbon;
 use App\Masakan;
 
 class GuestController extends Controller
 {
+
+    public function login()
+    {
+        $now = Carbon::now('h');
+        $noww = $now->isoFormat('HH');
+
+        return view('guest.index', ['now' => $noww]);
+    }
     public function index()
     {
         $makanan = DB::table('tbl_masakan')

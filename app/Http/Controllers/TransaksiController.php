@@ -51,7 +51,7 @@ class TransaksiController extends Controller
         $total_harga = $order->sum('sub_total');
         $kembalian = $request->jumlah_pembayaran-$order->sum('sub_total');
 
-        if ($jumlah_pembayaran > $total_harga) {
+        if ($jumlah_pembayaran >= $total_harga) {
             DB::table('tbl_order')
         ->where('order_detail_id',$id)->update([
             'status_order2'=>'sudah_dibayar'

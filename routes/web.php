@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.index');
-});
+Route::get('/', 'GuestController@login');
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/logout', 'LoginController@logout');
@@ -75,7 +73,7 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('/filter_penjualan_batal','OrderanController@filter_penjualan_batal');
 	Route::get('/orderan_belum_diantar','OrderanController@belum_diantar');
 	Route::get('/filter_penjualan_belum_diantar','OrderanController@filter_penjualan_belum_diantar');
-	Route::get('/selesai/{id}','OrderanController@selesai')->name('order.selesai');
+	Route::get('/orde/{id}','OrderanController@selesai')->name('order.selesai');
 	Route::get('/batal/{id}','OrderanController@batalkan')->name('order.batalkan');
 
 	Route::view('/laporan','admin/laporan.index');

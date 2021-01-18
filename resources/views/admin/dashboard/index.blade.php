@@ -14,7 +14,7 @@
       </div>
       <div class="card-wrap">
         <div class="card-header">
-          <h4>Total Order</h4>
+          <h4>Total Order </h4>
         </div>
         <div class="card-body">
           {{ $totaltransaksi }}
@@ -69,7 +69,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+  <div class="col-lg-8 col-md-8 col-8 col-sm-8" >
     <div class="card">
       <div class="card-header">
         <h4>Statistics</h4>
@@ -107,6 +107,18 @@
       </div>
     </div>
   </div>
+  <div class="col-12 col-md-4 col-lg-4">
+    <div class="card">
+      <div class="card-header">
+        <h4>Doughnut Chart</h4>
+      </div>
+      <div class="card-body py-5">
+        <br><br><br>
+        <canvas id="myChart3"></canvas>
+        <br><br><br><br><br>
+      </div>
+    </div>
+  </div>
 </div>
 
 @endsection
@@ -124,6 +136,119 @@
 
 @push('after-scripts')
 
-<script src="{{ asset('assets/js/page/index-0.js')}}"></script>
+{{-- <script src="{{ asset('assets/js/page/index-0.js')}}"></script> --}}
+<script>
+  "use strict";
+    
+var statistics_chart = document.getElementById("myChart").getContext('2d');
+
+var myChart = new Chart(statistics_chart, {
+  type: 'line',
+  data: {
+    labels: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "jumat", "Sabtu"],
+    datasets: [{
+      label: 'Statistics',
+      data: {{ $dataorderchrt }},
+      borderWidth: 5,
+      borderColor: '#6777ef',
+      backgroundColor: '#6777ef',
+      backgroundColor: 'transparent',
+      pointBackgroundColor: '#fff',
+      pointBorderColor: '#6777ef',
+      pointRadius: 4
+    }]
+  },
+  options: {
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        gridLines: {
+          display: false,
+          drawBorder: false,
+        },
+        ticks: {
+          stepSize: 150
+        }
+      }],
+      xAxes: [{
+        gridLines: {
+          color: '#fbfbfb',
+          lineWidth: 2
+        }
+      }]
+    },
+  }
+});
+
+var ctx = document.getElementById("myChart3").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    datasets: [{
+      data: [
+        80,
+        50,
+        40,
+        30,
+        20,
+      ],
+      backgroundColor: [
+        '#191d21',
+        '#63ed7a',
+        '#ffa426',
+        '#fc544b',
+        '#6777ef',
+      ],
+      label: 'Dataset 1'
+    }],
+    labels: [
+      'Black',
+      'Green',
+      'Yellow',
+      'Red',
+      'Blue'
+    ],
+  },
+  options: {
+    responsive: true,
+    legend: {
+      position: 'bottom',
+    },
+  }
+});
+
+// $('#visitorMap').vectorMap(
+// {
+//   map: 'world_en',
+//   backgroundColor: '#ffffff',
+//   borderColor: '#f2f2f2',
+//   borderOpacity: .8,
+//   borderWidth: 1,
+//   hoverColor: '#000',
+//   hoverOpacity: .8,
+//   color: '#ddd',
+//   normalizeFunction: 'linear',
+//   selectedRegions: false,
+//   showTooltip: true,
+//   pins: {
+//     id: '<div class="jqvmap-circle"></div>',
+//     my: '<div class="jqvmap-circle"></div>',
+//     th: '<div class="jqvmap-circle"></div>',
+//     sy: '<div class="jqvmap-circle"></div>',
+//     eg: '<div class="jqvmap-circle"></div>',
+//     ae: '<div class="jqvmap-circle"></div>',
+//     nz: '<div class="jqvmap-circle"></div>',
+//     tl: '<div class="jqvmap-circle"></div>',
+//     ng: '<div class="jqvmap-circle"></div>',
+//     si: '<div class="jqvmap-circle"></div>',
+//     pa: '<div class="jqvmap-circle"></div>',
+//     au: '<div class="jqvmap-circle"></div>',
+//     ca: '<div class="jqvmap-circle"></div>',
+//     tr: '<div class="jqvmap-circle"></div>',
+//   },
+// });
+</script>
 
 @endpush
