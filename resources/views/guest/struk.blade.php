@@ -111,9 +111,9 @@
         <div class="col-md-3">
             <a href="{{ route('order.batal',$transaksi->order_detail_id) }}" class="btn btn-danger btn-block text-light my-3" id="me">Batalkan pesanan</a>
         </div>
-        <div class="col-md-6 offset-md-3 text-center">
+        {{-- <div class="col-md-6 offset-md-3 text-center">
             <a href="" class="text-danger" id="me"><i class="fas fa-phone"></i> Panggil waiter</a>
-        </div>
+        </div> --}}
         <div class="col-md-6 offset-md-3 my-3">
             <span id="bo">Detail pesanan</span>
             <div class="row my-3">

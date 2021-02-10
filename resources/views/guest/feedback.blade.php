@@ -57,7 +57,7 @@
   @yield('page-styles')
 </head>
 
-<body style="background-image: url(../assets/img/background3.png);  /* Full height */
+<body style="background-image: url(../assets/img/background-feedback.png);  /* Full height */
   width: 100%; 
 
   /* Center and scale the image nicely */
@@ -66,13 +66,49 @@
 
     <div class="row">
       <div class="col-md-12">
-        @include('guest.header')
+        <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent shadow-sm fixed-top mb-3">
+          <img src="{{asset('assets/img/logo3.png')}}" style="width: 100px;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon pt-1"><i class="fas fa-bars text-light"></i></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav ml-3">
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="/home" id="me">Hi, {{ Auth::guard('pelanggan')->user()->nama_pelanggan }}</span></a>
+                </li>
+              </ul>
+            </div>
+            </div>
+          </nav>
+          <br><br><br><br><br>
       </div>
     </div>
+    <br><br><br><br><br>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 offset-md-3" id="feedback-head">
+          <h1 class="text-center text-danger py-3 mt-2" id="bo">FEEDBACK</h1>
+        </div>
+        <div class="col-md-12" id="feedback-body">
+          <form class="row py-5 px-5" action="/feedback-confirm" method="POST">
+            @csrf
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Kritik & saran</label>
+                <textarea class="form-control" name="feedback" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <a href="/home" class="btn btn-secondary float-right" id="feedback-button-back">Kembali</a>
+              <button class="btn btn px-4 float-right mr-2" id="feedback-button">Submit</button>
+            </div>
+          </form>
+          <br><br><br><br>
+        </div>
+      </div>
+    </div>     
 
-    @yield('konten')      
-
-  <footer class="main-footer bg-transparent mt-5">
+  <footer class="main-footer" id="feedback-body">
     <div class="text-center text-secondary py-3">
       <img src="{{asset('assets/img/logo4.png')}}" style="width: 100px;" class="mb-2"><br>
       Copyright &copy; 2020 Candra saputra 

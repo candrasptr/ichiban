@@ -20,6 +20,8 @@ Route::get('/logout', 'LoginController@logout');
 Route::get('/logout', 'PelangganController@logout')->name('pelanggan.logout');
 Route::post('/proseslogin', 'LoginController@login');
 Route::post('/prosesloginpelanggan', 'PelangganController@login');
+
+
 Route::group(['middleware' => 'auth:admin'], function(){
 
 	Route::get('/dashboard','DashboardController@index');
@@ -33,10 +35,6 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::post('/prosesedit/{id}','MasakanController@prosesedit')->name('masakan.prosesedit');
 	Route::delete('/masakan/delete/{id}','MasakanController@delete')->name('masakan.delete');
 	Route::post('/updatestatus/{id}','MasakanController@updatestatus')->name('masakan.updatestatus');
-
-	Route::view('/kategori','admin/kategori.index');
-	Route::view('/kategori/tambah','admin/kategori.create')->name('kategori.tambah');
-	Route::view('/kategori/edit','admin/kategori.edit')->name('kategori.edit');
 
 	Route::get('/admin','AdminController@index')->name('admin');
 	Route::get('/admin/tambah','AdminController@create')->name('admin.tambah');
@@ -74,7 +72,7 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('/orderan_belum_diantar','OrderanController@belum_diantar');
 	Route::get('/filter_penjualan_belum_diantar','OrderanController@filter_penjualan_belum_diantar');
 	Route::get('/orde/{id}','OrderanController@selesai')->name('order.selesai');
-	Route::get('/batal/{id}','OrderanController@batalkan')->name('order.batalkan');
+	Route::get('/batal/{id}','OrderanController@batalkan')->name('order.batal');
 
 	Route::view('/laporan','admin/laporan.index');
 	Route::get('/rekap_laporan', 'LaporanController@pdf');
@@ -82,6 +80,11 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('/transaksi','TransaksiController@index');
 	Route::post('/cari_order','TransaksiController@cari_order');
 	Route::post('/order_bayar/{id}','TransaksiController@order_bayar')->name('order.bayar');
+
+	Route::get('/feedback-list','AdminController@feedback');
+	Route::get('/delete-all','AdminController@delete_all');
+	Route::delete('/feedback/delete/{id}','AdminController@feedbackdelete')->name('feedback.delete');
+	
 });
 
 // pelanggan
@@ -96,7 +99,8 @@ Route::group(['middleware' => 'auth:pelanggan'], function(){
 	Route::view('/makanan','guest/makanan');
 	Route::view('/minuman','guest/minuman');
 	Route::view('/dessert','guest/dessert');
-	Route::view('/keranjang','guest/keranjang');
+	Route::view('/feedback','guest/feedback');
+	Route::post('/feedback-confirm', 'GuestController@feedback');
 });
 
 // kasir
@@ -125,6 +129,7 @@ Route::group(['middleware' => 'auth:waiter'], function(){
 	Route::get('/waiter_rekap_laporan', 'LaporanController@pdf');
 });
 
+// owner
 Route::group(['middleware' => 'auth:owner'], function(){
 	Route::view('/owner','owner/laporan.index');
 	Route::get('/owner_rekap_laporan', 'LaporanController@pdf');

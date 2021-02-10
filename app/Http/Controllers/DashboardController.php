@@ -31,22 +31,35 @@ class DashboardController extends Controller
         ->where('status_order','belum_dibayar')
         ->whereMonth('tanggal_transaksi','=',Carbon::now()->month)->count();
 
+        // kasir
+        $kasir = DB::table('tbl_kasir')->paginate(3);
+
+        // Waiter
+        $waiter = DB::table('tbl_waiter')->paginate(3);
+
+        // Feedback
+        $feedback = DB::table('tbl_feedback')->paginate(3);
+
+        // countfeedback
+        $countfeedback = DB::table('tbl_feedback')->count();
+
         $dataorderchrt = transaksi::select(\DB::raw("COUNT(*) as count"))
         ->whereMonth('tanggal_transaksi', Carbon::now()->month)
         ->groupBy(\DB::raw("Day(tanggal_transaksi)"))
         ->pluck('count');
 
-        // $datakunjungperbulanchrt = Tamu::select(\DB::raw("COUNT(*) as count"))
-        // ->whereYear('tanggal_kunjungan', date('Y'))
-        // ->groupBy(\DB::raw("Month(tanggal_kunjungan)"))
-        // ->pluck('count');
+        
 
         return view('admin/dashboard.index',[
             'totaltransaksi'=>$totaltransaksi,
             'selesai'=>$selesai,
             'belumdiantar'=>$belumdiantar,
             'belumdibayar'=>$belumdibayar,
-            'dataorderchrt'=>$dataorderchrt
+            'dataorderchrt'=>$dataorderchrt,
+            'kasir'=>$kasir,
+            'waiter'=>$waiter,
+            'feedback'=>$feedback,
+            'countfeedback'=>$countfeedback
             ]);
     }
 }

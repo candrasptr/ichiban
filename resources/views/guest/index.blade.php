@@ -51,7 +51,7 @@
                   Selamat memesan
                 </a>
                 <button type="submit" class="btn btn-danger btn-lg btn-icon icon-right" tabindex="4">
-                  Login
+                  Masuk
                 </button>
               </div>
             </form>
@@ -83,11 +83,11 @@
               <div class="mb-5 pb-3">         
                 <h1 class="mb-2 display-4 font-weight-bold" style="text-shadow: 5px 5px #000000;">
                 @if ($now < 11)
-                  {{-- Ohayou  --}}Good morning
+                  Ohayou 
                 @elseif ($now >= 11)
-                  {{-- Konniciwa --}}
+                  Konniciwa
                 @elseif ($now >= 18)
-                  {{-- Konbanwa --}}
+                  Konbanwa
                 @endif</h1>
                 <h5 class="font-weight-normal text-muted-transparent">Jawa barat, Indonesia</h5>
               </div>

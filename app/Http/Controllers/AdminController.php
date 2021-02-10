@@ -65,6 +65,26 @@ class AdminController extends Controller
     	admin::where('id_admin',$id)->delete();
 
         return redirect()->back()->with('message','Data berhasil dihapus');
-    }
+	}
+	
+	public function feedback(Request $request)
+	{
+		$data = DB::table('tbl_feedback')->where('tbl_feedback.isi','like',"%{$request->keyword}%")->paginate(5);
+		return view('admin/feedback.index', ['data' => $data]);
+	}
+
+	public function feedbackdelete($id)
+    {
+    	DB::table('tbl_feedback')->where('id_feedback',$id)->delete();
+
+        return redirect()->back()->with('message','Data berhasil dihapus');
+	}
+
+	public function delete_all()
+	{
+		DB::table('tbl_feedback')->delete();
+
+		return redirect()->back()->with('message','Data berhasil dihapus semua');
+	}
 
 }

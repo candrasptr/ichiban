@@ -58,7 +58,14 @@ class GuestController extends Controller
             'jumlah' => '1',
             'sub_total'=>$hasil
         ]);
-        return redirect()->back()->with('alert','Berhasil menambah order menu');
+        if ($ambil->nama_kategori == 'makanan') {
+            return redirect()->back()->with('makanan','Scroll kebawah untuk melihat keranjang');
+        } elseif ($ambil->nama_kategori == 'minuman') {
+            return redirect()->back()->with('minuman','Scroll kebawah untuk melihat keranjang');
+        } {
+            return redirect()->back()->with('dessert','Scroll kebawah untuk melihat keranjang');
+        } 
+        
     }
 
     public function order_update(Request $request)
@@ -153,6 +160,17 @@ class GuestController extends Controller
         ->where('id_order',$id)
         ->delete();
         return redirect('/home');
+    }
+
+    public function feedback(Request $request)
+    {
+        $now = date('Y-m-d');
+        DB::table('tbl_feedback')->insert([
+            'isi' => $request->feedback,
+            'tanggal' => $now
+        ]);
+
+        return redirect('/home')->with('feedback', 'Feedback tersampaikan');
     }
 
 }

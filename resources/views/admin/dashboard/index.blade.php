@@ -68,58 +68,85 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-lg-8 col-md-8 col-8 col-sm-8" >
-    <div class="card">
-      <div class="card-header">
-        <h4>Statistics</h4>
-        <div class="card-header-action">
-          <div class="btn-group">
-            <a href="#" class="btn btn-primary">Week</a>
-            <a href="#" class="btn">Month</a>
+
+  <h2 class="section-title">Pegawai</h2>
+  <p class="section-lead">
+    Daftar pegawai
+  </p>
+
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="d-inline">Kasir</h4>
+          <div class="card-header-action">
+            <a href="/kasirindex" class="btn btn-success">View All</a>
           </div>
         </div>
+        <div class="card-body">
+          <ul class="list-unstyled list-unstyled-border">
+            @foreach ($kasir as $item)
+            <li class="media">
+              <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-2.png" alt="avatar">
+              <div class="media-body">
+                <h6 class="media-title"><a href="#">{{ $item->username }}</a></h6>
+                <div class="text-small text-muted">{{ $item->nama_kasir }} <div class="bullet"></div> <span class="text-primary">{{ $item->alamat }}</span></div>
+              </div>
+            </li>            
+            @endforeach
+          </ul>
+        </div>
+        <div class="card-header">
+          <h4 class="d-inline">Waiter</h4>
+          <div class="card-header-action">
+            <a href="/waiterindex" class="btn btn-success">View All</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled list-unstyled-border">
+            @foreach ($waiter as $item)
+            <li class="media">
+              <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-1.png" alt="avatar">
+              <div class="media-body">
+                <h6 class="media-title"><a href="#">{{ $item->username }}</a></h6>
+                <div class="text-small text-muted">{{ $item->nama_waiter }} <div class="bullet"></div> <span class="text-primary">{{ $item->alamat }}</span></div>
+              </div>
+            </li>            
+            @endforeach
+          </ul>
+        </div>
       </div>
-      <div class="card-body">
-        <canvas id="myChart" height="182"></canvas>
-        <div class="statistic-details mt-sm-4">
-          <div class="statistic-details-item">
-            <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 7%</span>
-            <div class="detail-value">$243</div>
-            <div class="detail-name">Today's Sales</div>
+    </div>
+    <div class="col-md-4">
+      <div class="card card-hero">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="far fa-question-circle"></i>
           </div>
-          <div class="statistic-details-item">
-            <span class="text-muted"><span class="text-danger"><i class="fas fa-caret-down"></i></span> 23%</span>
-            <div class="detail-value">$2,902</div>
-            <div class="detail-name">This Week's Sales</div>
-          </div>
-          <div class="statistic-details-item">
-            <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span>9%</span>
-            <div class="detail-value">$12,821</div>
-            <div class="detail-name">This Month's Sales</div>
-          </div>
-          <div class="statistic-details-item">
-            <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 19%</span>
-            <div class="detail-value">$92,142</div>
-            <div class="detail-name">This Year's Sales</div>
+          <h4>{{ $countfeedback }}</h4>
+          <div class="card-description">Customers feedback</div>
+        </div>
+        <div class="card-body p-0">
+          <div class="tickets-list">
+            @foreach ($feedback as $item)
+            <a href="#" class="ticket-item">
+              <div class="ticket-title">
+                <h4>{{ $item->isi }}</h4>
+              </div>
+              <div class="ticket-info">
+                <div class="text-primary">{{ $item->tanggal }}</div>
+              </div>
+            </a>
+            @endforeach
+            <a href="/feedback-list" class="ticket-item ticket-more">
+              View All <i class="fas fa-chevron-right"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-12 col-md-4 col-lg-4">
-    <div class="card">
-      <div class="card-header">
-        <h4>Doughnut Chart</h4>
-      </div>
-      <div class="card-body py-5">
-        <br><br><br>
-        <canvas id="myChart3"></canvas>
-        <br><br><br><br><br>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 @endsection
 
