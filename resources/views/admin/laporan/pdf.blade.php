@@ -46,11 +46,12 @@
     </table>
     <hr>
 
-    <center>
-        <b>ICHIBAN RESTO</b> <br>
-        Kedungwuluh,
-        Babakanjaya RT 17 RW 06, Padaherang <br>
-        Pangandaran, jawa barat
-    </center>
+        <span>Dibuat oleh</span>
+        <br>
+        <br>
+        <br>
+        <br>
+        <hr style="width: 200px; margin-left: 0px;">
+        <span>{{ $item->nama_pelanggan }}</span>
 </body>
 </html>
