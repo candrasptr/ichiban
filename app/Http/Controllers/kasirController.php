@@ -129,7 +129,6 @@ class kasirController extends Controller
         })
         ->first();
 
-        $transaksi = DB::table('tbl_transaksi')->where('order_detail_id',$id)->first();
 
         $jumlah_pembayaran = $request->jumlah_pembayaran;
         $total_harga = $order->sum('sub_total');
@@ -147,6 +146,8 @@ class kasirController extends Controller
             'kembalian' => $kembalian,
             'status_order' => 'sudah_dibayar'
         ]);
+
+        $transaksi = DB::table('tbl_transaksi')->where('order_detail_id',$id)->first();
 
         // return redirect('/kasir');
         $pdf = PDF::loadview('kasir/transaksi.pdf',['transaksi' => $transaksi, 'order' => $order,'order2' => $order2]);

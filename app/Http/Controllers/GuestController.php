@@ -8,6 +8,7 @@ use App\pelanggan;
 use Auth;
 use Carbon\Carbon;
 use App\Masakan;
+use PDF;
 
 class GuestController extends Controller
 {
@@ -171,6 +172,33 @@ class GuestController extends Controller
         ]);
 
         return redirect('/home')->with('feedback', 'Feedback tersampaikan');
+    }
+
+    public function nota($id)
+    {
+        $order = DB::table('tbl_order')->where('order_detail_id',$id)
+        ->join('tbl_masakan', function($join){
+            $join->on('tbl_order.masakan_id','=','tbl_masakan.id_masakan');
+        })
+        ->join('tbl_pelanggan', function($join){
+            $join->on('tbl_order.user_order_id','=','tbl_pelanggan.id_pelanggan');
+        })
+        ->get();
+
+        $order2 = DB::table('tbl_order')->where('order_detail_id',$id)
+        ->join('tbl_masakan', function($join){
+            $join->on('tbl_order.masakan_id','=','tbl_masakan.id_masakan');
+        })
+        ->join('tbl_pelanggan', function($join){
+            $join->on('tbl_order.user_order_id','=','tbl_pelanggan.id_pelanggan');
+        })
+        ->first();
+
+        $transaksi = DB::table('tbl_transaksi')->where('order_detail_id',$id)->first();
+
+        // return view('guest.nota',['transaksi' => $transaksi, 'order' => $order,'order2' => $order2]);
+        $pdf = PDF::loadview('guest.nota',['transaksi' => $transaksi, 'order' => $order,'order2' => $order2]);
+    	return $pdf->stream('struk-pdf');
     }
 
 }

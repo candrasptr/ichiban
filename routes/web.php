@@ -72,7 +72,7 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('/orderan_belum_diantar','OrderanController@belum_diantar');
 	Route::get('/filter_penjualan_belum_diantar','OrderanController@filter_penjualan_belum_diantar');
 	Route::get('/orde/{id}','OrderanController@selesai')->name('order.selesai');
-	Route::get('/batal/{id}','OrderanController@batalkan')->name('order.batal');
+	Route::get('/orde/{id}', 'OrderanController@batalkan')->name('batal');
 
 	Route::view('/laporan','admin/laporan.index');
 	Route::get('/rekap_laporan', 'LaporanController@pdf');
@@ -94,6 +94,7 @@ Route::group(['middleware' => 'auth:pelanggan'], function(){
 	Route::post('/order_update','GuestController@order_update');
 	Route::post('/order_bayar','GuestController@order_bayar');
 	Route::get('/order_batal/{id}','GuestController@order_batal')->name('order.batal');
+	Route::get('/nota/{id}','GuestController@nota')->name('nota');
 	Route::get('/order_hapus/{id}','GuestController@order_hapus')->name('order.hapus');
 	Route::view('/menu','guest/menu');
 	Route::view('/makanan','guest/makanan');
