@@ -58,19 +58,45 @@
 
                   {{-- Button edit --}}
                   <a href="{{ route('admin.edit',$data->id_admin) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                  
-                  {{-- Button hapus --}}
-                  <a href="#" data-id="{{ $data->id_admin }}" class="btn btn-danger confirm_script">
-                    <form action="{{ route('admin.delete',$data->id_admin) }}" id="delete{{ $data->id_admin }}" method="POST">
-                      @csrf
-                      @method('delete')
+                  <a href="#" data-id="" class="btn btn-danger confirm_script-{{$data->id_admin}} mr-3">
+                    <form action="{{ route('admin.delete',$data->id_admin)}}" class="delete_form-{{$data->id_admin}}" method="POST">
+                    @method('DELETE')
+                    @csrf
                     </form>
                     <i class="fas fa-trash"></i>
-                  </a>
+                </a>
+              </td>
+            </tr>
+            @push('page-scripts')
+
+<script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
+
+@endpush
+
+@push('after-scripts')
+
+<script>
+$(".confirm_script-{{$data->id_admin}}").click(function(e) {
+  // id = e.target.dataset.id;
+  swal({
+      title: 'Yakin hapus data?',
+      text: 'Data yang dihapus tidak bisa di kembalikan',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $('.delete_form-{{$data->id_admin}}').submit();
+      } else {
+      swal('Hapus data telah di batalkan');
+      }
+    });
+});
+</script>
+@endpush
+@endforeach
                   
-                </td>
-              </tr>
-              @endforeach
             </tbody>
           </table>
           {{$data_admin->links()}}
@@ -82,31 +108,3 @@
 
 @endsection
 
-@push('page-scripts')
-
-<script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
-
-@endpush
-
-@push('after-scripts')
-
-<script>
-$(".confirm_script").click(function(e) {
-  id = e.target.dataset.id;
-  swal({
-      title: 'Yakin hapus data?',
-      text: 'Data yang dihapus tidak bisa dibalikin',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-      $(`#delete${id}`,).submit();
-      } else {
-      swal('Your imaginary file is safe!');
-      }
-    });
-});
-</script>
-@endpush

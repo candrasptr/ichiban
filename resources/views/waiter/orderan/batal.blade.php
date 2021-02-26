@@ -98,7 +98,7 @@
                       <td>{{ $item->kembalian }}</td>
                       <td>{{ $item->status_order }}</td>
                       <td>
-                        <a href="" class="btn btn-primary btn-block my-2"><i class="fas fa-print"></i></a>
+                        <a href="{{ route('waiter.order.delete',$item->order_detail_id) }}" class="btn btn-danger btn-block my-2"><i class="fas fa-trash"></i></a>
                       </td>
                   </tr>
                     @endforeach

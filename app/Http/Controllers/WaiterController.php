@@ -192,7 +192,7 @@ class WaiterController extends Controller
             'diantar' => 'sudah'
         ]);
         
-        return redirect()->back();
+        return redirect('/waiter');
     }
 
     public function batalkan($id)
@@ -201,7 +201,7 @@ class WaiterController extends Controller
             'status_order' => 'batal_dipesan'
         ]);
         
-        return redirect('/orderan_batal');
+        return redirect('/waiter_batal');
     }
 
     public function order_detail($id)
@@ -254,5 +254,13 @@ class WaiterController extends Controller
         // return view('waiter/orderan.pdf',['transaksi' => $transaksi, 'order' => $order]);
         $pdf = PDF::loadview('waiter/orderan.pdf',['transaksi' => $transaksi, 'order' => $order,'order2' => $order2]);
     	return $pdf->stream('struk-pdf');
+    }
+
+    public function order_delete($id)
+    {
+        DB::table('tbl_transaksi')->where('order_detail_id',$id)->delete();
+        DB::table('tbl_order')->where('order_detail_id',$id)->delete();
+        DB::table('tbl_order_detail')->where('id_order_detail',$id)->delete();
+        return redirect()->back();
     }
 }

@@ -48,7 +48,7 @@
                   </thead>
                   <tbody class="mt-2">
                   @foreach($data as $no => $dt)
-                      <tr>
+                        <tr>
                           <th scope="row">{{$data->firstItem()+$no}}</th>
                           <td>{{$dt->nama_waiter}}</td>
                           <td>{{$dt->jenis_kelamin}}</td>
@@ -58,15 +58,45 @@
                           <td>{{$dt->username}}</td>
                           <td>
                             <a href="{{ route('waiter.edit',$dt->id_waiter) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                            <a href="#" data-id="{{ $dt->id_waiter }}" class="btn btn-danger confirm_script">
-                              <form action="{{ route('waiter.delete',$dt->id_waiter) }}" id="delete{{ $dt->id_waiter }}" method="POST">
+                            <a href="#" data-id="" class="btn btn-danger confirm_script-{{$dt->id_waiter}} mr-3">
+                                <form action="{{ route('waiter.delete',$dt->id_waiter)}}" class="delete_form-{{$dt->id_waiter}}" method="POST">
+                                @method('DELETE')
                                 @csrf
-                                @method('delete')
-                              </form>
-                              <i class="fas fa-trash"></i></a>
+                                </form>
+                                <i class="fas fa-trash"></i>
+                            </a>
                           </td>
-                      </tr>
-                  @endforeach
+                        </tr>
+                        @push('page-scripts')
+
+            <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
+
+            @endpush
+
+            @push('after-scripts')
+
+            <script>
+            $(".confirm_script-{{$dt->id_waiter}}").click(function(e) {
+              // id = e.target.dataset.id;
+              swal({
+                  title: 'Yakin hapus data?',
+                  text: 'Data yang dihapus tidak bisa di kembalikan',
+                  icon: 'warning',
+                  buttons: true,
+                  dangerMode: true,
+                })
+                .then((willDelete) => {
+                  if (willDelete) {
+                    $('.delete_form-{{$dt->id_waiter}}').submit();
+                  } else {
+                  swal('Hapus data telah di batalkan');
+                  }
+                });
+            });
+            </script>
+            @endpush
+            @endforeach
+            
                       
                   </tbody>
               </table>
@@ -79,13 +109,13 @@
 
 @endsection
 
-@push('page-scripts')
+{{-- @push('page-scripts')
 
 <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
 
-@endpush
+@endpush --}}
 
-@push('after-scripts')
+{{-- @push('after-scripts')
 
 <script>
 $(".confirm_script").click(function(e) {
@@ -106,4 +136,4 @@ $(".confirm_script").click(function(e) {
     });
 });
 </script>
-@endpush
+@endpush --}}

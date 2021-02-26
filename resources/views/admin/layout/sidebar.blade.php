@@ -28,6 +28,7 @@
         <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown "><i class="fas fa-users"></i> <span>User</span></a>
           <ul class="dropdown-menu">
+            <li class="@yield('user')"><a class="nav-link" href="/ownerlist"><i class=""></i> <span>Owner</span></a></li>
             <li class="@yield('user')"><a class="nav-link" href="/admin"><i class=""></i> <span>Admin</span></a></li>
             <li class="@yield('user')"><a class="nav-link" href="/waiterindex"><i class=""></i> <span>Waiter</span></a></li>
             <li class="@yield('user')"><a class="nav-link" href="/kasirindex"><i class=""></i> <span>Kasir</span></a></li>

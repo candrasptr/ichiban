@@ -98,7 +98,7 @@
                       <td>{{ $item->kembalian }}</td>
                       <td>{{ $item->diantar }}</td>
                       <td>
-                        <a href="" class="btn btn-primary btn-block my-2"><i class="fas fa-print"></i></a>
+                        <a href="{{ route('orderan.struk',$item->order_detail_id)}}" class="btn btn-primary btn-block my-2"><i class="fas fa-print"></i></a>
                         <a href="{{ route('order.selesai',$item->id_transaksi) }}" class="btn btn-success btn-block confirm_script mb-2">Selesai</a>
                       </td>
                   </tr>

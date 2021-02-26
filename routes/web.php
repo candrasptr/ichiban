@@ -36,6 +36,10 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::delete('/masakan/delete/{id}','MasakanController@delete')->name('masakan.delete');
 	Route::post('/updatestatus/{id}','MasakanController@updatestatus')->name('masakan.updatestatus');
 
+	Route::get('/ownerlist','OwnerController@index')->name('ownerlist');
+	Route::get('/owneredit/{id}','OwnerController@edit')->name('owner.edit');
+	Route::patch('/prosesedit_owner/{id}','OwnerController@prosesedit')->name('prosesedit.owner');
+
 	Route::get('/admin','AdminController@index')->name('admin');
 	Route::get('/admin/tambah','AdminController@create')->name('admin.tambah');
 	Route::get('/admin/edit','AdminController@edit')->name('admin.edit');
@@ -71,15 +75,16 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('/filter_penjualan_batal','OrderanController@filter_penjualan_batal');
 	Route::get('/orderan_belum_diantar','OrderanController@belum_diantar');
 	Route::get('/filter_penjualan_belum_diantar','OrderanController@filter_penjualan_belum_diantar');
-	Route::get('/orde/{id}','OrderanController@selesai')->name('order.selesai');
+	Route::get('/order/{id}','OrderanController@selesai')->name('order.selesai');
 	Route::get('/orde/{id}', 'OrderanController@batalkan')->name('batal');
+	Route::delete('/ordeee/{id}', 'OrderanController@hapus')->name('order.delete');
 
 	Route::view('/laporan','admin/laporan.index');
 	Route::get('/rekap_laporan', 'LaporanController@pdf');
 
 	Route::get('/transaksi','TransaksiController@index');
 	Route::post('/cari_order','TransaksiController@cari_order');
-	Route::post('/order_bayar/{id}','TransaksiController@order_bayar')->name('order.bayar');
+	Route::post('/order_bayar/{id}','KasirController@order_bayar')->name('order.bayar');
 
 	Route::get('/feedback-list','AdminController@feedback');
 	Route::get('/delete-all','AdminController@delete_all');
@@ -109,6 +114,7 @@ Route::group(['middleware' => 'auth:kasir'], function(){
 	Route::get('/kasir','KasirController@kasir');
 	Route::post('/cari_order_kasir','KasirController@cari_order');
 	Route::post('/kasir_bayar/{id}','KasirController@order_bayar')->name('kasir.bayar');
+	Route::view('/kasir_laporan', 'kasir/transaksi.laporan');
 });
 
 
@@ -126,6 +132,7 @@ Route::group(['middleware' => 'auth:waiter'], function(){
 	Route::get('/waiter_filter_penjualan_belum_diantar','WaiterController@filter_penjualan_belum_diantar');
 	Route::get('/selesai/{id}','WaiterController@selesai')->name('waiter.selesai');
 	Route::get('/batal/{id}','WaiterController@batalkan')->name('waiter.batalkan');
+	Route::get('/bat/{id}','WaiterController@order_delete')->name('waiter.order.delete');
 	Route::view('/waiter_laporan','waiter/laporan.index');
 	Route::get('/waiter_rekap_laporan', 'LaporanController@pdf');
 });

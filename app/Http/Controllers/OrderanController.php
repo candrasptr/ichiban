@@ -122,7 +122,7 @@ class OrderanController extends Controller
             'diantar' => 'sudah'
         ]);
         
-        return redirect()->back();
+        return redirect('/orderan');
     }
 
     public function batalkan($id)
@@ -184,5 +184,13 @@ class OrderanController extends Controller
         // return view('admin/orderan.pdf',['transaksi' => $transaksi, 'order' => $order]);
         $pdf = PDF::loadview('admin/orderan.pdf',['transaksi' => $transaksi, 'order' => $order,'order2' => $order2]);
     	return $pdf->stream('struk-pdf');
+    }
+
+    public function hapus($id)
+    {
+        DB::table('tbl_order')->where('order_detail_id',$id)->delete();
+        DB::table('tbl_order_detail')->where('id_order_detail',$id)->delete();
+        DB::table('tbl_transaksi')->where('order_detail_id',$id)->delete();
+        return redirect()->back();
     }
 }

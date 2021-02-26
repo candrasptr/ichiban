@@ -57,16 +57,45 @@
                           <td>{{$dt->email}}</td>
                           <td>{{$dt->username}}</td>
                           <td>
-                            <a href="{{ route('kasir.edit',$dt->id_kasir) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                            <a href="#" data-id="{{ $dt->id_kasir }}" class="btn btn-danger confirm_script">
-                              <form action="{{ route('kasir.delete',$dt->id_kasir) }}" id="delete{{ $dt->id_kasir }}" method="POST">
-                                @csrf
-                                @method('delete')
+                            <a href="{{ route('kasir.edit',$dt->id_kasir) }}" class="mt-2 btn btn-success"><i class="fas fa-edit"></i></a>
+                            <a href="#" data-id="" class="mt-2 btn btn-danger confirm_script-{{$dt->id_kasir}} mr-3">
+                              <form action="{{ route('kasir.delete',$dt->id_kasir)}}" class="delete_form-{{$dt->id_kasir}}" method="POST">
+                              @method('DELETE')
+                              @csrf
                               </form>
-                              <i class="fas fa-trash"></i></a>
-                          </td>
+                              <i class="fas fa-trash"></i>
+                          </a>
+                        </td>
                       </tr>
-                      @endforeach
+                      @push('page-scripts')
+
+          <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
+
+          @endpush
+
+          @push('after-scripts')
+
+          <script>
+          $(".confirm_script-{{$dt->id_kasir}}").click(function(e) {
+            // id = e.target.dataset.id;
+            swal({
+                title: 'Yakin hapus data?',
+                text: 'Data yang dihapus tidak bisa di kembalikan',
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  $('.delete_form-{{$dt->id_kasir}}').submit();
+                } else {
+                swal('Hapus data telah di batalkan');
+                }
+              });
+          });
+          </script>
+          @endpush
+          @endforeach
                       
                   </tbody>
               </table>

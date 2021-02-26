@@ -54,12 +54,13 @@
                           <td>
                             <div class="mt-4">
                               <a href="{{ route('masakan.edit',$data->id_masakan) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                              <a href="#" data-id="{{ $data->id_masakan }}" class="btn btn-danger confirm_script">
-                                <form action="{{ route('masakan.delete',$data->id_masakan) }}" id="delete{{ $data->id_masakan }}" method="POST">
-                                  @csrf
-                                  @method('delete')
+                              <a href="#" data-id="" class="btn btn-danger confirm_script-{{$data->id_masakan}} mr-3">
+                                <form action="{{ route('masakan.delete',$data->id_masakan)}}" class="delete_form-{{$data->id_masakan}}" method="POST">
+                                @method('DELETE')
+                                @csrf
                                 </form>
-                                <i class="fas fa-trash"></i></a>
+                                <i class="fas fa-trash"></i>
+                                </a>
                                 <form action="{{route('masakan.updatestatus',$data->id_masakan)}}" method="post" class="">
                                   @csrf
                                   @if ($data->status == 'tersedia')
@@ -72,7 +73,35 @@
                             
                           </td>
                         </tr>
-                          @endforeach               
+                        @push('page-scripts')
+
+                        <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
+              
+                        @endpush
+              
+                        @push('after-scripts')
+              
+                        <script>
+                        $(".confirm_script-{{$data->id_masakan}}").click(function(e) {
+                          // id = e.target.dataset.id;
+                          swal({
+                              title: 'Yakin hapus data?',
+                              text: 'Data yang dihapus tidak bisa di kembalikan',
+                              icon: 'warning',
+                              buttons: true,
+                              dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                              if (willDelete) {
+                                $('.delete_form-{{$data->id_masakan}}').submit();
+                              } else {
+                              swal('Hapus data telah di batalkan');
+                              }
+                            });
+                        });
+                        </script>
+                        @endpush
+                        @endforeach
                   </tbody>
               </table>
               {{$data_masakan->links()}}

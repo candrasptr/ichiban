@@ -98,10 +98,44 @@
                       <td>{{ $item->kembalian }}</td>
                       <td>{{ $item->status_order }}</td>
                       <td>
-                        <a href="" class="btn btn-primary btn-block my-2"><i class="fas fa-print"></i></a>
-                      </td>
+                        <a href="#" data-id="" class="btn btn-danger confirm_script-{{$item->order_detail_id}} mr-3">
+                          <form action="{{ route('order.delete',$item->order_detail_id)}}" class="delete_form-{{$item->order_detail_id}}" method="POST">
+                          @method('DELETE')
+                          @csrf
+                          </form>
+                          <i class="fas fa-trash"></i>
+                          </a>                      
+                        </td>
                   </tr>
-                    @endforeach
+                  @push('page-scripts')
+
+                  <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
+        
+                  @endpush
+        
+                  @push('after-scripts')
+        
+                  <script>
+                  $(".confirm_script-{{$item->order_detail_id}}").click(function(e) {
+                    // id = e.target.dataset.id;
+                    swal({
+                        title: 'Yakin hapus data?',
+                        text: 'Data yang dihapus tidak bisa di kembalikan',
+                        icon: 'warning',
+                        buttons: true,
+                        dangerMode: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                          $('.delete_form-{{$item->order_detail_id}}').submit();
+                        } else {
+                        swal('Hapus data telah di batalkan');
+                        }
+                      });
+                  });
+                  </script>
+                  @endpush
+                  @endforeach  
                   </tbody>
               </table>
               {{$transaksi->links()}}
@@ -122,7 +156,7 @@
 
 {{-- <script>
 $(".confirm_script").click(function(e) {
-  // id = e.target.dataset.id;
+  // id = e.target.itemset.id;
   swal({
       title: 'Yakin menyelesaikan orderan?',
       text: 'Data yang diubah tidak bisa dibalikin',

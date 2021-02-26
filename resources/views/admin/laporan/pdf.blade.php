@@ -52,6 +52,6 @@
         <br>
         <br>
         <hr style="width: 200px; margin-left: 0px;">
-        <span>{{ $item->nama_pelanggan }}</span>
+        <span>{{ $petugas->nama_admin }}</span>
 </body>
 </html>

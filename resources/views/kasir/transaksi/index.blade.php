@@ -14,9 +14,10 @@
 			</div>
 			<div class="col-md-6 text-right">
 				<span id="me">Kasir</span><br>
-				<span class="text-danger"><i class="fas fa-user"></i> {{ Auth::guard('kasir')->user()->nama_kasir }}</span>
+				<a href="/logout" class="text-danger"><i class="fas fa-user"></i> {{ Auth::guard('kasir')->user()->nama_kasir }}</a>
 			</div>
 			<div class="col-md-6 offset-md-1 mb-5 mt-5">
+				<a href="/kasir_laporan" class="btn btn-danger mb-3">Cetak laporan</a>
 				<form action="/cari_order_kasir" method="POST">
 					@csrf
 					<div class="input-group input-group-sm mb-3">

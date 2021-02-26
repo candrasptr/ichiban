@@ -98,7 +98,6 @@
                       <td>{{ $item->kembalian }}</td>
                       <td>{{ $item->status_order }}</td>
                       <td>
-                        <a href="" class="btn btn-primary btn-block my-2"><i class="fas fa-print"></i></a>
                         <a href="{{ route('waiter.batalkan',$item->id_transaksi) }}" class="btn btn-danger btn-block confirm_script mb-2">Batal</a>
                       </td>
                   </tr>

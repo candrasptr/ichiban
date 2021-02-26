@@ -99,13 +99,13 @@ class GuestController extends Controller
         $hitung = count($transaksi);
         if($hitung < 1)
         {
-            $no = $hitung + 1;
+            $no = $hitung + 5;
             $kode = "ICHBNRST".$no;
         }
         
         else if($hitung >= 1)
         {
-            $no = $hitung + 1;
+            $no = $hitung + 5;
             $kode = "ICHBNRST".$no;
         }
             DB::table('tbl_transaksi')->insert([
