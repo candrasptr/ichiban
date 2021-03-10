@@ -17,7 +17,7 @@ Route::get('/', 'GuestController@login');
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/logout', 'LoginController@logout');
-Route::get('/logout', 'PelangganController@logout')->name('pelanggan.logout');
+Route::get('/logoutt', 'PelangganController@logout')->name('pelanggan.logout');
 Route::post('/proseslogin', 'LoginController@login');
 Route::post('/prosesloginpelanggan', 'PelangganController@login');
 

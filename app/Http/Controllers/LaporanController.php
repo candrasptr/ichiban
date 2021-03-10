@@ -33,12 +33,29 @@ class LaporanController extends Controller
             $ke = $request->ke;   
                 $query
                 ->whereBetween('tanggal_transaksi',[$dari,$ke]);
-            })->where('status_order','sudah_dibayar')->where('diantar','sudah')->paginate($request->limit ?  $request->limit : 10);
+            })->where('status_order','sudah_dibayar')->paginate($request->limit ?  $request->limit : 10);
             $transaksi->appends($request->only('dari','ke'));
         
+            $data = DB::table('tbl_order')->join('tbl_transaksi', function($join){
+                $join->on('tbl_order.order_detail_id','=','tbl_transaksi.order_detail_id');
+            })
+            ->join('tbl_masakan', function($join){
+                $join->on('tbl_order.masakan_id','=','tbl_masakan.id_masakan');
+            })
+            ->select('nama_masakan',DB::raw('sum(jumlah) as count'))
+            ->when($request->dari,function ($query) use ($request) {
+                $dari = $request->dari;
+                $ke = $request->ke;   
+                    $query
+                    ->whereBetween('tanggal_transaksi',[$dari,$ke]);
+                })
+            ->where('status_order2','sudah_dibayar')
+            ->groupBy('masakan_id','nama_masakan')
+            ->get();
+
             $petugas = DB::table('tbl_admin')->where('id_admin',Auth::guard('admin')->user()->id_admin )->first();
             
-            $pdf = PDF::loadview('admin/laporan.pdf',['transaksi' => $transaksi, 'dari' => $dari, 'ke' => $ke, 'petugas' => $petugas]);
+            $pdf = PDF::loadview('admin/laporan.pdf',['data' => $data,'transaksi' => $transaksi, 'dari' => $dari, 'ke' => $ke, 'petugas' => $petugas]);
     	    return $pdf->stream('struk-pdf');
     }
 }

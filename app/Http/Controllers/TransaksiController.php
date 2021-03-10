@@ -56,6 +56,8 @@ class TransaksiController extends Controller
         ->where('order_detail_id',$id)->update([
             'status_order2'=>'sudah_dibayar'
         ]);
+        
+       
 
         DB::table('tbl_transaksi')
         ->where('order_detail_id',$id)->update([

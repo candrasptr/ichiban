@@ -24,14 +24,17 @@ class GuestController extends Controller
     {
         $makanan = DB::table('tbl_masakan')
         ->where('nama_kategori','makanan')
+        ->where('status','tersedia')
         ->paginate(5);
 
         $minuman = DB::table('tbl_masakan')
         ->where('nama_kategori','minuman')
+        ->where('status','tersedia')
         ->paginate(5);
 
         $dessert = DB::table('tbl_masakan')
         ->where('nama_kategori','dessert')
+        ->where('status','tersedia')
         ->paginate(5);
 
         $order = DB::table('tbl_order')->where('status_order2','sedang_dipesan')->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)
@@ -94,6 +97,8 @@ class GuestController extends Controller
                 'order_id' => $a->id_order
             ]);
         }
+
+        
         $now = date('Y-m-d');
         $transaksi = DB::table('tbl_transaksi')->get();
         $hitung = count($transaksi);

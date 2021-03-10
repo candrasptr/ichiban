@@ -18,11 +18,17 @@
         <hr>
     </center>
 
+    
+    
     <span>
         <b>Total pemasukan</b>  :  Rp {{ $transaksi->sum('sub_total') }}           
     </span>
     <hr>
-    
+    <b>Masakan terjual</b>  : <br><br>
+    @foreach ($data as $item)
+        {{ $item->nama_masakan  }} : {{ $item->count }} <br>
+    @endforeach    
+    <hr>
     <br> <b>Detail transaksi</b>  : <br>
 	<table class="table table-sm table-hover mt-3 mb-5">
         <thead>

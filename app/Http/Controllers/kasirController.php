@@ -140,6 +140,8 @@ class kasirController extends Controller
             'status_order2'=>'sudah_dibayar'
         ]);
 
+        
+
         DB::table('tbl_transaksi')
         ->where('order_detail_id',$id)->update([
             'jumlah_pembayaran' => $request->jumlah_pembayaran,
