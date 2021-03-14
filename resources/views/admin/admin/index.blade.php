@@ -55,7 +55,7 @@
                 <td>{{ $data->nama_admin }}</td>
                 <td>{{ $data->username }}</td>
                 <td>
-
+ 
                   {{-- Button edit --}}
                   <a href="{{ route('admin.edit',$data->id_admin) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                   <a href="#" data-id="" class="btn btn-danger confirm_script-{{$data->id_admin}} mr-3">
@@ -65,37 +65,34 @@
                     </form>
                     <i class="fas fa-trash"></i>
                 </a>
-              </td>
-            </tr>
-            @push('page-scripts')
+                </td>
+              </tr>
+              @push('page-scripts')
+              <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
+              @endpush
 
-<script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
-
-@endpush
-
-@push('after-scripts')
-
-<script>
-$(".confirm_script-{{$data->id_admin}}").click(function(e) {
-  // id = e.target.dataset.id;
-  swal({
-      title: 'Yakin hapus data?',
-      text: 'Data yang dihapus tidak bisa di kembalikan',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        $('.delete_form-{{$data->id_admin}}').submit();
-      } else {
-      swal('Hapus data telah di batalkan');
-      }
-    });
-});
-</script>
-@endpush
-@endforeach
+              @push('after-scripts')
+              <script>
+              $(".confirm_script-{{$data->id_admin}}").click(function(e) {
+                // id = e.target.dataset.id;
+                swal({
+                    title: 'Yakin hapus data?',
+                    text: 'Data yang dihapus tidak bisa di kembalikan',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                    if (willDelete) {
+                      $('.delete_form-{{$data->id_admin}}').submit();
+                    } else {
+                    swal('Hapus data telah di batalkan');
+                    }
+                  });
+              });
+              </script>
+              @endpush
+              @endforeach
                   
             </tbody>
           </table>

@@ -58,14 +58,6 @@
         <br>
         <br>
         <hr style="width: 200px; margin-left: 0px;">
-        @if (Auth::guard('admin')->check())
         <span>{{ $petugas->nama_admin }}</span>
-        @elseif (Auth::guard('kasir')->check())
-        <span>{{ $petugas->nama_kasir }}</span>
-        @elseif (Auth::guard('waiter')->check())
-        <span>{{ $petugas->nama_waiter }}</span>
-        @elseif (Auth::guard('owner')->check())
-        <span>{{ $petugas->nama_owner }}</span>
-        @endif
 </body>
 </html>

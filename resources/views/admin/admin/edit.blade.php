@@ -33,7 +33,7 @@
           </div>
         </div>
 
-      <div class="col-md-6">
+        <div class="col-md-6">
           <div class="form-group">
           <label @error('username') class="text-danger" @enderror>
               username
