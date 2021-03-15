@@ -25,9 +25,17 @@
     </span>
     <hr>
     <b>Masakan terjual</b>  : <br><br>
-    @foreach ($data as $item)
-        {{ $item->nama_masakan  }} : {{ $item->count }} <br>
-    @endforeach    
+    <br>
+        <div style="width: 300px;">
+            @foreach ($data as $item)
+            <div style="width:180px; float:left; margin-top:-10px;">
+                {{ $item->nama_masakan  }}
+            </div>
+            <div style="width:100px; float:left; margin-top:-10px;">
+                : {{ $item->count }} 
+            </div><br>
+            @endforeach 
+        </div>
     <hr>
     <br> <b>Detail transaksi</b>  : <br>
 	<table class="table table-sm table-hover mt-3 mb-5">
