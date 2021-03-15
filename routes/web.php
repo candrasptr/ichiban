@@ -84,7 +84,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 	Route::get('/transaksi', 'TransaksiController@index');
 	Route::post('/cari_order', 'TransaksiController@cari_order');
-	Route::post('/order_bayar/{id}', 'KasirController@order_bayar')->name('order.bayar');
+	Route::post('/order_bayar/{id}', 'TransaksiController@order_bayar')->name('order.bayar');
 
 	Route::get('/feedback-list', 'AdminController@feedback');
 	Route::get('/delete-all', 'AdminController@delete_all');
