@@ -43,7 +43,7 @@
 				</div>
 			</div> 
 			@endif
-			@if ($transaksi->count() != '')
+			@if ($transaksi !== 'abc')
 			<div class="col-md-7 offset-md-1">
 				<table class="table table-striped">
 				  <thead>
