@@ -6,7 +6,10 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav ml-3">
       <li class="nav-item">
-        <a class="nav-link text-danger" href="/home" id="me">Hi, {{ Auth::guard('pelanggan')->user()->nama_pelanggan }}</span></a>
+        <div class="d-flex items-center align-items-center">
+          <a class="nav-link text-danger" style="margin: 1rem" href="/home" id="me">Hi, {{ Auth::guard('pelanggan')->user()->nama_pelanggan }}</a>
+          <a href="/cart" type="submit" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+        </div>
       </li>
     </ul>
   </div>

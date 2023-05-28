@@ -20,6 +20,7 @@ class GuestController extends Controller
 
         return view('guest.index', ['now' => $noww]);
     }
+
     public function index()
     {
         $makanan = DB::table('tbl_masakan')
@@ -63,15 +64,24 @@ class GuestController extends Controller
             'sub_total'=>$hasil
         ]);
         if ($ambil->nama_kategori == 'makanan') {
-            return redirect()->back()->with('makanan','Scroll kebawah untuk melihat keranjang');
+            return redirect('/cart')->with('makanan','Scroll kebawah untuk melihat keranjang');
         } elseif ($ambil->nama_kategori == 'minuman') {
-            return redirect()->back()->with('minuman','Scroll kebawah untuk melihat keranjang');
+            return redirect('/cart')->with('minuman','Scroll kebawah untuk melihat keranjang');
         } {
-            return redirect()->back()->with('dessert','Scroll kebawah untuk melihat keranjang');
+            return redirect('/cart')->with('dessert','Scroll kebawah untuk melihat keranjang');
         } 
         
     }
 
+    public function cart()
+    {
+        $order = DB::table('tbl_order')
+            ->join('tbl_masakan', 'tbl_order.masakan_id', '=', 'tbl_masakan.id_masakan')
+            ->get();
+    
+        return view('guest/cart', ['order' => $order]);
+    }
+    
     public function order_update(Request $request)
     {
         $ambil1 = DB::table('tbl_order')->where('id_order',$request->id_order)->first();
@@ -86,10 +96,8 @@ class GuestController extends Controller
 
     public function order_bayar(Request $request)
     {      
-
         $ambil = DB::table('tbl_order')->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)->where('status_order2','sedang_dipesan')->get();
         $order = DB::table('tbl_order')->where('id_order', \DB::raw("(select max(`id_order`) from tbl_order)"))->where('user_order_id',Auth::guard('pelanggan')->user()->id_pelanggan)->first();
-            
         foreach($ambil as $a)
         {
             DB::table('tbl_order_detail')->insert([

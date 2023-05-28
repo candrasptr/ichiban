@@ -133,11 +133,11 @@ class MasakanController extends Controller
         }
 
         if ($request->kategori == 'makanan') {
-            return redirect()->route('masakan.index')->with('message','Berhasil disimpan!');
+            return redirect('/cart')('masakan.index')->with('message','Berhasil disimpan!');
         } elseif ($request->kategori == 'minuman') {
-            return redirect()->route('minuman.index')->with('message','Berhasil disimpan!');
+            return redirect('/cart')('minuman.index')->with('message','Berhasil disimpan!');
         } {
-            return redirect()->route('dessert.index')->with('message','Berhasil disimpan!');
+            return redirect('/cart')('dessert.index')->with('message','Berhasil disimpan!');
         }
 
     }

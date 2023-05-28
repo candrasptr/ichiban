@@ -94,6 +94,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 // pelanggan
 Route::group(['middleware' => 'auth:pelanggan'], function () {
 	Route::get('/home', 'GuestController@index');
+	Route::get('/cart', 'GuestController@cart');
 	Route::post('/pesan_order', 'GuestController@pesan_order');
 	Route::post('/order_update', 'GuestController@order_update');
 	Route::post('/order_bayar', 'GuestController@order_bayar');
