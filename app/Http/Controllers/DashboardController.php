@@ -37,6 +37,9 @@ class DashboardController extends Controller
         // Waiter
         $waiter = DB::table('tbl_waiter')->paginate(3);
 
+        // Pelayan
+        $pelayan = DB::table('tbl_pelayan')->paginate(3);
+
         // Feedback
         $feedback = DB::table('tbl_feedback')->paginate(3);
 
@@ -56,10 +59,11 @@ class DashboardController extends Controller
             'belumdiantar'=>$belumdiantar,
             'belumdibayar'=>$belumdibayar,
             'dataorderchrt'=>$dataorderchrt,
-            'kasir'=>$kasir,
-            'waiter'=>$waiter,
-            'feedback'=>$feedback,
-            'countfeedback'=>$countfeedback
+            // 'kasir'=>$kasir,
+            // 'waiter'=>$waiter,
+            'pelayan' => $pelayan,
+            // 'feedback'=>$feedback,
+            // 'countfeedback'=>$countfeedback
             ]);
     }
 }

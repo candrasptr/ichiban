@@ -52,9 +52,9 @@
           <div class="form-group">
             <label>Kategori</label>
             <select name="kategori" class="form-control" id="exampleFormControlSelect1">
-              <option value="makanan">Makanan</option>
-              <option value="minuman">Minuman</option>
-              <option value="dessert">Dessert</option>
+              <option value="makanan">Coffee</option>
+              <option value="minuman">Non Coffee</option>
+              <option value="dessert">Makanan</option>
             </select>
           </div>
         </div>

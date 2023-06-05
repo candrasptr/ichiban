@@ -106,6 +106,16 @@ return [
             'driver' => 'token',
             'provider' => 'user',
         ],
+
+        'pelayan' => [
+          'driver' => 'session',
+          'provider' => 'pelayan',
+        ],
+
+        'pelayan-api' => [
+            'driver' => 'token',
+            'provider' => 'pelayan',
+        ],
     ],
 
     /*
@@ -154,6 +164,11 @@ return [
         'owner' => [
           'driver' => 'eloquent',
           'model' => App\owner::class,
+        ],
+
+        'pelayan' => [
+          'driver' => 'eloquent',
+          'model' => App\pelayan::class,
         ],
     ],
 

@@ -27,7 +27,7 @@
                   <thead>
                       <tr>
                           <th scope="col">No</th>
-                          <th scope="col">Masakan</th>
+                          <th scope="col">Non Coffee</th>
                           <th></th>
                           <th>Aksi</th>
                       </tr>

@@ -11,14 +11,14 @@
 	    <div class="input-group mb-3">
 	      <input type="text" class="form-control" placeholder="Cari menu" aria-label="Recipient's username" aria-describedby="basic-addon2" id="input-cari">
 	      <div class="input-group-append">
-	        <a class="btn btn-danger btn-cari px-5" href="#" id="basic-addon2"><i class="fas fa-search"></i></a>
+	        <a class="btn btn-dark btn-cari px-5" href="#" id="basic-addon2"><i class="fas fa-search"></i></a>
 	      </div>
 	    </div>
 	  </div>
 	  <div class="col-md-4">
-	  	<a href="/makanan" class="btn btn-danger ml-3" id="btn-menu">Makanan</a>
-	  	<a href="/minuman" class="btn btn-danger ml-2" id="btn-menu">Minuman</a>
-	  	<a href="/dessert" class="btn btn-danger ml-2" id="btn-menu">Dessert</a>
+	  	<a href="/makanan" class="btn btn-dark ml-3" id="btn-menu">Makanan</a>
+	  	<a href="/minuman" class="btn btn-dark ml-2" id="btn-menu">Minuman</a>
+	  	<a href="/dessert" class="btn btn-dark ml-2" id="btn-menu">Dessert</a>
 	  </div>
 	    <div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
 	      <div class="card-deck" >
@@ -29,10 +29,10 @@
 	          </div>
 	          <div class="row">
 	          	<div class="col-md-8">
-	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          		<a class="btn btn-transparent text-dark ml-2 my-3" id="sb">Rp. 10000</a>
 	          	</div>
 	          	<div class="col-md-4 text-right">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          		<a href="" class="btn btn-dark text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
@@ -43,10 +43,10 @@
 	          </div>
 	          <div class="row">
 	          	<div class="col-md-8">
-	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          		<a class="btn btn-transparent text-dark ml-2 my-3" id="sb">Rp. 10000</a>
 	          	</div>
 	          	<div class="col-md-4 text-right">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          		<a href="" class="btn btn-dark text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
@@ -57,10 +57,10 @@
 	          </div>
 	          <div class="row">
 	          	<div class="col-md-8">
-	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          		<a class="btn btn-transparent text-dark ml-2 my-3" id="sb">Rp. 10000</a>
 	          	</div>
 	          	<div class="col-md-4 text-right">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          		<a href="" class="btn btn-dark text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>
@@ -71,10 +71,10 @@
 	          </div>
 	          <div class="row">
 	          	<div class="col-md-8">
-	          		<a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. 10000</a>
+	          		<a class="btn btn-transparent text-dark ml-2 my-3" id="sb">Rp. 10000</a>
 	          	</div>
 	          	<div class="col-md-4 text-right">
-	          		<a href="" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
+	          		<a href="" class="btn btn-dark text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></a>
 	          	</div>
 	          </div>
 	        </div>

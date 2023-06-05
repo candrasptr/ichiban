@@ -13,14 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'GuestController@login');
-
+Route::get('/', 'GuestController@login')->name('welcome');
 Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/logout', 'LoginController@logout');
 Route::get('/logoutt', 'PelangganController@logout')->name('pelanggan.logout');
 Route::post('/proseslogin', 'LoginController@login');
 Route::post('/prosesloginpelanggan', 'PelangganController@login');
 Route::get('/rekap_laporan', 'LaporanController@pdf');
+
+// Route::get('/pelayan/transaksi','PelayanController@transaksi')->name('pelayan.transaksi');
+// Route::get('/pelayan/pesanan','PelayanController@pesanan')->name('pelayan.pesanan');
+// Route::get('/pelayan/laporan','PelayanController@laporan')->name('pelayan.laporan');
+// Route::get('/pelayan/menu/coffee','PelayanController@makanan')->name('pelayan.menucoffee');
+// Route::get('/pelayan/menu/noncoffee','PelayanController@minuman')->name('pelayan.menunoncoffee');
+// Route::get('/pelayan/menu/makanan','PelayanController@dessert')->name('pelayan.menumakanan');
+// Route::post('/prosescreatemasakan', 'PelayanController@prosescreate');
+// Route::get('/pelayan/menu/tambah', 'PelayanController@create')->name('pelayan.menutambah');
+// Route::get('/pelayan/menu/{id}/edit', 'PelayanController@edit')->name('pelayan.menuedit');
+// Route::post('/prosesedit/{id}', 'PelayanController@prosesedit')->name('masakan.prosesedit');
+// Route::delete('/masakan/delete/{id}', 'PelayanController@delete')->name('masakan.delete');
+// Route::post('/updatestatus/{id}', 'PelayanController@updatestatus')->name('masakan.updatestatus');
 
 
 Route::group(['middleware' => 'auth:admin'], function () {
@@ -64,6 +76,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
 	Route::patch('/proseseditkasir/{id}', 'KasirController@prosesedit')->name('kasir.prosesedit');
 	Route::delete('/kasir/delete/{id}', 'KasirController@delete')->name('kasir.delete');
 
+	Route::get('/pelayanindex', 'PelayanController@index')->name('pelayan');
+	Route::get('/pelayan/tambah', 'PelayanController@create')->name('pelayan.tambah');
+	Route::get('/pelayan/edit', 'PelayanController@edit')->name('pelayan.edit');
+	Route::post('/prosescreatepelayan', 'PelayanController@prosescreate');
+	Route::get('/pelayan/{id}/edit', 'PelayanController@edit')->name('pelayan.edit');
+	Route::patch('/proseseditpelayan/{id}', 'PelayanController@prosesedit')->name('pelayan.prosesedit');
+	Route::delete('/pelayan/delete/{id}', 'PelayanController@delete')->name('pelayan.delete');
+
 	Route::get('/pelanggan', 'PelangganController@index');
 
 	Route::get('/orderan', 'OrderanController@index');
@@ -89,17 +109,29 @@ Route::group(['middleware' => 'auth:admin'], function () {
 	Route::get('/feedback-list', 'AdminController@feedback');
 	Route::get('/delete-all', 'AdminController@delete_all');
 	Route::delete('/feedback/delete/{id}', 'AdminController@feedbackdelete')->name('feedback.delete');
+
+	Route::get('/bahanbaku', 'BahanbakuController@index')->name('bahanbaku.index');
+	Route::get('/bahanbaku/create', 'BahanbakuController@create')->name('bahanbaku.create');
+	Route::post('/bahanbaku/store', 'BahanbakuController@store')->name('bahanbaku.store');
+	Route::get('/bahanbaku/search', 'BahanbakuController@search')->name('bahanbaku.search');
+	Route::post('/bahanbaku/edit', 'BahanbakuController@edit')->name('bahanbaku.edit');
+	Route::delete('/bahanbaku/delete/{id}', 'BahanbakuController@delete')->name('bahanbaku.delete');
 });
 
 // pelanggan
 Route::group(['middleware' => 'auth:pelanggan'], function () {
-	Route::get('/home', 'GuestController@index');
-	Route::get('/cart', 'GuestController@cart');
+	Route::post('/token', 'GuestController@token');
+	Route::get('/home', 'GuestController@index')->name('home');
+	Route::get('/search', 'GuestController@search');
+	Route::get('/cart', 'GuestController@cart')->name('guest.cart');
 	Route::post('/pesan_order', 'GuestController@pesan_order');
 	Route::post('/order_update', 'GuestController@order_update');
 	Route::post('/order_bayar', 'GuestController@order_bayar');
+	Route::post('/order_cashless', 'GuestController@bayar_cashless')->name('bayar_cashless');
+	Route::post('/post', 'GuestController@post');
 	Route::get('/order_batal/{id}', 'GuestController@order_batal')->name('order.batal');
 	Route::get('/nota/{id}', 'GuestController@nota')->name('nota');
+	Route::get('/nota_lunas/{id}', 'GuestController@nota_lunas')->name('nota_lunas');
 	Route::get('/order_hapus/{id}', 'GuestController@order_hapus')->name('order.hapus');
 	Route::view('/menu', 'guest/menu');
 	Route::view('/makanan', 'guest/makanan');
@@ -112,9 +144,31 @@ Route::group(['middleware' => 'auth:pelanggan'], function () {
 // kasir
 Route::group(['middleware' => 'auth:kasir'], function () {
 	Route::get('/kasir', 'KasirController@kasir');
-	Route::post('/cari_order_kasir', 'KasirController@cari_order');
+	Route::post('/cari_order_kasir', 'PelayanController@cari_order');
 	Route::post('/kasir_bayar/{id}', 'KasirController@order_bayar')->name('kasir.bayar');
 	Route::view('/kasir_laporan', 'kasir/transaksi.laporan');
+});
+
+Route::group(['middleware' => 'auth:pelayan'], function () {
+	Route::get('/pesanan', 'PelayanController@pelayan')->name('pelayan.pesanan');
+	Route::get('/pelayan', 'PelayanController@transaksi')->name('pelayan.transaksi');
+	// Route::get('/pesanan', 'PelayanController@pesanan')->name('pelayan.pesanan');
+	Route::get('/belumdiantar', 'PelayanController@belum_diantar')->name('pelayan.belumdiantar');
+	Route::get('/selesai/{id}', 'PelayanController@selesai')->name('pelayan.selesaitransaksi');
+	Route::get('/laporan', 'PelayanController@laporan')->name('pelayan.laporan');
+	Route::get('/menu/coffee', 'PelayanController@makanan')->name('pelayan.menucoffee');
+	Route::get('/menu/noncoffee', 'PelayanController@minuman')->name('pelayan.menunoncoffee');
+	Route::get('/menu/makanan', 'PelayanController@dessert')->name('pelayan.menumakanan');
+	Route::post('/prosescreatemasakanpelayan', 'PelayanController@prosescreate_menu')->name('pelayan.masakanstore');
+	Route::get('/menu/tambah', 'PelayanController@create_menu')->name('pelayan.menutambah');
+	Route::get('/menu/{id}/edit', 'PelayanController@edit_menu')->name('pelayan.menuedit');
+
+	Route::post('/prosesedit/pelayan/{id}', 'PelayanController@prosesedit_menu')->name('pelayan.editmenu');
+	Route::delete('/masakan/pelayan/delete/{id}', 'PelayanController@delete_menu')->name('pelayan.masakandelete');
+	Route::post('/updatestatus/pelayan/{id}', 'PelayanController@updatestatus_menu')->name('pelayan.masakanupdatestatus');
+	Route::post('/cari_order_kasir', 'PelayanController@cari_order');
+	Route::post('/kasir_bayar/{id}', 'PelayanController@order_bayar')->name('kasir.bayar');
+
 });
 
 
