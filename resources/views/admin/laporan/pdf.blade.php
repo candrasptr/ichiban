@@ -24,7 +24,7 @@
         <b>Total pemasukan</b>  :  Rp {{ $transaksi->sum('sub_total') }}           
     </span>
     <hr>
-    <b>Masakan terjual</b>  : <br><br>
+    <b>Menu terjual</b>  : <br><br>
     <br>
         <div style="width: 300px;">
             @foreach ($data as $item)
@@ -63,12 +63,20 @@
         </tbody>
     </table>
     <hr>
-    <span style="float: right; margin-right:120px;">Dibuat oleh</span>
+    <!-- <span style="float: right; margin-right:120px;">Dibuat oleh</span> -->
     <br>
     <br>
     <br>
     <br>
-    <hr style="width: 200px; float: right; margin-right: 0px;">
+    <center>
+        <span>
+            <b style="font-size: 20px;">Tampebako Coffee</b> <br> 
+            Jl. Perdatam Terusan No.6D, RW.5, Ulujami<br>
+            Kec. Pesanggrahan, Kota Jakarta Selatan
+        </span>
+        <hr>
+    </center>
+    <!-- <hr style="width: 200px; float: right; margin-right: 0px;">
     @if (Auth::guard('admin')->check())
     <span style="float: right; margin-top:15px; margin-right:150px;">{{ $petugas->nama_admin }}</span>
     @elseif (Auth::guard('kasir')->check())
@@ -77,6 +85,6 @@
     <span style="float: right; margin-top:15px; margin-right:150px;">{{ $petugas->nama_waiter }}</span>
     @elseif (Auth::guard('owner')->check())
     <span style="float: right; margin-top:15px; margin-right:150px;">{{ $petugas->nama_owner }}</span>
-    @endif                          
+    @endif                           -->
 </body>
 </html>

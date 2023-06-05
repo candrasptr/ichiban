@@ -61,6 +61,8 @@ class LaporanController extends Controller
             $petugas = DB::table('tbl_waiter')->where('id_waiter', Auth::guard('waiter')->user()->id_waiter)->first();
         } elseif (Auth::guard('owner')->check()) {
             $petugas = DB::table('tbl_owner')->where('id_owner', Auth::guard('owner')->user()->id_owner)->first();
+        }elseif (Auth::guard('pelayan')->check()) {
+            $petugas = DB::table('tbl_pelayan')->where('id_pelayan', Auth::guard('pelayan')->user()->id_pelayan)->first();
         }
 
         $pdf = PDF::loadview('admin/laporan.pdf', ['data' => $data, 'transaksi' => $transaksi, 'dari' => $dari, 'ke' => $ke, 'petugas' => $petugas]);

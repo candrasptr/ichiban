@@ -192,7 +192,7 @@ class WaiterController extends Controller
             'diantar' => 'sudah'
         ]);
         
-        return redirect('/waiter');
+        return redirect('pesanan');
     }
 
     public function batalkan($id)

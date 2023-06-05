@@ -1,6 +1,6 @@
 @extends('admin/layout.master')
 
-@section('title','pelanggan')
+@section('title','Pelanggan')
 @section('title2','index')
 @section('user','active')
 @section('konten')

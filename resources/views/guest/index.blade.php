@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Login &mdash; Stisla</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+ <title>Tampebako Coffee</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -23,8 +25,8 @@
       <div class="d-flex flex-wrap align-items-stretch">
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
-            <img src="{{ asset('assets/img/logo.jpg')}}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold text-danger">Ichibanresto</span></h4>
+            <img src="{{ asset('assets/img/tampebako.jpg')}}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
+            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold text-dark">Tampebako</span></h4>
             <p class="text-muted">Sebelum memesan, masukan nama dan no meja</p>
             <form method="POST" action="/prosesloginpelanggan" class="needs-validation" novalidate="">
               @csrf
@@ -50,14 +52,14 @@
                 <a href="#" class="float-left mt-3">
                   Selamat memesan
                 </a>
-                <button type="submit" class="btn btn-danger btn-lg btn-icon icon-right" tabindex="4">
+                <button type="submit" class="btn btn-dark btn-lg btn-icon icon-right" tabindex="4">
                   Masuk
                 </button>
               </div>
             </form>
 
             @if(session('message'))
-            <div class="alert alert-danger alert-dismissible show fade">
+            <div class="alert alert-dark alert-dismissible show fade">
               <div class="alert-body">
                 <button class="close" data-dismiss="alert">
                   <span>×</span>
@@ -68,7 +70,7 @@
             @endif
 
             <div class="text-center mt-5 text-small">
-              Copyright &copy; Candra saputra. Made with 💙 by Stisla
+              Copyright &copy; Tampebako Coffee
               <div class="mt-2">
                 <a href="#">Privacy Policy</a>
                 <div class="bullet"></div>
@@ -77,22 +79,22 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="{{ asset('assets/img/backlogin.jpg')}}">
+        <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="{{ asset('assets/img/backlogin2.png')}}">
           <div class="absolute-bottom-left index-2">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">         
                 <h1 class="mb-2 display-4 font-weight-bold" style="text-shadow: 5px 5px #000000;">
                 @if ($now < 11)
-                  Ohayou 
+                  halo, kawanbako! 
                 @elseif ($now >= 11)
-                  Konniciwa
+                halo, kawanbako!
                 @elseif ($now >= 18)
-                  Konbanwa
+                halo, kawanbako!
                 @endif</h1>
-                <h5 class="font-weight-normal text-muted-transparent">Jawa barat, Indonesia</h5>
+                <h5 class="font-weight-normal text-muted-transparent">Jakarta Selatan, Indonesia</h5>
               </div>
-              Photo by <a class="text-light bb" target="_blank" href="https://unsplash.com/photos/q3ApAZsS1os">
-Spencer Davis</a> on <a class="text-light bb" target="_blank" href="https://unsplash.com">Unsplash</a>
+              Follow us on Instagram <a class="text-light bb" target="_blank" href="https://www.instagram.com/tampebako/">
+Tampebako Coffee</a> on <a class="text-light bb" target="_blank" href="https://instagram.com">Instagram</a>
             </div>
           </div>
         </div>

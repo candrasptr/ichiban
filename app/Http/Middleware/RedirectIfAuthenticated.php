@@ -8,36 +8,30 @@ use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
-     */
-    public function handle($request, Closure $next, $guard = null)
-    {
-        if (Auth::guard('admin')->check()) {
-
-              return redirect('/admin');
-
-            } else if (Auth::guard('user')->check()) {
-
-              return redirect('/user');
-              
-            } else if (Auth::guard('kasir')->check()) {
-
-              return redirect('/kasir');
-              
-            } else if (Auth::guard('waiter')->check()) {
-
-              return redirect('/waiter');
-            } else if (Auth::guard('owner')->check()) {
-
-              return redirect('/owner');
-            }
-
-        return $next($request);
+  /**
+   * Handle an incoming request.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  \Closure  $next
+   * @param  string|null  $guard
+   * @return mixed
+   */
+  public function handle($request, Closure $next, $guard = null)
+  {
+    if (Auth::guard('admin')->check()) {
+      return redirect('/dashboard');
+    } else if (Auth::guard('user')->check()) {
+      return redirect('/user');
+    } else if (Auth::guard('kasir')->check()) {
+      return redirect('/kasir');
+    } else if (Auth::guard('waiter')->check()) {
+      return redirect('/waiter');
+    } else if (Auth::guard('owner')->check()) {
+      return redirect('/owner');
+    } else if (Auth::guard('pelayan')->check()) {
+      return redirect('/pelayan');
     }
+
+    return $next($request);
+  }
 }

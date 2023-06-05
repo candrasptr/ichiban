@@ -7,7 +7,7 @@
 @section('konten')
 
 <div class="row">
-  <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-primary">
         <i class="fas fa-box"></i>
@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-success">
         <i class="fas fa-envelope"></i>
@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-warning">
         <i class="fas fa-box-open"></i>
@@ -66,37 +66,37 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 </div>
 
-  <h2 class="section-title">Pegawai</h2>
-  <p class="section-lead">
+  <h2 >Pegawai</h2>
+  {{-- <p class="section-lead">
     Daftar pegawai
-  </p>
+  </p> --}}
 
   <div class="row">
     <div class="col-12 col-md-6 col-lg-8">
       <div class="card">
         <div class="card-header">
-          <h4 class="d-inline">Kasir</h4>
+          <h4 class="d-inline">Pelayan</h4>
           <div class="card-header-action">
-            <a href="/kasirindex" class="btn btn-success">View All</a>
+            {{-- <a href="/kasirindex" class="btn btn-success">View All</a> --}}
           </div>
         </div>
         <div class="card-body">
           <ul class="list-unstyled list-unstyled-border">
-            @foreach ($kasir as $item)
+            @foreach ($pelayan as $item)
             <li class="media">
               <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-2.png" alt="avatar">
               <div class="media-body">
                 <h6 class="media-title"><a href="#">{{ $item->username }}</a></h6>
-                <div class="text-small text-muted">{{ $item->nama_kasir }} <div class="bullet"></div> <span class="text-primary">{{ $item->alamat }}</span></div>
+                <div class="text-small text-muted">{{ $item->nama_pelayan }} <div class="bullet"></div> <span class="text-primary">{{ $item->alamat }}</span></div>
               </div>
             </li>            
             @endforeach
           </ul>
         </div>
-        <div class="card-header">
+        {{-- <div class="card-header">
           <h4 class="d-inline">Waiter</h4>
           <div class="card-header-action">
             <a href="/waiterindex" class="btn btn-success">View All</a>
@@ -114,10 +114,10 @@
             </li>            
             @endforeach
           </ul>
-        </div>
+        </div> --}}
       </div>
     </div>
-    <div class="col-md-4">
+    {{-- <div class="col-md-4">
       <div class="card card-hero">
         <div class="card-header">
           <div class="card-icon">
@@ -144,7 +144,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
   </div>
 
 

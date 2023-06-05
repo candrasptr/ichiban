@@ -4,7 +4,7 @@
 @section('konten')
 {{-- <div class="container-fluid">
 	<div class="row d-flex justify-content-end float-right mb-5 mr-5 fixed-bottom ">
-		<a href="{{ route('pelanggan.logout') }}" class="btn-logout btn btn-danger btn-circle btn-lg p-0">
+		<a href="{{ route('pelanggan.logout') }}" class="btn-logout btn btn-dark btn-circle btn-lg p-0">
 			<i class="fas fa-sign-out-alt mt-3"></i>
 		</a>
 	</div>
@@ -15,7 +15,7 @@
 		<div class="dropup">
 			<button class="dropbtn"><i class="fas fa-bars"></i></button>
 			<div class="dropup-content">
-			  <a href="/feedback"><i class="ion ion-chatbox"></i> Feedback</a>
+			  {{-- <a href="/feedback"><i class="ion ion-chatbox"></i> Feedback</a> --}}
 			  <a href="{{ Route('pelanggan.logout') }}"><i class="ion ion-android-exit"></i> logout</a>
 			</div>
 		  </div>
@@ -38,24 +38,24 @@
 		@endif
 
 		<div class="col-md-10 offset-md-1">
-			<div class="owl-carousel owl-theme">
-			    <div class="item"><img src="{{asset('assets/img/banner1.png')}}" style="width:99%"></div>
-			    <div class="item"><img src="{{asset('assets/img/banner2.png')}}" style="width:99%"></div>
-			    <div class="item"><img src="{{asset('assets/img/banner3.png')}}" style="width:99%"></div>
+			<div class="owl-carousel-1 owl-carousel owl-theme">
+			    <div class="item"><img src="{{asset('assets/img/banner6.png')}}" style="width:99%"></div>
+			    <div class="item"><img src="{{asset('assets/img/banner7.png')}}" style="width:99%"></div>
+			    <div class="item"><img src="{{asset('assets/img/banner8.png')}}" style="width:99%"></div>
 			</div>
 		</div>
 	</div>
 
-	{{-- makanan --}}
+	{{-- coffee --}}
 	<div class="row mt-5">
 	  <div class="col-md-12 text-center">
-	    <h1 class="text-danger mb-5" id="bo"> Makanan </h1>
+	    <h1 class="text-dark mb-5" id="bo"> Coffee </h1>
 	  </div>
 
-	  @if (session('makanan'))
-	  <div class="col-md-10 offset-md-1">
+	  @if (session('coffee'))
+	  <div class="col-md-10 offset-md-1">h
 		<div class="alert alert-success alert-dismissible fade show" role="alert">
-			<strong>Berhasil!</strong> {{ session('makanan') }}
+			<strong>Berhasil!</strong> {{ session('coffee') }}
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			  <span aria-hidden="true">&times;</span>
 			</button>
@@ -65,7 +65,8 @@
 
 	  <div class="col-sm-10 col-md-10 col-xs-10 offset-sm-1 offset-md-1 mb-3" >
 	    <div class="card-deck" >
-			@foreach ($makanan as $key)
+			<div class="owl-carousel-2 owl-carousel owl-theme">
+			@foreach ($coffee as $key)
 			<div class="card shadow-sm" id="card">
 				<img src="{{asset('assets/img/produk/'.$key->gambar_masakan)}}" class="card-img-top" alt="...">
 			  <div class="card-body">
@@ -73,7 +74,7 @@
 			  </div>
 			  <div class="row">
 				  <div class="col-md-8">
-					  <a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. {{ $key->harga }}</a>
+					  <a class="btn btn-transparent text-dark ml-2 my-3" id="sb">Rp. {{ $key->harga }}</a>
 				  </div>
 				  <div class="col-md-4 text-right">
 					<form action="/pesan_order" method="POST">
@@ -81,26 +82,27 @@
 						<div class="form-group">
 						  <input type="hidden" class="form-control" value="{{ $key->id_masakan }}" name="id_masakan">
 						</div>
-						<button type="submit" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></button>
+						<button type="submit" class="btn btn-dark text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></button>
 					</form>
 				  </div>
 			  </div>
 			</div>
 			@endforeach
+			</div>
 	    </div>
 	  </div>
 	</div>
 
-	{{-- minuman --}}
+	{{-- noncoffee --}}
 	<div class="row mt-5">
 		<div class="col-md-12 text-center">
-		  <h1 class="text-danger mb-5" id="bo"> Minuman </h1>
+		  <h1 class="text-dark mb-5" id="bo"> Non Coffee </h1>
 		</div>
 
-		@if (session('minuman'))
+		@if (session('noncoffee'))
 		<div class="col-md-10 offset-md-1">
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
-				<strong>Berhasil!</strong> {{ session('minuman') }}
+				<strong>Berhasil!</strong> {{ session('noncoffee') }}
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				  <span aria-hidden="true">&times;</span>
 				</button>
@@ -110,7 +112,8 @@
 
 		<div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
 		  <div class="card-deck" >
-			@foreach ($minuman as $key)
+		  	<div class="owl-carousel-2 owl-carousel owl-theme">
+			@foreach ($noncoffee as $key)
 			<div class="card shadow-sm" id="card">
 				<img src="{{asset('assets/img/produk/'.$key->gambar_masakan)}}" class="card-img-top" alt="...">
 			  <div class="card-body">
@@ -118,7 +121,7 @@
 			  </div>
 			  <div class="row">
 				  <div class="col-md-8">
-					  <a class="btn btn-transparent text-danger ml-2 my-3" id="sb">Rp. {{ $key->harga }}</a>
+					  <a class="btn btn-transparent text-dark ml-2 my-3" id="sb">Rp. {{ $key->harga }}</a>
 				  </div>
 				  <div class="col-md-4 text-right">
 					<form action="/pesan_order" method="POST">
@@ -126,26 +129,27 @@
 						<div class="form-group">
 						  <input type="hidden" class="form-control" value="{{ $key->id_masakan }}" name="id_masakan">
 						</div>
-						<button type="submit" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></button>
+						<button type="submit" class="btn btn-dark text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></button>
 					</form>
 				  </div>
 			  </div>
 			</div>
 			@endforeach
 		  </div>
+		  </div>
 		</div>
 	</div>
 
-	{{-- Dessert --}}
+	{{-- Makanan --}}
 	<div class="row mt-5">
 		<div class="col-md-12 text-center">
-		  <h1 class="text-danger mb-5" id="bo"> Dessert </h1>
+		  <h1 class="text-dark mb-5" id="bo"> Makanan </h1>
 		</div>
 
-		@if (session('dessert'))
+		@if (session('makanan'))
 		<div class="col-md-10 offset-md-1">
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
-				<strong>Berhasil!</strong> {{ session('dessert') }}
+				<strong>Berhasil!</strong> {{ session('makanan') }}
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				  <span aria-hidden="true">&times;</span>
 				</button>
@@ -155,7 +159,8 @@
 
 		<div class="col-md-10 col-xs-10 offset-md-1 mb-3" >
 		  <div class="card-deck" >
-			@foreach ($dessert as $key)
+		  <div class="owl-carousel-2 owl-carousel owl-theme">
+		 	@foreach ($makanan as $key)
 			<div class="card shadow-sm" id="card">
 				<img src="{{asset('assets/img/produk/'.$key->gambar_masakan)}}" class="card-img-top" alt="...">
 			  <div class="card-body">
@@ -163,7 +168,7 @@
 			  </div>
 			  <div class="row">
 				  <div class="col-md-8">
-					  <a class="btn btn-transparent text-danger ml-2 mt-4" id="sb">Rp. {{ $key->harga }}</a>
+					  <a class="btn btn-transparent text-dark ml-2 mt-4" id="sb">Rp. {{ $key->harga }}</a>
 				  </div>
 				  <div class="col-md-4 text-right">
 					<form action="/pesan_order" method="POST">
@@ -171,79 +176,18 @@
 						<div class="form-group">
 						  <input type="hidden" class="form-control" value="{{ $key->id_masakan }}" name="id_masakan">
 						</div>
-						<button type="submit" class="btn btn-danger text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></button>
+						<button type="submit" class="btn btn-dark text-right mr-3 my-3" id="btn-shop"><i class="fas fa-shopping-cart"></i></button>
 					</form>
 				  </div>
 			  </div>
 			</div>
 			@endforeach
 		  </div>
+		  </div>
 		</div>
 	</div>
 
-	@if($order->count() != '')    
-    <div class="row pb-5" >
-		<div class="text-center col-md-10 offset-md-1">
-			<h1 class="text-danger my-5" id="bo">PESANAN</h1>
-		</div>
-		
-		{{-- Keranjang --}}
-        <div class="col-lg-7 offset-lg-1">
-			<div class="row shadow p-3" style="background-color: #ffffff;" id="card-cart"> 
-				@foreach ($order as $item)
-				<div class="col-md-3">
-					<img src="{{asset('assets/img/produk/'.$item->gambar_masakan)}}" style="width: 150px;" alt="...">
-				</div>
-				<div class="col-md-4 my-auto">
-					<span id="me">{{ $item->nama_masakan }}</span><br>
-					<span id="me" class="text-danger">Rp {{ $item->harga }}</span>
-				</div>
-				<div class="col-md-4 offset-md-1 my-auto ">
-					<form action="/order_update" class="row justify-content-end" method="POST">
-						@csrf
-						<input type="hidden" value="{{$item->id_order}}" name="id_order">
-						<div class="input-group col-md-8 ml-2">
-							<div class="input-group-prepend my-auto mr-2">
-								<a href="{{ route('order.hapus',$item->id_order) }}" class="" id="button-cart"><i class="fas fa-trash"></i></a>
-							</div>
-							<input type="number" class="form-control text-center" value="{{$item->jumlah}}" maxlength="4" size="4" id="input" name="jumlah">
-							<div class="input-group-append">
-								<button id="button-cart" type="submit" class="btn btn-transparent" data-toggle="tooltip" data-placement="top" title="Update"><i class="fas fa-edit"></i></button>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="col-md-12 my-4 garis-bawah"></div>
-				@endforeach
-			</div>
-		</div>
-
-		{{-- Card pembayaran --}}
-		<div class="col-md-3">
-			<div class="card shadow" id="card-cart">
-				<div class="card-body">
-					<form action="/order_bayar" class="row" method="POST">
-						@csrf			
-						<div class="col-md-12 mb-3">
-							<span id="bo">Ringkasan pesanan</span>	
-						</div>
-						<div class="col-md-6">
-							<span id="me">Total harga :</span>
-						</div>
-						<div class="col-md-6 text-right">
-							<span class="text-danger" id="bo">Rp. {{$order->sum('sub_total')}}</span>
-						</div>														<input type="hidden" id="total" value="{{$order->sum('sub_total')}}" class="total" name="total_bayar">
-						<div class="col-md-12"><hr></div>
-						<div class="col-md-12">
-							<button class="btn btn-primary btn-sm btn-block btn-danger py-2" id="bayar"><i class="fas fa-shopping-cart fas-2x"></i> Checkout</button>		
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-	</div>
-    @endif
+	
 </div>
 
 
@@ -252,10 +196,10 @@
 
 @push('after-scripts')
 <script type="text/javascript">
-	$('.owl-carousel').owlCarousel({
+	$('.owl-carousel-1').owlCarousel({
 	    loop:true,
 	    margin:10,
-	    nav:true,
+	    nav:false,
 	    autoplay:1000,
 	    responsive:{
 	        0:{
@@ -266,6 +210,26 @@
 	        },
 	        1000:{
 	            items:1
+	        }
+	    }
+	})
+</script>
+
+<script type="text/javascript">
+	$('.owl-carousel-2').owlCarousel({
+	    loop:true,
+	    margin:10,
+	    nav:false,
+	    autoplay:2000,
+	    responsive:{
+	        0:{
+	            items:4
+	        },
+	        600:{
+	            items:4
+	        },
+	        1000:{
+	            items:4
 	        }
 	    }
 	})

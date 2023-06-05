@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Ichiban - @yield('title')</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
+  <title>Tampebako - @yield('title')</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -57,7 +60,7 @@
   @yield('page-styles')
 </head>
 
-<body style="background-image: url(../assets/img/background3.png);  /* Full height */
+<body style="background-image: url(../assets/img/background4.png);  /* Full height */
   width: 100%; 
 
   /* Center and scale the image nicely */
@@ -74,8 +77,8 @@
 
   <footer class="main-footer bg-transparent mt-5">
     <div class="text-center text-secondary py-3">
-      <img src="{{asset('assets/img/logo4.png')}}" style="width: 100px;" class="mb-2"><br>
-      Copyright &copy; 2020 Candra saputra 
+      <img src="{{asset('assets/img/logo5.png')}}" style="width: 100px;" class="mb-2"><br>
+      Copyright &copy; 2023 
     </div></div>
   </footer>
 
